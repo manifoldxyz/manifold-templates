@@ -29,7 +29,7 @@ also make sure to set the **"Tag Name"** to
 manifold-marketplace-widget
 ```
 It should look like this:
-![source](./images/custom-element-source.png.png)
+![source](./images/custom-element-source.png)
 
 5. (Optional) If you want the connect-widget to include WalletConnect and not just Metamask. On the custom element click "Set Attributes" => "Set Attributes". For Attribute Name enter in 
 ```
@@ -42,3 +42,4 @@ true
 then click "Set"
 ![attributes](./images/custom-element-attribute.png.png)
 6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have the connect-widget installed on your site! And it should look like this.
+![connect-widget](./images/success.png)
