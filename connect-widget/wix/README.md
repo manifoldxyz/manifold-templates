@@ -10,11 +10,11 @@
 2. Click the Button **"+ Add Custom Code"** and paste the following into the code snippet box:
 ```
 <!-- connect widget -->
-  <script async src="https://connect.manifoldxyz.dev/2.0.13/connect.umd.min.js"></script>
-  <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.0.13/connect.css" />
-  <!-- marketplace widget -->
-  <script async src="https://marketplace.manifoldxyz.dev/latest/marketplace.umd.min.js"></script>
-  <link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/latest/marketplace.css" />
+<script async src="https://connect.manifoldxyz.dev/2.0.13/connect.umd.min.js"></script>
+<link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.0.13/connect.css" />
+<!-- marketplace widget -->
+<script async src="https://marketplace.manifoldxyz.dev/latest/marketplace.umd.min.js"></script>
+<link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/latest/marketplace.css" />
 ```
 - Give it the Name "Manifold Connect Widget" and make sure to Select Place Code in "Head". Then click "Apply".
 ![Wix custom code](./images/custom-code-head.png)
@@ -28,8 +28,8 @@ also make sure to set the **"Tag Name"** to
 ```
 manifold-marketplace-widget
 ```
-It should look like this:
-![source](./images/custom-element-source.png)
+It should look like this: <br />
+![source](./images/custom-element-source.png) <br />
 
 5. (Optional) If you want the connect-widget to include WalletConnect and not just Metamask. On the custom element click "Set Attributes" => "Set Attributes". For Attribute Name enter in 
 ```
@@ -39,7 +39,7 @@ and for Value enter in
 ```
 true
 ```
-then click "Set"
-![attributes](./images/custom-element-attribute.png.png)
-6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have the connect-widget installed on your site! And it should look like this.
+then click "Set" <br />
+![attributes](./images/custom-element-attribute.png) <br />
+6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have the connect-widget installed on your site! And it should look like this. <br />
 ![connect-widget](./images/success.png)
