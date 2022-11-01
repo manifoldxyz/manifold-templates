@@ -20,7 +20,7 @@
 ![Wix custom code](./images/custom-code-head.png)
 3. Now you should have what you need to install the connect-widget. Go back to the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element"
 ![Wix add custom element](./images/site-editor-embed-code-menu.png)
-4. A component with a grey inner box will appear on your page. Click the grey box select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
+4. A component with a grey inner box will appear on your page. Click the grey box and select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
 ```
 https://connect.manifoldxyz.dev/wix/wix-connect.js
 ```

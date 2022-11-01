@@ -5,9 +5,9 @@
 2. Make sure you have completed the install for connect-widget onto your wix site. If you have not done so please follow the instructions [here](https://github.com/manifoldxyz/manifold-templates/tree/main/connect-widget/wix)
 
 ## Steps
-1. Start at the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element"
+1. Start at the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element" <br />
 ![Wix add custom element](./images/site-editor-embed-code-menu.png)
-2. A component with a grey inner box will appear on your page. Click the grey box select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
+2. A component with a grey inner box will appear on your page. Click the grey box and select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
 ```
 https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js
 ```
@@ -25,6 +25,6 @@ data-id  :  {whatever listingId you want to display}
 data-network  :  {1 for Ethereum Mainnet or 5 for Goerli}
 ```
 then click "Set". It should look like this: <br />
-![attributes](./images/marketplace-widget-attribute.png) <br />
+![attributes](./images/marketplace-widget-attributes.png) <br />
 4. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have a mareketplace-widget installed that allows users to bid on a listing directly within your site! <br />
 ![connect-widget](./images/success.png)
