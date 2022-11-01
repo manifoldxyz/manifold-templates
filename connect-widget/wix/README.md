@@ -26,7 +26,7 @@ https://connect.manifoldxyz.dev/wix/wix-connect.js
 ```
 also make sure to set the **"Tag Name"** to 
 ```
-manifold-marketplace-widget
+manifold-connect-widget
 ```
 It should look like this: <br />
 ![source](./images/custom-element-source.png) <br />
