@@ -36,10 +36,10 @@ import wixLocation from 'wix-location';
 $w.onReady(function () {
     let loaded = session.getItem("loaded")
     if (loaded === "true") {
-		session.setItem("loaded","false")
+		  session.setItem("loaded","false")
     } else {
-        session.setItem("loaded","true")
-        wixLocation.to(wixLocation.url)
+      session.setItem("loaded","true")
+      wixLocation.to(wixLocation.url)
     }
 })
 ```
