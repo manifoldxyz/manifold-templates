@@ -26,5 +26,44 @@ data-network  :  {1 for Ethereum Mainnet or 5 for Goerli}
 ```
 then click "Set". It should look like this: <br />
 ![attributes](./images/marketplace-widget-attributes.png) <br />
-4. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have a mareketplace-widget installed that allows users to bid on a listing directly within your site! <br />
+
+4. Add Velo to your site. Go to `https://www.wix.com/velo` and click "Start a Project" then click your paid site.
+5. Back in your site editor for each page on your app. Copy and paste the following velo code. What does this do? All it does is do a refresh everytime you click a new tab, which helps to get rid of bugs with the integration.
+```
+import {session} from 'wix-storage';
+import wixLocation from 'wix-location';
+
+$w.onReady(function () {
+    let loaded = session.getItem("loaded")
+    if (loaded === "true") {
+		session.setItem("loaded","false")
+    } else {
+        session.setItem("loaded","true")
+        wixLocation.to(wixLocation.url)
+    }
+})
+```
+6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have a mareketplace-widget installed that allows users to bid on a listing directly within your site! <br />
 ![connect-widget](./images/success.png)
+
+## Troubleshooting
+If you have issues with widgets not showing up try to refresh. If still persisting something that could help is 
+moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script file directly into your site as a velo script. And change the embed compoents to use the local file instead of the remote one.
+
+## Optional Styling For A Dark Background Wix Site
+1. In the wix dashboard for the site (not the site editor). Click Settings => Custom Code => "+ Add Custom Code"
+2. Copy and paste the following code into the box:
+```
+<style>
+.manifold {color: white !important;}
+.m-complete-view .m-listing-info .m-aside>button { color: white !important; }
+.m-layout-listing .m-listing-info .m-main .m-attributes *, .manifold.m-layout-listing .m-listing-info .m-main .m-attributes * { color: white !important;}
+.m-layout-listing .m-listing-info .m-main .m-description:before, .manifold.m-layout-listing .m-listing-info .m-main .m-description:before { color: white !important;}
+.m-description p { color: white !important;}
+.m-bids-inner {background: transparent !important;}
+</style>
+```
+- you can select a specific page to have this style or you can put it on all pages.
+- place Code in the  "Head" section
+3. Click "Apply" to save the changes.
+
