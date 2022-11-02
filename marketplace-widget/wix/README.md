@@ -61,9 +61,48 @@ moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script f
 .m-layout-listing .m-listing-info .m-main .m-description:before, .manifold.m-layout-listing .m-listing-info .m-main .m-description:before { color: white !important;}
 .m-description p { color: white !important;}
 .m-bids-inner {background: transparent !important;}
+.m-bid .m-bid-timestamp {background: transparent !important;}
+.m-bid .m-bid-bidder {background: transparent !important;}
+.m-bid .m-bid-amount {background: transparent !important;}
+.m-bid .m-bid-referrer {background: transparent !important;}
+.m-bid a {filter: none !important;}
+.m-bids .m-bids-header {width: auto !important}
+.m-bids-inner { padding-top: 20px }
+
+.manifold.m-confirm .m-confirm-inner { align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center; }
+.manifold.m-confirm .m-confirm-inner>div { width: auto; height: auto;}
+.m-rich-form-input-inner>input { padding-right: 10px !important;}
 </style>
 ```
 - you can select a specific page to have this style or you can put it on all pages.
 - place Code in the  "Head" section
 3. Click "Apply" to save the changes.
 
+## Optional Styling For A Light Background Wix Site
+```
+<style>
+  .manifold {color: black !important;}
+  .m-complete-view .m-listing-info .m-aside>button { color: black !important; }
+  .m-layout-listing .m-listing-info .m-main .m-attributes *, .manifold.m-layout-listing .m-listing-info .m-main .m-attributes * { color: black !important;}
+  .m-layout-listing .m-listing-info .m-main .m-description:before, .manifold.m-layout-listing .m-listing-info .m-main .m-description:before { color: black !important;}
+  .m-description p { color: black !important;}
+  .m-complete-view .m-listing-info .m-aside .m-subscribe-to-listing-button {color: white !important;} 
+  .m-bids-inner {background: transparent !important;}
+  .m-bid .m-bid-timestamp {background: transparent !important;}
+  .m-bid .m-bid-bidder {background: transparent !important;}
+  .m-bid .m-bid-amount {background: transparent !important;}
+  .m-bid .m-bid-referrer {background: transparent !important;}
+  .m-bids .m-bids-header {width: auto !important}
+  .m-bids-inner { padding-top: 20px }
+
+  .manifold.m-confirm .m-confirm-inner { align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center; }
+  .manifold.m-confirm .m-confirm-inner>div { width: auto; height: auto;}
+  .m-rich-form-input-inner>input { padding-right: 10px !important;}
+</style>
+```
