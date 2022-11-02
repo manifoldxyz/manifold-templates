@@ -34,13 +34,13 @@ import {session} from 'wix-storage';
 import wixLocation from 'wix-location';
 
 $w.onReady(function () {
-    let loaded = session.getItem("loaded")
-    if (loaded === "true") {
-		  session.setItem("loaded","false")
-    } else {
-      session.setItem("loaded","true")
-      wixLocation.to(wixLocation.url)
-    }
+  let loaded = session.getItem("loaded")
+  if (loaded === "true") {
+    session.setItem("loaded","false")
+  } else {
+    session.setItem("loaded","true")
+    wixLocation.to(wixLocation.url)
+  }
 })
 ```
 ![velo-code](./images/site-editor-velo-code.png)<br />
@@ -56,26 +56,26 @@ moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script f
 2. Copy and paste the following code into the box:
 ```
 <style>
-.manifold {color: white !important;}
-.m-complete-view .m-listing-info .m-aside>button { color: white !important; }
-.m-layout-listing .m-listing-info .m-main .m-attributes *, .manifold.m-layout-listing .m-listing-info .m-main .m-attributes * { color: white !important;}
-.m-layout-listing .m-listing-info .m-main .m-description:before, .manifold.m-layout-listing .m-listing-info .m-main .m-description:before { color: white !important;}
-.m-description p { color: white !important;}
-.m-bids-inner {background: transparent !important;}
-.m-bid .m-bid-timestamp {background: transparent !important;}
-.m-bid .m-bid-bidder {background: transparent !important;}
-.m-bid .m-bid-amount {background: transparent !important;}
-.m-bid .m-bid-referrer {background: transparent !important;}
-.m-bid a {filter: none !important;}
-.m-bids .m-bids-header {width: auto !important}
-.m-bids-inner { padding-top: 30px }
+  .manifold {color: white !important;}
+  .m-complete-view .m-listing-info .m-aside>button { color: white !important; }
+  .m-layout-listing .m-listing-info .m-main .m-attributes *, .manifold.m-layout-listing .m-listing-info .m-main .m-attributes * { color: white !important;}
+  .m-layout-listing .m-listing-info .m-main .m-description:before, .manifold.m-layout-listing .m-listing-info .m-main .m-description:before { color: white !important;}
+  .m-description p { color: white !important;}
+  .m-bids-inner {background: transparent !important;}
+  .m-bid .m-bid-timestamp {background: transparent !important;}
+  .m-bid .m-bid-bidder {background: transparent !important;}
+  .m-bid .m-bid-amount {background: transparent !important;}
+  .m-bid .m-bid-referrer {background: transparent !important;}
+  .m-bid a {filter: none !important;}
+  .m-bids .m-bids-header {width: auto !important}
+  .m-bids-inner { padding-top: 30px }
 
-.manifold.m-confirm .m-confirm-inner { align-content: center;
-  justify-content: center;
-  align-items: center;
-  justify-items: center; }
-.manifold.m-confirm .m-confirm-inner>div { width: auto; height: auto;}
-.m-rich-form-input-inner>input { padding-right: 10px !important;}
+  .manifold.m-confirm .m-confirm-inner { align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center; }
+  .manifold.m-confirm .m-confirm-inner>div { width: auto; height: auto;}
+  .m-rich-form-input-inner>input { padding-right: 10px !important;}
 </style>
 ```
 - you can select a specific page to have this style or you can put it on all pages.
