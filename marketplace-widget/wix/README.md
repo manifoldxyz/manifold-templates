@@ -1,4 +1,4 @@
-# How to install connect-widget in Wix
+# How to install marketplace-widget in Wix
 
 ## Prerequisites
 1. Create a Site on Wix. Then upgrade it to a paid plan & connect a domain.
@@ -43,6 +43,7 @@ $w.onReady(function () {
     }
 })
 ```
+![velo-code](./images/site-editor-velo-code.png)<br />
 6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have a mareketplace-widget installed that allows users to bid on a listing directly within your site! <br />
 ![connect-widget](./images/success.png)
 
@@ -67,7 +68,7 @@ moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script f
 .m-bid .m-bid-referrer {background: transparent !important;}
 .m-bid a {filter: none !important;}
 .m-bids .m-bids-header {width: auto !important}
-.m-bids-inner { padding-top: 20px }
+.m-bids-inner { padding-top: 30px }
 
 .manifold.m-confirm .m-confirm-inner { align-content: center;
   justify-content: center;
@@ -96,7 +97,7 @@ moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script f
   .m-bid .m-bid-amount {background: transparent !important;}
   .m-bid .m-bid-referrer {background: transparent !important;}
   .m-bids .m-bids-header {width: auto !important}
-  .m-bids-inner { padding-top: 20px }
+  .m-bids-inner { padding-top: 30px }
 
   .manifold.m-confirm .m-confirm-inner { align-content: center;
     justify-content: center;
