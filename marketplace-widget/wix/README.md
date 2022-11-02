@@ -47,11 +47,13 @@ $w.onReady(function () {
 6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have a mareketplace-widget installed that allows users to bid on a listing directly within your site! <br />
 ![connect-widget](./images/success.png)
 
+<br />
+<br />
 ## Troubleshooting
 If you have issues with widgets not showing up try to refresh. If still persisting something that could help is 
 moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script file directly into your site as a velo script. And change the embed compoents to use the local file instead of the remote one.
 
-## Optional Styling For A Dark Background Wix Site
+## Optional Styling For A Dark Background Wix Page
 1. In the wix dashboard for the site (not the site editor). Click Settings => Custom Code => "+ Add Custom Code"
 2. Copy and paste the following code into the box:
 ```
@@ -82,7 +84,8 @@ moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script f
 - place Code in the  "Head" section
 3. Click "Apply" to save the changes.
 
-## Optional Styling For A Light Background Wix Site
+## Optional Styling For A Light Background Wix Page
+Follow steps 1 and 2 above but change the code to:
 ```
 <style>
   .manifold {color: black !important;}
