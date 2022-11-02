@@ -50,9 +50,7 @@ $w.onReady(function () {
 <br />
 <br />
 
-## Troubleshooting
-If you have issues with widgets not showing up try to refresh. If still persisting something that could help is 
-moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script file directly into your site as a velo script. And change the embed compoents to use the local file instead of the remote one.
+
 
 ## Optional Styling For A Dark Background Wix Page
 1. In the wix dashboard for the site (not the site editor). Click Settings => Custom Code => "+ Add Custom Code"
@@ -111,3 +109,9 @@ Follow steps 1 and 2 above but change the code to:
   .m-rich-form-input-inner>input { padding-right: 10px !important;}
 </style>
 ```
+<br />
+
+## Troubleshooting
+If you have issues with widgets not showing up try to refresh. If still persisting something that could help is 
+moving the `https://marketplace.manifoldxyz.dev/wix/wix-marketplace.js` script file directly into your site as a velo script. And change the embed compoents to use the local file instead of the remote one.
+![troubleshooting](./images/troubleshooting-site-editor-velo-script.png)
