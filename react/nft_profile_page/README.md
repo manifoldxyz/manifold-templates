@@ -1,4 +1,4 @@
-# NFT Collection Page
+# NFT Profile Page
 
 <img src="screenshot.png" width="300" />
 
