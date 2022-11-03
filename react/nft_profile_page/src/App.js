@@ -10,8 +10,8 @@ function App() {
     // Get the data client instance
     const client = event.detail.client;
 
-    // Get the NFTs owned by the currently connected wallet filtered by
-    // the Forgotten Runes NFT contract address
+    // Get the NFTs owned by the currently connected wallet
+    // Data client API's can be found here: https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget/data-client-apis
     setNfts(await client.getNFTsOfOwner());
     setAuthenticated(true);
   })
@@ -21,21 +21,26 @@ function App() {
   })
   return (
     <div className="App">
-      <div>
-        <div
-          data-widget="m-connect"
-          data-app-name={process.env.REACT_APP_MANIFOLD_APP_NAME}
-          data-client-id={process.env.REACT_APP_MANIFOLD_CLIENT_ID}
-        >
-        </div>
-        {authenticated && <h2>Your NFTs</h2>}
-        <div id="nfts">
-          {nfts.map((nft) => {
-            return (
-              <img key={`${nft.tokenId}-${nft.contractAddress}`} src={nft.image} height={200} width={200}></img>
-            )
-          })}
-        </div>
+      <div
+        data-widget="m-connect"
+        data-app-name={process.env.REACT_APP_MANIFOLD_APP_NAME}
+        data-client-id={process.env.REACT_APP_MANIFOLD_CLIENT_ID}
+        style={{
+          marginTop: "10px",
+          marginBottom: "10px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center"
+        }}
+      >
+      </div>
+      {authenticated && <h2>Your NFTs</h2>}
+      <div id="nfts">
+        {nfts.map((nft) => {
+          return (
+            <img key={`${nft.tokenId}-${nft.contractAddress}`} src={nft.image} height={200} width={200}></img>
+          )
+        })}
       </div>
     </div>
   );

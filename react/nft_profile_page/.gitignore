@@ -1,4 +1,5 @@
 build/
+.env.local
 
 # Logs
 logs
