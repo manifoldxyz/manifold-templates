@@ -25,6 +25,7 @@ function App() {
         data-widget="m-connect"
         data-app-name={process.env.REACT_APP_MANIFOLD_APP_NAME}
         data-client-id={process.env.REACT_APP_MANIFOLD_CLIENT_ID}
+        data-network={process.env.REACT_APP_NETWORK}
         style={{
           marginTop: "10px",
           marginBottom: "10px",

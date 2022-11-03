@@ -2,15 +2,15 @@
 
 <img src="screenshot.png" width="300" />
 
-This is a simple example of an NFT Collection Page. It contains a way for someone to connect their wallet and view their NFTs.
+This is a simple example of an Marketplace Listing Page.
 
 This was created using the standard create-react-app script.
 
 ## Configuration
-Please make sure you set the REACT_APP_NETWORK, REACT_APP_MANIFOLD_APP_NAME and REACT_APP_MANIFOLD_CLIENT_ID in the .env or your own .env.local.
+Please make sure you set the REACT_APP_NETWORK and REACT_APP_MARKETPLACE_LISTING_ID in the .env or your own .env.local.
 
 ## How does it work?
-In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget), which will allow a user to authenticate to your website.  Once authenticated, your app will have access to a [Data Client](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget/data-client-apis), which allows you to retrieve information about the user's NFTs.
+In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/marketplace-widgets) which will display a marketplace listing.
 
 ## Available Scripts
 
