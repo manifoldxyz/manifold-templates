@@ -33,11 +33,9 @@ It should look like this: <br />
 
 5. (Optional) If you want the connect-widget to include WalletConnect and not just Metamask. On the custom element click "Set Attributes" => "Set Attributes". For Attribute Name enter in 
 ```
-data-multi
-```
-and for Value enter in 
-```
-true
+data-multi  :  true
+data-fallback-provider  :  {get an API key from Alchemy or Infura. Should start with "wss://"}
+data-network  :  {1 for Ethereum Mainnet or 5 for Goerli}
 ```
 then click "Set" <br />
 ![attributes](./images/custom-element-attribute.png) <br />

@@ -51,7 +51,6 @@ $w.onReady(function () {
 <br />
 
 
-
 ## Optional Styling For A Dark Background Wix Page
 1. In the wix dashboard for the site (not the site editor). Click Settings => Custom Code => "+ Add Custom Code"
 2. Copy and paste the following code into the box:
