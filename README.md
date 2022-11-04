@@ -1,3 +1,13 @@
 # manifold-templates
 
-Repo that holds written and/or video guides for using manifold tools. Also includes code snippets for people to copy and paste if applicable.
+Repo that holds templates and guides for using manifold widgets.
+
+We have templates for:
+* React
+* Vue
+* Vercel
+* Wix
+* SquareSpace
+* HTML
+
+Please check the subdirectories for details.
