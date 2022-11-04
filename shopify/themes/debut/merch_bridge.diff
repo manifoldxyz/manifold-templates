@@ -1,0 +1,207 @@
+diff -ru debut_original/sections/cart-template.liquid merch_bridge/sections/cart-template.liquid
+--- debut_original/sections/cart-template.liquid	2022-11-04 16:00:08.000000000 -0700
++++ merch_bridge/sections/cart-template.liquid	2022-11-04 19:06:58.000000000 -0700
+@@ -1,3 +1,16 @@
++{% comment %}this detects if there are token gated items in the cart and sets the hasTokenGatedItem variable{% endcomment %}
++
++{% assign hasTokenGatedItem = false %}
++{% for item in cart.items %}
++  {% for property in item.properties %}
++    {% if property.first == '_isTokenGated' and property.last == 'true' -%}
++      {% assign hasTokenGatedItem = true %}
++      {% break %}
++    {% endif %}
++  {% endfor %}
++  {% if hasTokenGatedItem == true %}{% break %}{% endif %}
++{% endfor %}
++
+ <div class="page-width" data-section-id="{{ section.id }}" data-section-type="cart-template" data-ajax-enabled="{{ section.settings.cart_ajax_enable }}">
+ 
+   <div {% if cart.item_count == 0 %}class="hide" {% endif %}data-cart-wrapper>
+@@ -18,6 +31,25 @@
+         </thead>
+         <tbody data-cart-line-items>
+           {%- for item in cart.items -%}
++
++          {% comment %} detect whether or not the item is token gated and set the isTokenGated variable {% endcomment %}
++
++          {% assign isTokenGated = false %}
++          {% assign campaignId = undefined %}
++          {% assign tokenAddress = '' %}
++          {% assign tokenId = '' %}
++          {% for property in item.properties %}
++            {% if property.first == '_isTokenGated' and property.last == 'true' -%}
++              {% assign isTokenGated = true %}
++            {% elsif property.first == '_campaignId' -%}
++              {% assign campaignId = property.last %}
++            {% elsif property.first == '_contractAddress' -%}
++              {% assign tokenAddress = property.last %}
++            {% elsif property.first == '_tokenId' -%}
++              {% assign tokenId = property.last %}
++            {% endif %}
++          {% endfor %}
++            
+             <tr class="cart__row" data-cart-item data-cart-item-key="{{ item.key }}" data-cart-item-url="{{ item.url }}" data-cart-item-title="{{ item.title }}" data-cart-item-index="{{ forloop.index }}" data-cart-item-quantity="{{ item.quantity }}">
+               <td class="cart__meta small--text-left" data-cart-table-cell>
+                 <div class="cart__product-information">
+@@ -86,7 +118,20 @@
+                     </ul>
+ 
+                     <p class="cart__remove">
++                    {%- if isTokenGated != true -%}
+                       <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="text-link text-link--accent" aria-label="{{ 'cart.label.remove' | t: product: item.title }}" data-cart-remove data-role="product-remove">{{ 'cart.general.remove' | t }}</a>
++                    {%- else -%}
++                    {% comment %} token gate trashcan {% endcomment %}
++                      <div 
++                        data-widget="m-token-cart-item-delete"
++                        data-campaign-id="{{ campaignId }}"
++                        data-shopify-item-product-id="{{ item.product_id }}"
++                        data-shopify-item-variant-id="{{ item.variant_id }}"
++                        data-shopify-item-token-address="{{ tokenAddress }}"
++                        data-shopify-item-token-id="{{ tokenId }}"
++                        >
++                      </div>
++                    {%- endif -%}
+                     </p>
+                   </div>
+                 </div>
+@@ -176,10 +221,16 @@
+                   <label for="updates_{{ item.key }}" class="cart__qty-label" aria-label="{{ 'cart.label.quantity' | t }}" data-quantity-label-mobile>
+                     {{ 'cart.label.qty' | t }}
+                   </label>
++                  {%- if isTokenGated != true -%}
+                   <input id="updates_{{ item.key }}" class="cart__qty-input" type="number"
+                     value="{{ item.quantity }}" min="0" pattern="[0-9]*"
+                     data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-mobile data-role="product-quantity-mobile">
+-                </div>
++                  {%- else -%}
++                  <input id="updates_{{ item.key }}" class="cart__qty-input" disabled type="number"
++                    value="{{ item.quantity }}" min="0" pattern="[0-9]*"
++                    data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-mobile data-role="product-quantity-mobile">
++                  {%- endif -%}
++                  </div>
+                 <div class="cart__qty-error-message-wrapper cart__qty-error-message-wrapper--mobile hide" role="alert" data-cart-quantity-error-message-wrapper>
+                   <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                   {% include 'icon-error' %}
+@@ -189,9 +240,15 @@
+               <td class="cart__quantity-td text-right small--hide">
+                 <div class="cart__qty">
+                   <label for="updates_large_{{ item.key }}" class="cart__qty-label" data-quantity-label-desktop>{{ 'cart.label.quantity' | t }}</label>
++                  {%- if isTokenGated != true -%}
+                   <input id="updates_large_{{ item.key }}" class="cart__qty-input" type="number"
+                     name="updates[]" value="{{ item.quantity }}" min="0" pattern="[0-9]*"
+                     data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-desktop data-role="product-quantity-desktop">
++                  {%- else -%}
++                  <input id="updates_large_{{ item.key }}" class="cart__qty-input" disabled type="number"
++                    name="updates[]" value="{{ item.quantity }}" min="0" pattern="[0-9]*"
++                    data-quantity-input data-quantity-item="{{ forloop.index }}" data-quantity-input-desktop data-role="product-quantity-desktop">
++                  {%- endif -%}
+                 </div>
+                 <div class="cart__qty-error-message-wrapper cart__qty-error-message-wrapper--desktop hide" role="alert" data-cart-quantity-error-message-wrapper>
+                   <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+@@ -274,6 +331,7 @@
+               {%- endif -%}
+             {%- endcapture -%}
+             <div class="cart__shipping rte">{{ taxes_shipping_checkout }}</div>
++            {%- if hasTokenGatedItem != true -%}
+             <div class="cart__buttons-container">
+               <div class="cart__submit-controls">
+                 {%- unless section.settings.cart_ajax_enable -%}
+@@ -296,6 +354,11 @@
+                 <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+               {%- endif -%}
+             </div>
++            {%- else -%}
++            <div class="cart__buttons-container">
++              {%- render 'manifold-checkout-widget', settings: block.settings -%}
++            </div>
++            {%- endif %}
+           </div>
+         </div>
+       </div>
+diff -ru debut_original/sections/header.liquid merch_bridge/sections/header.liquid
+--- debut_original/sections/header.liquid	2022-11-04 16:00:08.000000000 -0700
++++ merch_bridge/sections/header.liquid	2022-11-04 19:06:58.000000000 -0700
+@@ -16,7 +16,7 @@
+ 
+ {% include 'search-drawer' %}
+ 
+-<div data-section-id="{{ section.id }}" data-section-type="header-section" data-header-section>
++<div id="{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="header-section" data-header-section>
+   {% if section.settings.message %}
+     {% if section.settings.home_page_only == false or request.page_type == 'index' %}
+       <style>
+diff -ru debut_original/sections/product-template.liquid merch_bridge/sections/product-template.liquid
+--- debut_original/sections/product-template.liquid	2022-11-04 16:00:08.000000000 -0700
++++ merch_bridge/sections/product-template.liquid	2022-11-04 19:06:58.000000000 -0700
+@@ -193,7 +193,7 @@
+ 
+             {% if section.settings.show_quantity_selector %}
+               <div class="product-form__controls-group">
+-                <div class="product-form__item">
++                <div class="quantity">
+                   <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                   <input type="number" id="Quantity-{{ section.id }}"
+                     name="quantity" value="1" min="1" pattern="[0-9]*"
+@@ -209,7 +209,7 @@
+             >
+               <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+               {% include 'icon-error' %}
+-              <span class="product-form__error-message" data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
++            <span class="product-form__error-message" data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
+             </div>
+ 
+             <div class="product-form__controls-group product-form__controls-group--submit">
+@@ -217,26 +217,30 @@
+                 {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+                 {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}"
+               >
+-                <button type="submit" name="add"
+-                  {% unless current_variant.available %} aria-disabled="true"{% endunless %}
+-                  aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
+-                  class="btn product-form__cart-submit{% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}"
+-                  {% if settings.enable_ajax %}aria-haspopup="dialog"{% endif %}
+-                  data-add-to-cart>
+-                  <span data-add-to-cart-text>
+-                    {% unless current_variant.available %}
+-                      {{ 'products.product.sold_out' | t }}
+-                    {% else %}
+-                      {{ 'products.product.add_to_cart' | t }}
+-                    {% endunless %}
+-                  </span>
+-                  <span class="hide" data-loader>
+-                    {% include 'icon-spinner' %}
+-                  </span>
+-                </button>
+-                {% if section.settings.enable_payment_button %}
+-                  {{ form | payment_button }}
+-                {% endif %}
++                {%- if product.type != "Manifold" -%}
++                  <button type="submit" name="add"
++                    {% unless current_variant.available %} aria-disabled="true"{% endunless %}
++                    aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
++                    class="btn product-form__cart-submit{% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}"
++                    {% if settings.enable_ajax %}aria-haspopup="dialog"{% endif %}
++                    data-add-to-cart>
++                    <span data-add-to-cart-text>
++                      {% unless current_variant.available %}
++                        {{ 'products.product.sold_out' | t }}
++                      {% else %}
++                        {{ 'products.product.add_to_cart' | t }}
++                      {% endunless %}
++                    </span>
++                    <span class="hide" data-loader>
++                      {% include 'icon-spinner' %}
++                    </span>
++                  </button>
++                  {% if section.settings.enable_payment_button %}
++                    {{ form | payment_button }}
++                  {% endif %}
++                {%- else -%}
++                  {%- render 'manifold-campaign-widget', settings: section.settings -%}
++                {%- endif -%}
+               </div>
+             </div>
+           {% endform %}
+Only in merch_bridge/snippets: manifold-campaign-widget.liquid
+Only in merch_bridge/snippets: manifold-checkout-widget.liquid
