@@ -1,6 +1,12 @@
 # Merch Bridge enabled for the Shopify Dawn theme
 This is a modified version of the [Shopify Dawn](https://themes.shopify.com/themes/dawn/styles/default) theme which enables the Manifold Merch Bridge.
 
+### Product Page
+<img src="screenshots/product_page.png" width="800" />
+
+### Checkout Page
+<img src="screenshots/checkout_page.png" width="800" />
+
 ## Installation
 To use this theme, download merch_bridge.zip and follow these intructions.
 
