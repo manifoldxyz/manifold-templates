@@ -31,18 +31,18 @@ export default {
   },
   created: function() {
     window.addEventListener('m-authenticated', async (event) => {
-    // Get the data client instance
-    const client = event.detail.client;
+      // Get the data client instance
+      const client = event.detail.client;
 
-    // Get the NFTs owned by the currently connected wallet
-    // Data client API's can be found here: https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget/data-client-apis
-    this.nfts = (await client.getNFTsOfOwner());
-    this.authenticated = true;
-  })
-  window.addEventListener('m-unauthenticated', async () => {
-    this.nfts = [];
-    this.authenticated = false;
-  })
+      // Get the NFTs owned by the currently connected wallet
+      // Data client API's can be found here: https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget/data-client-apis
+      this.nfts = (await client.getNFTsOfOwner());
+      this.authenticated = true;
+    })
+    window.addEventListener('m-unauthenticated', async () => {
+      this.nfts = [];
+      this.authenticated = false;
+    })
   }
 }
 </script>
