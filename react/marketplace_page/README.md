@@ -10,7 +10,7 @@ This was created using the standard create-react-app script.
 Please make sure you set the REACT_APP_NETWORK and REACT_APP_MARKETPLACE_LISTING_ID in the .env or your own .env.local.
 
 ## How does it work?
-In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/marketplace-widgets) which will display a marketplace listing.
+In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) which will display a marketplace listing.
 
 ## Available Scripts
 
