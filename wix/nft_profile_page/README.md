@@ -1,0 +1,1 @@
+# Wix NFT Profile Page
