@@ -1,4 +1,5 @@
-# How to install connect-widget in Wix
+# How to create a marketplace page in Wix
+![screenshot](./images/screenshot.png)
 
 ## Prerequisites
 1. Create a Site on Wix. Then upgrade it to a paid plan & connect a domain.
