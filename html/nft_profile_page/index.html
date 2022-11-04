@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://connect.manifoldxyz.dev/latest/connect.umd.js"></script>
+    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/latest/connect.css">
+  </head>
+  <body>
+    <script>
+      window.addEventListener('m-authenticated', async (event) => {
+        // Get the data client instance
+        const client = event.detail.client;
+
+        // Get the NFTs owned by the currently connected wallet
+        const tokens = await client.getNFTsOfOwner();
+        const h2 = document.createElement("h2");
+        h2.innerHTML = "Your NFTs";
+        document.getElementById("nfts").appendChild(
+          document.createElement("h2")
+        )
+        // Create a div element for each token you own
+        for (let i = 0; i < tokens.length; i++) {
+          const img = document.createElement("img");
+          img.src = tokens[i].image;
+          img.height = 200;
+          img.width = 200;
+          document.getElementById("nfts").appendChild(img);
+        }
+      })
+      window.addEventListener('m-unauthenticated', async (event) => {
+        document.getElementById("nfts").innerHTML = "";
+      })
+    </script>
+    <div>
+      <div
+        data-widget="m-connect"
+        data-app-name="YOUR_APP_NAME"
+        data-client-id="YOUR_CLIENT_ID"
+        data-network="NETWORK"
+        style="margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: row; justify-content: center;"
+      >
+      <div id="nfts"></div>
+    </div>
+  </body>
+</html>

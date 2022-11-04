@@ -1,4 +1,4 @@
-# NFT Profile Page
+# Marketplace Listing Page
 
 <img src="screenshot.png" width="300" />
 

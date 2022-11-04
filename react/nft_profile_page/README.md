@@ -2,7 +2,7 @@
 
 <img src="screenshot.png" width="300" />
 
-This is a simple example of an NFT Collection Page. It contains a way for someone to connect their wallet and view their NFTs.
+This is a simple example of an NFT Profile Page. It contains a way for someone to connect their wallet and view their NFTs.
 
 This was created using the standard create-react-app script.
 
