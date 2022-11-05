@@ -5,13 +5,13 @@
         <el-col :span="6">{{ prop.name }}</el-col>
         <el-col :span="12">
           <el-input
-            v-if="prop.type === WidgetPropTypes.STRING"
+            v-if="prop.type === WidgetPropType.STRING"
             v-model="prop.value"
             class="w-50 m-2"
             :placeholder="prop.name"
           />
           <el-select
-            v-else-if="prop.type === WidgetPropTypes.ENUMERATION"
+            v-else-if="prop.type === WidgetPropType.ENUMERATION"
             v-model="prop.value"
             class="m-2"
             placeholder="None"
@@ -25,7 +25,7 @@
             />
           </el-select>
           <el-checkbox
-            v-else-if="prop.type === WidgetPropTypes.BOOLEAN"
+            v-else-if="prop.type === WidgetPropType.BOOLEAN"
             v-model="prop.value"
             size="large"
           />
@@ -41,19 +41,22 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { WidgetPropType, WidgetPropDefinition } from "./lib/WidgetProps";
 import _ from "lodash";
 
-enum WidgetPropTypes {
-  STRING = "string",
-  BOOLEAN = "boolean",
-  ENUMERATION = "enumeration",
+interface ConfiguratorData {
+  WidgetPropType: any;
+  widgetDiv: string;
+  widgetProps: { [key: string]: WidgetPropDefinition };
 }
 
 @Options({
   props: {},
   watch: {
     widgetProps: {
-      handler: _.debounce(function (newData) {
+      handler: _.debounce(function (newData: {
+        [key: string]: WidgetPropDefinition;
+      }) {
         // Clear current connect widget
         const element = document.getElementById("manifold-connect")!;
         // Clear ManifoldEthereumProvider network value directly otherwise it cannot be reinitialized
@@ -68,11 +71,11 @@ enum WidgetPropTypes {
         for (const propKey in newData) {
           const prop = newData[propKey];
           let value = prop.value;
-          if (prop.type === WidgetPropTypes.STRING) {
-            value = value.trim();
+          if (prop.type === WidgetPropType.STRING) {
+            value = value.toString().trim();
           }
           if (value !== prop.defaultValue) {
-            element.setAttribute(propKey, value);
+            element.setAttribute(propKey, value.toString());
           } else {
             element.removeAttribute(propKey);
           }
@@ -81,32 +84,33 @@ enum WidgetPropTypes {
           .replace(/id="[a-zA-Z0-9-]*" ?/, "")
           .replaceAll(/data-v-[a-z0-9]*="" ?/g, "");
         window.dispatchEvent(new Event("m-refresh-widgets"));
-      }, 500),
+      },
+      500),
       deep: true,
     },
   },
 })
 export default class ConnectConfigurator extends Vue {
-  data() {
+  data(): ConfiguratorData {
     return {
-      WidgetPropTypes,
+      WidgetPropType,
       widgetDiv: '<div data-widget="m-connect">',
       widgetProps: {
         "data-app-name": {
           name: "App Name",
-          type: WidgetPropTypes.STRING,
+          type: WidgetPropType.STRING,
           value: "",
           defaultValue: "",
         },
         "data-client-id": {
           name: "App Client Id",
-          type: WidgetPropTypes.STRING,
+          type: WidgetPropType.STRING,
           value: "",
           defaultValue: "",
         },
         "data-network": {
           name: "App Network",
-          type: WidgetPropTypes.ENUMERATION,
+          type: WidgetPropType.ENUMERATION,
           value: "",
           options: [
             {
@@ -130,37 +134,37 @@ export default class ConnectConfigurator extends Vue {
         },
         "data-fallback-provider": {
           name: "Fallback Provider",
-          type: WidgetPropTypes.STRING,
+          type: WidgetPropType.STRING,
           value: "",
           defaultValue: "",
         },
         "data-multi": {
           name: "Wallet Connect",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-delay-auth": {
           name: "Delay Authentication",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-show-chain": {
           name: "Show Chain",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-show-balance": {
           name: "Show Balance",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-grant-type": {
           name: "Grant Type",
-          type: WidgetPropTypes.ENUMERATION,
+          type: WidgetPropType.ENUMERATION,
           value: "",
           options: [
             {
@@ -176,25 +180,25 @@ export default class ConnectConfigurator extends Vue {
         },
         "data-avatar": {
           name: "Show Avatar",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-minimal": {
           name: "Minimal Widget",
-          type: WidgetPropTypes.BOOLEAN,
+          type: WidgetPropType.BOOLEAN,
           value: false,
           defaultValue: false,
         },
         "data-override-connect-text": {
           name: "Button Text",
-          type: WidgetPropTypes.STRING,
+          type: WidgetPropType.STRING,
           value: "",
           defaultValue: "",
         },
         "data-connect-wallet-image": {
           name: "Button Image",
-          type: WidgetPropTypes.STRING,
+          type: WidgetPropType.STRING,
           value: "",
           defaultValue: "",
         },
