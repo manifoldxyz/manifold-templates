@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-aside width="30%">
-      <div v-if="configuration.sharedProps" class="widget-configuration">
+      <div v-if="configuration?.sharedProps" class="widget-configuration">
         <h1>Shared Options</h1>
         <el-row v-for="(prop, key) in configuration.sharedProps" :key="key">
           <el-col :span="6">{{ prop.name }}</el-col>
@@ -36,7 +36,7 @@
       </div>
       <div
         class="widget-configuration"
-        v-for="(widget, widgetIndex) in configuration.widgets"
+        v-for="(widget, widgetIndex) in configuration?.widgets"
         :key="widgetIndex"
       >
         <h1>{{ widget.name }} Options</h1>
@@ -76,7 +76,7 @@
         <h2>Header</h2>
         <div class="div-code">
           <div
-            v-for="(widget, widgetIndex) in configuration.widgets"
+            v-for="(widget, widgetIndex) in configuration?.widgets"
             :key="widgetIndex"
           >
             {{`
@@ -84,7 +84,7 @@
             ` }}
           </div>
           <div
-            v-for="(widget, widgetIndex) in configuration.widgets"
+            v-for="(widget, widgetIndex) in configuration?.widgets"
             :key="widgetIndex"
           >
             {{`
@@ -95,7 +95,7 @@
         <h2>Body</h2>
         <div class="div-code">
           <div
-            v-for="(widget, widgetIndex) in configuration.widgets"
+            v-for="(widget, widgetIndex) in configuration?.widgets"
             :key="widgetIndex"
             :id="`div-output-${widgetIndex}`"
           ></div>
@@ -104,7 +104,7 @@
     </el-aside>
     <el-main>
       <div
-        v-for="(widget, widgetIndex) in configuration.widgets"
+        v-for="(widget, widgetIndex) in configuration?.widgets"
         :key="widgetIndex"
         :id="`widget-parent-${widgetIndex}`"
       >
@@ -219,38 +219,37 @@ export interface ConfiguratorDefinition {
       deep: true,
     },
   },
-  methods: {
-    updateDivOutput: function (): void {
-      for (
-        let index = 0;
-        index < (this as any).configuration.widgets.length;
-        index++
-      ) {
-        const parentElement = document.getElementById(
-          `widget-parent-${index}`
-        )!;
-        let element = parentElement.firstElementChild!;
-        // Set div output text
-        document.getElementById(`div-output-${index}`)!.innerText =
-          element.outerHTML
-            .replace(/id="[a-zA-Z0-9-]*" ?/, "")
-            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
-            .replace(" >", ">")
-            .replaceAll("  ", " ");
-      }
-    },
-  },
 })
 export default class Configurator extends Vue {
-  data(): ConfiguratorData {
-    return {
-      WidgetPropType,
-    };
-  }
+  configuration?: ConfiguratorDefinition;
+  WidgetPropType = WidgetPropType;
+
   mounted(): void {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // Add script an link
+    for (const widget of this.configuration!.widgets) {
+      const script = document.createElement("script");
+      script.setAttribute("src", widget.javascript);
+      document.head.appendChild(script);
+      const link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.setAttribute("href", widget.css);
+      document.head.append(link);
+    }
     this.updateDivOutput();
+  }
+
+  updateDivOutput(): void {
+    for (let index = 0; index < this.configuration!.widgets.length; index++) {
+      const parentElement = document.getElementById(`widget-parent-${index}`)!;
+      let element = parentElement.firstElementChild!;
+      // Set div output text
+      document.getElementById(`div-output-${index}`)!.innerText =
+        element.outerHTML
+          .replace(/id="[a-zA-Z0-9-]*" ?/, "")
+          .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
+          .replace(" >", ">")
+          .replaceAll("  ", " ");
+    }
   }
 }
 </script>

@@ -8,10 +8,10 @@ import Configurator, {
   ConfiguratorDefinition,
 } from "@/components/Configurator.vue";
 import { WidgetPropType } from "@/components/lib/WidgetProps";
-
-interface MarketplaceConfiguration {
-  configuration: ConfiguratorDefinition;
-}
+import {
+  ConnectWidgetLocation,
+  MarketplaceWidgetLocation,
+} from "@/config/widgetLocations";
 
 @Options({
   components: {
@@ -19,7 +19,9 @@ interface MarketplaceConfiguration {
   },
 })
 export default class MarketplaceView extends Vue {
-  data(): MarketplaceConfiguration {
+  configuration?: ConfiguratorDefinition;
+
+  data() {
     return {
       configuration: {
         sharedProps: {
@@ -52,10 +54,9 @@ export default class MarketplaceView extends Vue {
         },
         widgets: [
           {
+            ...ConnectWidgetLocation,
             name: "Connect Widget",
             dataWidget: "m-connect",
-            javascript: "https://connect.manifoldxyz.dev/latest/connect.umd.js",
-            css: "https://connect.manifoldxyz.dev/latest/connect.css",
             props: {
               "data-delay-auth": {
                 name: "Delay Authentication",
@@ -66,10 +67,8 @@ export default class MarketplaceView extends Vue {
             },
           },
           {
+            ...MarketplaceWidgetLocation,
             name: "Marketplace Widget",
-            javascript:
-              "https://marketplace.manifoldxyz.dev/latest/marketplace.umd.js",
-            css: "https://marketplace.manifoldxyz.dev/latest/marketplace.css",
             props: {
               "data-widget": {
                 name: "Widget Type",

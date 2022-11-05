@@ -8,10 +8,7 @@ import Configurator, {
   ConfiguratorDefinition,
 } from "@/components/Configurator.vue";
 import { WidgetPropType } from "@/components/lib/WidgetProps";
-
-interface ConnectConfiguration {
-  configuration: ConfiguratorDefinition;
-}
+import { ConnectWidgetLocation } from "@/config/widgetLocations";
 
 @Options({
   components: {
@@ -19,15 +16,16 @@ interface ConnectConfiguration {
   },
 })
 export default class ConnectView extends Vue {
-  data(): ConnectConfiguration {
+  configuration?: ConfiguratorDefinition;
+
+  data() {
     return {
       configuration: {
         widgets: [
           {
+            ...ConnectWidgetLocation,
             name: "Connect Widget",
             dataWidget: "m-connect",
-            javascript: "https://connect.manifoldxyz.dev/latest/connect.umd.js",
-            css: "https://connect.manifoldxyz.dev/latest/connect.css",
             props: {
               "data-app-name": {
                 name: "App Name",
