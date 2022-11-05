@@ -1,47 +1,119 @@
 <template>
   <el-container>
-    <el-aside width="20%">
-      <el-row v-for="(prop, key) in widgetProps" :key="key">
-        <el-col :span="6">{{ prop.name }}</el-col>
-        <el-col :span="12">
-          <el-input
-            v-if="prop.type === WidgetPropType.STRING"
-            v-model="prop.value"
-            class="w-50 m-2"
-            :placeholder="prop.name"
-          />
-          <el-select
-            v-else-if="prop.type === WidgetPropType.ENUMERATION"
-            v-model="prop.value"
-            class="m-2"
-            placeholder="None"
-            size="small"
-          >
-            <el-option
-              v-for="item in prop.options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+    <el-aside width="30%">
+      <div v-if="configuration.sharedProps" class="widget-configuration">
+        <h1>Shared Options</h1>
+        <el-row v-for="(prop, key) in configuration.sharedProps" :key="key">
+          <el-col :span="6">{{ prop.name }}</el-col>
+          <el-col :span="12">
+            <el-input
+              v-if="prop.type === WidgetPropType.STRING"
+              v-model="prop.value"
+              class="w-50 m-2"
+              :placeholder="prop.name"
             />
-          </el-select>
-          <el-checkbox
-            v-else-if="prop.type === WidgetPropType.BOOLEAN"
-            v-model="prop.value"
-            size="large"
-          />
-        </el-col>
-      </el-row>
-      <div id="div-output"></div>
+            <el-select
+              v-else-if="prop.type === WidgetPropType.ENUMERATION"
+              v-model="prop.value"
+              class="m-2"
+              placeholder="None"
+              size="small"
+            >
+              <el-option
+                v-for="item in prop.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+            <el-checkbox
+              v-else-if="prop.type === WidgetPropType.BOOLEAN"
+              v-model="prop.value"
+              size="large"
+            />
+          </el-col>
+        </el-row>
+      </div>
+      <div
+        class="widget-configuration"
+        v-for="(widget, widgetIndex) in configuration.widgets"
+        :key="widgetIndex"
+      >
+        <h1>{{ widget.name }} Options</h1>
+        <el-row v-for="(prop, key) in widget.props" :key="key">
+          <el-col :span="6">{{ prop.name }}</el-col>
+          <el-col :span="12">
+            <el-input
+              v-if="prop.type === WidgetPropType.STRING"
+              v-model="prop.value"
+              class="w-50 m-2"
+              :placeholder="prop.name"
+            />
+            <el-select
+              v-else-if="prop.type === WidgetPropType.ENUMERATION"
+              v-model="prop.value"
+              class="m-2"
+              placeholder="None"
+              size="small"
+            >
+              <el-option
+                v-for="item in prop.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+            <el-checkbox
+              v-else-if="prop.type === WidgetPropType.BOOLEAN"
+              v-model="prop.value"
+              size="large"
+            />
+          </el-col>
+        </el-row>
+      </div>
+      <div class="code-blocks">
+        <h1>Code</h1>
+        <h2>Header</h2>
+        <div class="div-code">
+          <div
+            v-for="(widget, widgetIndex) in configuration.widgets"
+            :key="widgetIndex"
+          >
+            {{`
+            <script src="${widget.javascript}"></script>
+            ` }}
+          </div>
+          <div
+            v-for="(widget, widgetIndex) in configuration.widgets"
+            :key="widgetIndex"
+          >
+            {{`
+            <link ref="stylesheet" href="${widget.css}" />
+            ` }}
+          </div>
+        </div>
+        <h2>Body</h2>
+        <div class="div-code">
+          <div
+            v-for="(widget, widgetIndex) in configuration.widgets"
+            :key="widgetIndex"
+            :id="`div-output-${widgetIndex}`"
+          ></div>
+        </div>
+      </div>
     </el-aside>
     <el-main>
       <div
-        v-if="addConnectWidget"
-        id="manifold-connect"
-        data-widget="m-connect"
-      ></div>
-      <div id="widget-parent">
-        <div v-if="dataWidget" id="widget" :data-widget="dataWidget"></div>
-        <div v-else id="widget"></div>
+        v-for="(widget, widgetIndex) in configuration.widgets"
+        :key="widgetIndex"
+        :id="`widget-parent-${widgetIndex}`"
+      >
+        <div
+          v-if="widget.dataWidget"
+          :id="`widget-${widgetIndex}`"
+          :data-widget="widget.dataWidget"
+        ></div>
+        <div v-else :id="`widget-${widgetIndex}`"></div>
       </div>
     </el-main>
   </el-container>
@@ -49,102 +121,121 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { WidgetPropType, WidgetPropDefinition } from "./lib/WidgetProps";
+import {
+  WidgetPropType,
+  WidgetDefinition,
+  WidgetPropDefinition,
+} from "./lib/WidgetProps";
 import _ from "lodash";
 
 interface ConfiguratorData {
   WidgetPropType: any;
 }
 
+export interface ConfiguratorDefinition {
+  widgets: WidgetDefinition[];
+  sharedProps?: { [key: string]: WidgetPropDefinition };
+}
+
 @Options({
   props: {
-    widgetProps: {
-      type: Object as () => { [key: string]: WidgetPropDefinition },
-      required: true,
-    },
-    dataWidget: String,
-    addConnectWidget: Boolean,
+    configuration: Object as () => ConfiguratorDefinition,
   },
   watch: {
-    widgetProps: {
-      handler: _.debounce(function (newData: {
-        [key: string]: WidgetPropDefinition;
-      }) {
+    configuration: {
+      handler: _.debounce(function (newData: ConfiguratorDefinition) {
+        let networkProp;
+        for (let index = 0; index < newData.widgets.length; index++) {
+          const widget = newData.widgets[index];
+          // Clear current widget
+          const parentElement = document.getElementById(
+            `widget-parent-${index}`
+          )!;
+          let element = parentElement.firstElementChild!;
+          if (element.id !== `widget-${index}`) {
+            // Widget element was fully replaced, so clear out the replacement divs and recreate the original
+            parentElement.innerHTML = "";
+            element = document.createElement("div");
+            element.setAttribute("id", `widget-${index}`);
+            if (widget.dataWidget) {
+              element.setAttribute("data-widget", widget.dataWidget);
+            }
+            parentElement.appendChild(element);
+          } else {
+            // Widget element still exists, reset it
+            element.innerHTML = "";
+            // Set v-node to undefined so it reloads
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            element._vnode = undefined;
+          }
+
+          // Update props
+          for (const propKey in widget.props) {
+            const prop = widget.props[propKey];
+            if (propKey === "data-network") networkProp = prop;
+            let value = prop.value;
+            if (prop.type === WidgetPropType.STRING) {
+              value = value.toString().trim();
+            }
+            if (value !== prop.defaultValue) {
+              element.setAttribute(propKey, value.toString());
+            } else {
+              element.removeAttribute(propKey);
+            }
+          }
+
+          // Update shared props
+          for (const propKey in newData.sharedProps) {
+            const prop = newData.sharedProps[propKey];
+            if (propKey === "data-network") networkProp = prop;
+            let value = prop.value;
+            if (prop.type === WidgetPropType.STRING) {
+              value = value.toString().trim();
+            }
+            if (value !== prop.defaultValue) {
+              element.setAttribute(propKey, value.toString());
+            } else {
+              element.removeAttribute(propKey);
+            }
+          }
+
+          // Set div output text
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          this.updateDivOutput();
+        }
+
         // Clear ManifoldEthereumProvider network value directly otherwise it cannot be reinitialized
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        window.ManifoldEthereumProvider._network = newData["data-network"]
-          ?.value
-          ? parseInt(newData["data-network"].value.toString())
+        window.ManifoldEthereumProvider._network = networkProp?.value
+          ? parseInt(networkProp.value.toString())
           : undefined;
-
-        // Clear current widget
-        const parentElement = document.getElementById("widget-parent")!;
-        let element = parentElement.firstElementChild!;
-
-        if (element.id !== "widget") {
-          // Widget element was fully replaced, so clear out the replacement divs and recreate the original
-          parentElement.innerHTML = "";
-          element = document.createElement("div");
-          element.setAttribute("id", "widget");
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          const dataWidget = this.dataWidget;
-          if (dataWidget) element.setAttribute("data-widget", dataWidget);
-          parentElement.appendChild(element);
-        } else {
-          // Widget element still exists, reset it
-          element.innerHTML = "";
-          // Set v-node to undefined so it reloads
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          element._vnode = undefined;
-        }
-        // Update props
-        for (const propKey in newData) {
-          const prop = newData[propKey];
-          let value = prop.value;
-          if (prop.type === WidgetPropType.STRING) {
-            value = value.toString().trim();
-          }
-          if (value !== prop.defaultValue) {
-            element.setAttribute(propKey, value.toString());
-          } else {
-            element.removeAttribute(propKey);
-          }
-        }
-        document.getElementById("div-output")!.innerText = element.outerHTML
-          .replace(/id="[a-zA-Z0-9-]*" ?/, "")
-          .replaceAll(/data-v-[a-z0-9]*="" ?/g, "");
-
-        // Clear connect widget if necessary
-        const connectElement = document.getElementById("manifold-connect");
-        if (connectElement) {
-          // Set v-node to undefined so it reloads
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          connectElement._vnode = undefined;
-          for (const propKey in newData) {
-            const prop = newData[propKey];
-            if (prop.shared) {
-              let value = prop.value;
-              if (prop.type === WidgetPropType.STRING) {
-                value = value.toString().trim();
-              }
-              if (value !== prop.defaultValue) {
-                element.setAttribute(propKey, value.toString());
-              } else {
-                element.removeAttribute(propKey);
-              }
-            }
-          }
-        }
 
         // Trigger widget refresh
         window.dispatchEvent(new Event("m-refresh-widgets"));
-      },
-      500),
+      }, 500),
       deep: true,
+    },
+  },
+  methods: {
+    updateDivOutput: function (): void {
+      for (
+        let index = 0;
+        index < (this as any).configuration.widgets.length;
+        index++
+      ) {
+        const parentElement = document.getElementById(
+          `widget-parent-${index}`
+        )!;
+        let element = parentElement.firstElementChild!;
+        // Set div output text
+        document.getElementById(`div-output-${index}`)!.innerText =
+          element.outerHTML
+            .replace(/id="[a-zA-Z0-9-]*" ?/, "")
+            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "");
+      }
     },
   },
 })
@@ -154,12 +245,40 @@ export default class Configurator extends Vue {
       WidgetPropType,
     };
   }
+  mounted(): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.updateDivOutput();
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.el-row {
-  margin-right: 100px;
+.el-container h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.code-blocks {
+  text-align: left;
+}
+.code-blocks h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.code-blocks h2 {
+  margin-top: 5px;
+}
+
+.widget-configuration {
+  text-align: left;
+}
+.div-code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 10px;
+  text-align: left;
 }
 </style>

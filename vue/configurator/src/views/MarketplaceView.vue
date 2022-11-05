@@ -1,17 +1,16 @@
 <template>
-  <Configurator :widgetProps="widgetProps" :addConnectWidget="true" />
+  <Configurator :configuration="configuration" />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Configurator from "@/components/Configurator.vue"; // @ is an alias to /src
-import {
-  WidgetPropType,
-  WidgetPropDefinition,
-} from "@/components/lib/WidgetProps";
+import Configurator, {
+  ConfiguratorDefinition,
+} from "@/components/Configurator.vue";
+import { WidgetPropType } from "@/components/lib/WidgetProps";
 
-interface ConfiguratorData {
-  widgetProps: { [key: string]: WidgetPropDefinition };
+interface MarketplaceConfiguration {
+  configuration: ConfiguratorDefinition;
 }
 
 @Options({
@@ -20,55 +19,79 @@ interface ConfiguratorData {
   },
 })
 export default class MarketplaceView extends Vue {
-  data(): ConfiguratorData {
+  data(): MarketplaceConfiguration {
     return {
-      widgetProps: {
-        "data-widget": {
-          name: "Widget Type",
-          type: WidgetPropType.ENUMERATION,
-          value: "",
-          options: [
-            {
-              value: "m-layout-complete-listing",
-              label: "Full Listing",
-            },
-          ],
-          defaultValue: "",
+      configuration: {
+        sharedProps: {
+          "data-network": {
+            name: "Network",
+            type: WidgetPropType.ENUMERATION,
+            value: "1",
+            options: [
+              {
+                value: "1",
+                label: "Ethereum Mainnet",
+              },
+              {
+                value: "5",
+                label: "Goerli",
+              },
+              {
+                value: "137",
+                label: "Matic",
+              },
+            ],
+            defaultValue: "",
+          },
+          "data-fallback-provider": {
+            name: "Fallback Provider",
+            type: WidgetPropType.STRING,
+            value: "",
+            defaultValue: "",
+          },
         },
-        "data-id": {
-          name: "Listing Id",
-          type: WidgetPropType.STRING,
-          value: "",
-          defaultValue: "",
-        },
-        "data-network": {
-          name: "Network",
-          type: WidgetPropType.ENUMERATION,
-          value: "1",
-          options: [
-            {
-              value: "1",
-              label: "Ethereum Mainnet",
+        widgets: [
+          {
+            name: "Connect Widget",
+            dataWidget: "m-connect",
+            javascript: "https://connect.manifoldxyz.dev/latest/connect.umd.js",
+            css: "https://connect.manifoldxyz.dev/latest/connect.css",
+            props: {
+              "data-delay-auth": {
+                name: "Delay Authentication",
+                type: WidgetPropType.BOOLEAN,
+                value: true,
+                defaultValue: false,
+              },
             },
-            {
-              value: "5",
-              label: "Goerli",
+          },
+          {
+            name: "Marketplace Widget",
+            javascript:
+              "https://marketplace.manifoldxyz.dev/latest/marketplace.umd.js",
+            css: "https://marketplace.manifoldxyz.dev/latest/marketplace.css",
+            props: {
+              "data-widget": {
+                name: "Widget Type",
+                type: WidgetPropType.ENUMERATION,
+                value: "",
+                options: [
+                  {
+                    value: "m-layout-complete-listing",
+                    label: "Full Listing",
+                  },
+                ],
+                defaultValue: "",
+              },
+              "data-id": {
+                name: "Listing Id",
+                type: WidgetPropType.STRING,
+                value: "",
+                defaultValue: "",
+              },
             },
-            {
-              value: "137",
-              label: "Matic",
-            },
-          ],
-          defaultValue: "",
-          shared: true,
-        },
-        "data-fallback-provider": {
-          name: "Fallback Provider",
-          type: WidgetPropType.STRING,
-          value: "",
-          defaultValue: "",
-          shared: true,
-        },
+          },
+        ],
       },
     };
   }
