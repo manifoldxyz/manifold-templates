@@ -70,17 +70,6 @@ interface ConfiguratorData {
       handler: _.debounce(function (newData: {
         [key: string]: WidgetPropDefinition;
       }) {
-        // Clear current widget
-        const parentElement = document.getElementById("widget-parent")!;
-        let element = parentElement.firstElementChild!;
-        if (element.id !== "widget") {
-          // Widget was replaced, so clear innerHTML of parent and create new element
-          parentElement.innerHTML = "";
-          element = document.createElement("div");
-          element.id = "widget";
-          parentElement.appendChild(element);
-        }
-
         // Clear ManifoldEthereumProvider network value directly otherwise it cannot be reinitialized
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -88,21 +77,39 @@ interface ConfiguratorData {
           ?.value
           ? parseInt(newData["data-network"].value.toString())
           : undefined;
-        element.innerHTML = "";
-        // Set v-node to undefined so it reloads
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        element._vnode = undefined;
-        for (const propKey in newData) {
-          const prop = newData[propKey];
-          let value = prop.value;
-          if (prop.type === WidgetPropType.STRING) {
-            value = value.toString().trim();
-          }
-          if (value !== prop.defaultValue) {
-            element.setAttribute(propKey, value.toString());
-          } else {
-            element.removeAttribute(propKey);
+
+        // Clear current widget
+        const parentElement = document.getElementById("widget-parent")!;
+        let element = parentElement.firstElementChild!;
+
+        if (element.id !== "widget") {
+          // Widget element was fully replaced, so clear out the replacement divs and recreate the original
+          parentElement.innerHTML = "";
+          element = document.createElement("div");
+          element.id = "widget";
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const dataWidget = this.dataWidget;
+          if (dataWidget) element.setAttribute("data-widget", dataWidget);
+          parentElement.appendChild(element);
+        } else {
+          // Widget element still exists, reset it
+          element.innerHTML = "";
+          // Set v-node to undefined so it reloads
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          element._vnode = undefined;
+          for (const propKey in newData) {
+            const prop = newData[propKey];
+            let value = prop.value;
+            if (prop.type === WidgetPropType.STRING) {
+              value = value.toString().trim();
+            }
+            if (value !== prop.defaultValue) {
+              element.setAttribute(propKey, value.toString());
+            } else {
+              element.removeAttribute(propKey);
+            }
           }
         }
         document.getElementById("div-output")!.innerText = element.outerHTML
@@ -131,6 +138,8 @@ interface ConfiguratorData {
             }
           }
         }
+
+        // Trigger widget refresh
         window.dispatchEvent(new Event("m-refresh-widgets"));
       },
       500),
