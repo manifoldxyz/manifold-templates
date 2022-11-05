@@ -234,7 +234,9 @@ export interface ConfiguratorDefinition {
         document.getElementById(`div-output-${index}`)!.innerText =
           element.outerHTML
             .replace(/id="[a-zA-Z0-9-]*" ?/, "")
-            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "");
+            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
+            .replace(" >", ">")
+            .replaceAll("  ", " ");
       }
     },
   },
