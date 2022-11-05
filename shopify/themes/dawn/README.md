@@ -10,8 +10,8 @@ This is a modified version of the [Shopify Dawn](https://themes.shopify.com/them
 ## Installation
 To use this theme, download merch_bridge.zip and follow these intructions.
 
-1. From your Shopify admin, go to Online Store > Themes.
-2. In the Theme Library section, click Add Theme > Upload Zip File
+1. From your Shopify admin, go to **Online Store > Themes**.
+2. In the Theme Library section, click **Add Theme > Upload Zip File**.
 3. Select the downloaded merch_bridge.zip and upload it
 
 <img src="screenshots/instructions.png" width="800" />
