@@ -1,15 +1,136 @@
 <template>
-  <ConnectConfigurator />
+  <Configurator dataWidget="m-connect" :widgetProps="widgetProps" />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import ConnectConfigurator from "@/components/ConnectConfigurator.vue"; // @ is an alias to /src
+import Configurator from "@/components/Configurator.vue"; // @ is an alias to /src
+import {
+  WidgetPropType,
+  WidgetPropDefinition,
+} from "@/components/lib/WidgetProps";
+
+interface ConfiguratorData {
+  widgetProps: { [key: string]: WidgetPropDefinition };
+}
 
 @Options({
   components: {
-    ConnectConfigurator,
+    Configurator,
   },
 })
-export default class ConnectView extends Vue {}
+export default class ConnectView extends Vue {
+  data(): ConfiguratorData {
+    return {
+      widgetProps: {
+        "data-app-name": {
+          name: "App Name",
+          type: WidgetPropType.STRING,
+          value: "",
+          defaultValue: "",
+        },
+        "data-client-id": {
+          name: "App Client Id",
+          type: WidgetPropType.STRING,
+          value: "",
+          defaultValue: "",
+        },
+        "data-network": {
+          name: "App Network",
+          type: WidgetPropType.ENUMERATION,
+          value: "",
+          options: [
+            {
+              value: "",
+              label: "None",
+            },
+            {
+              value: "1",
+              label: "Ethereum Mainnet",
+            },
+            {
+              value: "5",
+              label: "Goerli",
+            },
+            {
+              value: "137",
+              label: "Matic",
+            },
+          ],
+          defaultValue: "",
+        },
+        "data-fallback-provider": {
+          name: "Fallback Provider",
+          type: WidgetPropType.STRING,
+          value: "",
+          defaultValue: "",
+        },
+        "data-multi": {
+          name: "Wallet Connect",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-delay-auth": {
+          name: "Delay Authentication",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-show-chain": {
+          name: "Show Chain",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-show-balance": {
+          name: "Show Balance",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-grant-type": {
+          name: "Grant Type",
+          type: WidgetPropType.ENUMERATION,
+          value: "",
+          options: [
+            {
+              value: "",
+              label: "Signature",
+            },
+            {
+              value: "token",
+              label: "Token",
+            },
+          ],
+          defaultValue: "",
+        },
+        "data-avatar": {
+          name: "Show Avatar",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-minimal": {
+          name: "Minimal Widget",
+          type: WidgetPropType.BOOLEAN,
+          value: false,
+          defaultValue: false,
+        },
+        "data-override-connect-text": {
+          name: "Button Text",
+          type: WidgetPropType.STRING,
+          value: "",
+          defaultValue: "",
+        },
+        "data-connect-wallet-image": {
+          name: "Button Image",
+          type: WidgetPropType.STRING,
+          value: "",
+          defaultValue: "",
+        },
+      },
+    };
+  }
+}
 </script>
