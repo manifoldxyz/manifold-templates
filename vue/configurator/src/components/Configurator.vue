@@ -86,7 +86,7 @@ interface ConfiguratorData {
           // Widget element was fully replaced, so clear out the replacement divs and recreate the original
           parentElement.innerHTML = "";
           element = document.createElement("div");
-          element.id = "widget";
+          element.setAttribute("id", "widget");
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const dataWidget = this.dataWidget;
@@ -99,17 +99,18 @@ interface ConfiguratorData {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           element._vnode = undefined;
-          for (const propKey in newData) {
-            const prop = newData[propKey];
-            let value = prop.value;
-            if (prop.type === WidgetPropType.STRING) {
-              value = value.toString().trim();
-            }
-            if (value !== prop.defaultValue) {
-              element.setAttribute(propKey, value.toString());
-            } else {
-              element.removeAttribute(propKey);
-            }
+        }
+        // Update props
+        for (const propKey in newData) {
+          const prop = newData[propKey];
+          let value = prop.value;
+          if (prop.type === WidgetPropType.STRING) {
+            value = value.toString().trim();
+          }
+          if (value !== prop.defaultValue) {
+            element.setAttribute(propKey, value.toString());
+          } else {
+            element.removeAttribute(propKey);
           }
         }
         document.getElementById("div-output")!.innerText = element.outerHTML
