@@ -103,48 +103,16 @@ export default class MarketplaceView extends Vue {
 }
 </script>
 <style>
+:root() {
+  --base-font: "Raleway", sans-serif;
+}
 :where(.manifold) {
-  font-family: "Raleway", sans-serif;
+  font-family: var(--base-font);
+  background-color: var(--manifold-color-page--background);
+  --manifold-color-page--background: #121212;
   --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
   --manifold-color-connect--text: #fff;
   --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8);
-}
-:where(.manifold.m-layout-listing) {
-  --manifold-color-cta-background--base: #fff;
-  --manifold-color-cta-background--disabled: hsla(0, 0%, 100%, 0.0666666667);
-  --manifold-color-cta-background--hover: hsla(0, 0%, 100%, 0.6);
-  --manifold-color-cta-text--base: #000;
-  --manifold-color-cta-text--disabled: #8a8a8a;
-  --manifold-color-theme--secondary: #1a1a1a;
-  --manifold-color-link-background--hover: hsla(0, 0%, 100%, 0.3);
-  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05);
-  --manifold-color-theme--primary: #2b2baa;
-  --manifold-color-text: hsla(0, 0%, 100%, 0.87);
-  --manifold-color-text--primary: hsla(0, 0%, 92.2%, 0.87);
-  --manifold-color-text--secondary: #c9c9c9;
-  --manifold-color-text--disabled: hsla(0, 0%, 100%, 0.5);
-  --manifold-color-text--muted: hsla(0, 0%, 100%, 0.6);
-  --manifold-color-page--background: #121212;
-  --manifold-color-card--background: #333;
-  --manifold-color-layout--border: #6a6a6a !important;
-  --manifold-color-listing-layout--button: #212121 !important;
-  --manifold-color-listing-layout--button-rgb: 33, 33, 33 !important;
-  --manifold-color-listing-layout--button-r: 33 !important;
-  --manifold-color-listing-layout--button-g: 33 !important;
-  --manifold-color-listing-layout--button-b: 33 !important;
-  --manifold-color-listing-layout--button-hsl: 0deg, 0%, 13% !important;
-  --manifold-color-listing-layout--button-h: 0deg !important;
-  --manifold-color-listing-layout--button-s: 0% !important;
-  --manifold-color-listing-layout--button-l: 13% !important;
-}
-:where(.manifold.m-rich-form) {
-  --manifold-color-bid-form-rich--background-input: hsla(0, 0%, 100%, 0.05);
-  --manifold-color-bid-form-rich--background-balance: rbga(0, 0, 0, 0.25);
-}
-
-:where(.manifold.m-expandable-image-expanded, .manifold.m-expandable-image) {
-  --manifold-color-expandable-image-button: hsla(0, 0%, 100%, 0.25);
-  --manifold-color-expandable-image-button--hover: hsla(0, 0%, 100%, 0.5);
 }
 
 #m-connection-wizard-container {
@@ -153,7 +121,6 @@ export default class MarketplaceView extends Vue {
 #m-connection-wizard.h1 {
   color: black;
 }
-
 #m-connection {
   pointer-events: auto;
   position: absolute;
@@ -171,11 +138,9 @@ export default class MarketplaceView extends Vue {
     width: 130px;
   }
 }
-
 #m-connection .m-connection-wallet span {
   color: var(--manifold-color-connect--text) !important;
 }
-
 #m-connection button {
   display: block !important;
   width: 100% !important;
@@ -188,18 +153,15 @@ export default class MarketplaceView extends Vue {
   background: var(--manifold-color-connect--background) !important;
   transition: color 0.3s ease, border 0.3s ease, background 0.3s ease !important;
 }
-
 #m-connection button:hover {
   background: var(--manifold-color-connect--hover) !important;
   color: black !important;
 }
-
 #m-connection div {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-
 div[data-widget="m-connect"] {
   width: 100%;
   height: 270px;
@@ -211,12 +173,56 @@ div[data-widget="m-connect"] {
   pointer-events: none;
 }
 
-.m-expandable-image-expanded .show {
-  z-index: 101;
+:where(.manifold.m-layout-listing) {
+  font-family: var(--base-font);
+  --manifold-color-cta-background--base: #fff;
+  --manifold-color-cta-background--disabled: hsla(0, 0%, 100%, 0.0666666667);
+  --manifold-color-cta-background--hover: hsla(0, 0%, 100%, 0.6);
+  --manifold-color-cta-text--base: #000;
+  --manifold-color-cta-text--disabled: #8a8a8a;
+  --manifold-color-theme--secondary: #1a1a1a;
+  --manifold-color-link-background--hover: hsla(0, 0%, 100%, 0.3);
+  --manifold-color-theme--primary: #2b2baa;
+  --manifold-color-text: hsla(0, 0%, 100%, 0.87);
+  --manifold-color-text--primary: hsla(0, 0%, 92.2%, 0.87);
+  --manifold-color-text--secondary: #c9c9c9;
+  --manifold-color-text--disabled: hsla(0, 0%, 100%, 0.5);
+  --manifold-color-text--muted: hsla(0, 0%, 100%, 0.6);
+  --manifold-color-page--background: #121212;
+  --manifold-color-card--background: #333;
 }
-
-.m-complete-view,
-.m-description-view,
+:where(.manifold.m-layout-listing .m-listing-info) {
+  --manifold-color-layout--border: #6a6a6a;
+  --manifold-color-listing-layout--button: #212121;
+  --manifold-color-listing-layout--button-rgb: 33, 33, 33;
+  --manifold-color-listing-layout--button-r: 33;
+  --manifold-color-listing-layout--button-g: 33;
+  --manifold-color-listing-layout--button-b: 33;
+  --manifold-color-listing-layout--button-hsl: 0deg, 0%, 13%;
+  --manifold-color-listing-layout--button-h: 0deg;
+  --manifold-color-listing-layout--button-s: 0%;
+  --manifold-color-listing-layout--button-l: 13%;
+}
+:where(.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-bids) {
+  --manifold-color-bids--bidder: #333 !important;
+  --manifold-color-bids--background: hsla(0, 0%, 80%, 0.35) !important;
+  --manifold-color-bids--border: #6a6a6a !important;
+  --manifold-color-bids--expand-button: #9f9f9f !important;
+  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05) !important;
+}
+:where(.manifold.m-layout-listing
+    .manifold.m-expandable-image-expanded
+    button, .manifold.m-expandable-image button) {
+  --manifold-color-expandable-image-button: hsla(0, 0%, 100%, 0.25);
+  --manifold-color-expandable-image-button--hover: hsla(0, 0%, 100%, 0.5);
+}
+:where(.manifold.m-confirm
+    .m-confirm-inner
+    .m-confirm-info
+    .manifold.m-rich-form) {
+  --manifold-color-bid-form-rich--background-input: hsla(0, 0%, 100%, 0.05);
+  --manifold-color-bid-form-rich--background-balance: rbga(0, 0, 0, 0.25);
+}
 .m-layout-listing {
   background: black;
   color: white;
@@ -233,61 +239,39 @@ div[data-widget="m-connect"] {
     }
   }
 }
-
-.m-complete-view .m-expandable-image,
-.m-description-view .m-expandable-image,
-.m-layout-listing .m-expandable-image {
+.manifold.m-layout-listing .m-expandable-image {
   overflow: visible;
 }
-
-.m-complete-view .manifold.m-expandable-image > button,
-.m-description-view .manifold.m-expandable-image > button,
-.m-layout-listing .manifold.m-expandable-image > button {
+.manifold.m-layout-listing .manifold.m-expandable-image > button {
   right: 55px;
   bottom: -25px;
 }
-
-.m-complete-view .manifold.m-expandable-image .m-token-media > button,
-.m-description-view .manifold.m-expandable-image .m-token-media > button,
-.m-layout-listing .manifold.m-expandable-image .m-token-media > button {
+.manifold.m-layout-listing .m-expandable-image-expanded.show {
   z-index: 101;
 }
-
-.m-complete-view .m-listing-info .m-main .m-name,
-.m-description-view .m-listing-info .m-main .m-name,
+.manifold.m-layout-listing
+  .manifold.m-expandable-image
+  .m-token-media
+  > button {
+  z-index: 101;
+}
 .manifold.m-layout-listing .m-listing-info .m-main .manifold.m-name {
   font-weight: 100;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-attributes,
-.m-description-view .m-listing-info .m-main .manifold.m-attributes,
-.m-layout-listing .m-listing-info.m-main .manifold.m-attributes {
+.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-attributes {
   max-width: 100%;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-attributes .m-attribute,
-.m-description-view .m-listing-info .m-main .manifold.m-attributes .m-attribute,
-.m-layout-listing .m-listing-info.m-main .manifold.m-attributes .m-attribute {
+.manifold.m-layout-listing
+  .m-listing-info.m-main
+  .manifold.m-attributes
+  .m-attribute {
   border-bottom-color: var(--manifold-color-layout--border);
   grid-template-columns: 140px minmax(0, 1fr);
   grid-gap: 10px;
 }
-
-.m-complete-view
-  .m-listing-info
-  .m-main
-  .manifold.m-attributes
-  .m-attribute
-  span,
-.m-description-view
-  .m-listing-info
-  .m-main
-  .manifold.m-attributes
-  .m-attribute
-  span,
-.m-layout-listing
+.manifold.m-layout-listing
   .m-listing-info.m-main
   .manifold.m-attributes
   .m-attribute
@@ -295,118 +279,90 @@ div[data-widget="m-connect"] {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-description::before,
-.m-description-view .m-listing-info .m-main .manifold.m-description::before,
-.m-layout-listing .m-listing-info.m-main .manifold.m-description::before {
+.manifold.m-layout-listing
+  .m-listing-info
+  .m-main
+  .manifold.m-description::before {
   display: none;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-description p,
-.m-description-view .m-listing-info .m-main .manifold.m-description p,
-.m-layout-listing .m-listing-info.m-main .manifold.m-description p {
+.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-description p {
   font-size: 18px;
   line-height: 1.5;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-links a,
-.m-description-view .m-listing-info .m-main .manifold.m-links a,
-.m-layout-listing .m-listing-info.m-main .manifold.m-links a {
+.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-links a {
   border: 1px solid var(--manifold-color-theme--secondary);
   background: none;
   text-transform: uppercase;
   font-size: 11px;
   margin-left: 0;
 }
-
-.m-complete-view .m-listing-info .m-main .manifold.m-links a:hover,
-.m-description-view .m-listing-info .m-main .manifold.m-links a:hover,
-.m-layout-listing .m-listing-info.m-main .manifold.m-links a:hover {
+.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-links a:hover {
   background: var(--manifold-color-link-background--hover);
 }
-
-.m-complete-view .m-listing-info .m-aside > button {
+.manifold.m-layout-listing .m-listing-info .m-aside > button {
   height: 60px;
   margin-top: 17px;
   background: var(--manifold-color-cta-background--base);
   color: var(--manifold-color-cta-text--base);
 }
-
-.m-complete-view .m-listing-info .m-aside > button span,
-.m-description-view .m-listing-info .m-aside > button span,
-.m-layout-listing .m-listing-info .m-aside > button span {
+.manifold.m-layout-listing .m-listing-info .m-aside > button span {
   color: var(--manifold-color-cta-text--base);
 }
-
-.m-complete-view .m-listing-info .m-aside > button:disabled,
-.m-description-view .m-listing-info .m-aside > button:disabled,
-.m-layout-listing .m-listing-info .m-aside > button:disabled {
+.manifold.m-layout-listing .m-listing-info .m-aside > button:disabled {
   background: var(--manifold-color-cta-background--disabled);
   color: var(--manifold-color-cta-text--disabled);
 }
-
-.m-complete-view .m-listing-info .m-aside > button:disabled span,
-.m-description-view .m-listing-info .m-aside > button:disabled span,
-.m-layout-listing .m-listing-info .m-aside > button:disabled span {
+.manifold.m-layout-listing .m-listing-info .m-aside > button:disabled span {
   color: var(--manifold-color-cta-text--disabled);
 }
-
-.m-complete-view .m-listing-info .m-aside > button:hover,
-.m-description-view .m-listing-info .m-aside > button:hover,
-.m-layout-listing .m-listing-info .m-aside > button:hover {
+.manifold.m-layout-listing .m-listing-info .m-aside > button:hover {
   background: var(--manifold-color-cta-background--hover);
 }
-
-.m-complete-view.m-listing-info,
-.m-description-view.m-listing-info,
-.m-layout-listing .m-listing-info {
+.manifold.m-layout-listing .m-listing-info {
   padding: 55px;
 }
-
-.m-expandable-image-expanded .show {
-  z-index: 101;
-}
-
-.m-complete-view .m-listing-info .m-description p {
-  font-size: 14px;
-}
-.m-complete-view .m-listing-info .m-countdown {
+.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-countdown {
   border: 1px solid var(--manifold-color-layout--border);
   border-top: none;
   padding: 15px;
 }
-.m-complete-view .m-listing-info .m-countdown p:only-child {
+.manifold.m-layout-listing
+  .m-listing-info
+  .m-aside
+  .manifold.m-countdown
+  p:only-child {
   font-size: 11px;
   text-transform: uppercase;
 }
-.m-complete-view .m-listing-info .m-tooltip {
+.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-tooltip {
   display: none;
 }
-.m-complete-view .m-listing-info .m-aside .manifold.m-bids {
+.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-bids {
   margin-top: 17px;
   border: 0;
   border-top: 1px solid var(--manifold-color-bids--border);
   padding-top: 10px;
 }
-.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-header {
-  border-bottom: 0;
-  padding: 15px;
-}
-
-.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-header span {
-  margin-top: 0;
-}
-
-.m-complete-view
+.manifold.m-layout-listing
   .m-listing-info
   .m-aside
   .manifold.m-bids
-  .m-bids-inner
-  .m-bid {
+  .m-bids-header {
+  border-bottom: 0;
+  padding: 15px;
+}
+.manifold.m-layout-listing
+  .m-listing-info
+  .m-aside
+  .manifold.m-bids
+  .m-bids-header
+  span {
+  margin-top: 0;
+}
+.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-bids {
   background: var(--manifold-color-bids-background);
 }
-
-.m-complete-view
+.manifold.m-layout-listing
   .m-listing-info
   .m-aside
   .manifold.m-bids
@@ -415,12 +371,15 @@ div[data-widget="m-connect"] {
   > svg {
   filter: invert(100%);
 }
-
-.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-inner span {
+.manifold.m-layout-listing
+  .m-listing-info
+  .m-aside
+  .manifold.m-bids
+  .m-bids-inner
+  span {
   background: none;
 }
-
-.m-complete-view
+.manifold.m-layout-listing
   .m-listing-info
   .m-aside
   .manifold.m-bids
@@ -428,8 +387,7 @@ div[data-widget="m-connect"] {
   button {
   background: #fff1;
 }
-
-.m-complete-view
+.manifold.m-layout-listing
   .m-listing-info
   .m-countdown.m-bids
   .m-bids-inner
@@ -437,7 +395,7 @@ div[data-widget="m-connect"] {
   padding-top: 0;
   opacity: 0.5;
 }
-.m-complete-view .m-listing-info .m-aside .m-bids button {
+.manifold.m-layout-listing .m-listing-info .m-aside .m-bids button {
   background: #fff1;
 }
 </style>

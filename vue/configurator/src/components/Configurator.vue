@@ -236,8 +236,22 @@ export default class Configurator extends Vue {
       document.head.append(link);
     }
     this.updateDivOutput();
+    let timeout = 5;
+    // Trigger widget refresh after 200ms (need to wait for components to render)
+    const mInterval = window.setInterval(() => {
+      timeout--;
+      if (
+        document.querySelectorAll(`div[id^='widget-']`).length ===
+          (this.configuration?.widgets.length ?? 0) * 2 ||
+        timeout === 0
+      ) {
+        clearInterval(mInterval as number);
+        if (timeout !== 0) {
+          window.dispatchEvent(new Event("m-refresh-widgets"));
+        }
+      }
+    }, 1000);
   }
-
   updateDivOutput(): void {
     for (let index = 0; index < this.configuration!.widgets.length; index++) {
       const parentElement = document.getElementById(`widget-parent-${index}`)!;
