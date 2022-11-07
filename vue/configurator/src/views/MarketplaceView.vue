@@ -124,6 +124,33 @@ export default class MarketplaceView extends Vue {
   --manifold-color-page--background: #121212 !important;
   --manifold-color-card--background: #333 !important;
 }
+:where(.m-layout-listing) {
+  --manifold-color-layout--border: #6a6a6a !important;
+  --manifold-color-listing-layout--button: #212121 !important;
+  --manifold-color-listing-layout--button-rgb: 33, 33, 33 !important;
+  --manifold-color-listing-layout--button-r: 33 !important;
+  --manifold-color-listing-layout--button-g: 33 !important;
+  --manifold-color-listing-layout--button-b: 33 !important;
+  --manifold-color-listing-layout--button-hsl: 0deg, 0%, 13% !important;
+  --manifold-color-listing-layout--button-h: 0deg !important;
+  --manifold-color-listing-layout--button-s: 0% !important;
+  --manifold-color-listing-layout--button-l: 13% !important;
+}
+
+:where(.m-rich-form) {
+  --manifold-color-bid-form-rich--background-input: hsla(
+    0,
+    0%,
+    100%,
+    0.05
+  ) !important;
+  --manifold-color-bid-form-rich--background-balance: rbga(
+    0,
+    0,
+    0,
+    0.25
+  ) !important;
+}
 
 .m-complete-view *,
 .m-description-view *,
@@ -243,49 +270,63 @@ div[data-widget="m-connect"] {
 
 .m-complete-view .m-listing-info .m-main .m-name,
 .m-description-view .m-listing-info .m-main .m-name,
-.manifold.m-layout-listing .m-listing-info .m-main .m-name {
-  font-weight: 100 !important;
+.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-name {
+  font-weight: 100;
   text-transform: uppercase;
-  margin-bottom: 2.5rem !important;
+  margin-bottom: 2.5rem;
 }
 
-.m-complete-view .m-listing-info .m-main .m-attributes,
-.m-description-view .m-listing-info .m-main .m-attributes,
-.m-layout-listing .m-listing-info.m-main .m-attributes {
+.m-complete-view .m-listing-info .m-main .manifold.m-attributes,
+.m-description-view .m-listing-info .m-main .manifold.m-attributes,
+.m-layout-listing .m-listing-info.m-main .manifold.m-attributes {
   max-width: 100%;
 }
 
-.m-complete-view .m-listing-info .m-main .m-attributes .m-attribute,
-.m-description-view .m-listing-info .m-main .m-attributes .m-attribute,
-.m-layout-listing .m-listing-info.m-main .m-attributes .m-attribute {
+.m-complete-view .m-listing-info .m-main .manifold.m-attributes .m-attribute,
+.m-description-view .m-listing-info .m-main .manifold.m-attributes .m-attribute,
+.m-layout-listing .m-listing-info.m-main .manifold.m-attributes .m-attribute {
   border-bottom-color: var(--manifold-color-layout--border);
   grid-template-columns: 140px minmax(0, 1fr);
   grid-gap: 10px;
 }
 
-.m-complete-view .m-listing-info .m-main .m-attributes .m-attribute span,
-.m-description-view .m-listing-info .m-main .m-attributes .m-attribute span,
-.m-layout-listing .m-listing-info.m-main .m-attributes .m-attribute span {
+.m-complete-view
+  .m-listing-info
+  .m-main
+  .manifold.m-attributes
+  .m-attribute
+  span,
+.m-description-view
+  .m-listing-info
+  .m-main
+  .manifold.m-attributes
+  .m-attribute
+  span,
+.m-layout-listing
+  .m-listing-info.m-main
+  .manifold.m-attributes
+  .m-attribute
+  span {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.m-complete-view .m-listing-info .m-main .m-description::before,
-.m-description-view .m-listing-info .m-main .m-description::before,
-.m-layout-listing .m-listing-info.m-main .m-description::before {
+.m-complete-view .m-listing-info .m-main .manifold.m-description::before,
+.m-description-view .m-listing-info .m-main .manifold.m-description::before,
+.m-layout-listing .m-listing-info.m-main .manifold.m-description::before {
   display: none;
 }
 
-.m-complete-view .m-listing-info .m-main .m-description p,
-.m-description-view .m-listing-info .m-main .m-description p,
-.m-layout-listing .m-listing-info.m-main .m-description p {
+.m-complete-view .m-listing-info .m-main .manifold.m-description p,
+.m-description-view .m-listing-info .m-main .manifold.m-description p,
+.m-layout-listing .m-listing-info.m-main .manifold.m-description p {
   font-size: 18px;
   line-height: 1.5;
 }
 
-.m-complete-view .m-listing-info .m-main .m-links a,
-.m-description-view .m-listing-info .m-main .m-links a,
-.m-layout-listing .m-listing-info.m-main .m-links a {
+.m-complete-view .m-listing-info .m-main .manifold.m-links a,
+.m-description-view .m-listing-info .m-main .manifold.m-links a,
+.m-layout-listing .m-listing-info.m-main .manifold.m-links a {
   border: 1px solid var(--manifold-color-theme--secondary);
   background: none;
   text-transform: uppercase;
@@ -293,9 +334,9 @@ div[data-widget="m-connect"] {
   margin-left: 0;
 }
 
-.m-complete-view .m-listing-info .m-main .m-links a:hover,
-.m-description-view .m-listing-info .m-main .m-links a:hover,
-.m-layout-listing .m-listing-info.m-main .m-links a:hover {
+.m-complete-view .m-listing-info .m-main .manifold.m-links a:hover,
+.m-description-view .m-listing-info .m-main .manifold.m-links a:hover,
+.m-layout-listing .m-listing-info.m-main .manifold.m-links a:hover {
   background: var(--manifold-color-link-background--hover);
 }
 
@@ -341,24 +382,6 @@ div[data-widget="m-connect"] {
   z-index: 101;
 }
 
-.m-description-view footer {
-  background: #101010;
-  text-align: center;
-  align-items: center;
-  padding-bottom: 20px;
-}
-.m-description-view footer span {
-  color: #999;
-  text-transform: uppercase;
-  font-size: 10px;
-}
-.m-description-view footer span a {
-  color: white;
-  font-size: inherit;
-}
-.m-description-view .m-logo {
-  padding: 20px;
-}
 .m-complete-view .m-listing-info .m-description p {
   font-size: 14px;
 }
@@ -374,33 +397,50 @@ div[data-widget="m-connect"] {
 .m-complete-view .m-listing-info .m-tooltip {
   display: none;
 }
-.m-complete-view .m-listing-info .m-bids {
+.m-complete-view .m-listing-info .m-aside .manifold.m-bids {
   margin-top: 17px;
   border: 0;
   border-top: 1px solid var(--manifold-color-bids--border);
   padding-top: 10px;
 }
-.m-complete-view .m-listing-info .m-bids .m-bids-header {
+.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-header {
   border-bottom: 0;
   padding: 15px;
 }
 
-.m-complete-view .m-listing-info .m-bids .m-bids-header span {
+.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-header span {
   margin-top: 0;
 }
 
-.m-complete-view .m-listing-info .m-bids .m-bids-inner .m-bid {
+.m-complete-view
+  .m-listing-info
+  .m-aside
+  .manifold.m-bids
+  .m-bids-inner
+  .m-bid {
   background: var(--manifold-color-bids-background);
 }
 
-.m-complete-view .m-listing-info .m-countdown.m-bids .m-bids-inner a > svg {
+.m-complete-view
+  .m-listing-info
+  .m-aside
+  .manifold.m-bids
+  .m-bids-inner
+  a
+  > svg {
+  filter: invert(100%);
 }
 
-.m-complete-view .m-listing-info .m-countdown.m-bids .m-bids-inner span {
+.m-complete-view .m-listing-info .m-aside .manifold.m-bids .m-bids-inner span {
   background: none;
 }
 
-.m-complete-view .m-listing-info .m-countdown.m-bids .m-bids-inner button {
+.m-complete-view
+  .m-listing-info
+  .m-aside
+  .manifold.m-bids
+  .m-bids-inner
+  button {
   background: #fff1;
 }
 
@@ -412,7 +452,7 @@ div[data-widget="m-connect"] {
   padding-top: 0;
   opacity: 0.5;
 }
-.m-complete-view .m-listing-info .m-bids button {
+.m-complete-view .m-listing-info .m-aside .m-bids button {
   background: #fff1;
 }
 </style>
