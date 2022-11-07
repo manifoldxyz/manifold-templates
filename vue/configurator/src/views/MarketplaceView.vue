@@ -223,7 +223,7 @@ div[data-widget="m-connect"] {
   --manifold-color-bid-form-rich--background-input: hsla(0, 0%, 100%, 0.05);
   --manifold-color-bid-form-rich--background-balance: rbga(0, 0, 0, 0.25);
 }
-.m-layout-listing {
+.manifold.m-layout-listing {
   background: black;
   color: white;
   width: 100%;
