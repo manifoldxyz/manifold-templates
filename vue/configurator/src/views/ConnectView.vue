@@ -68,6 +68,7 @@ export default class ConnectView extends Vue {
                 type: WidgetPropType.STRING,
                 value: "",
                 defaultValue: "",
+                dependentProps: ["data-network"],
               },
               "data-multi": {
                 name: "Wallet Connect",

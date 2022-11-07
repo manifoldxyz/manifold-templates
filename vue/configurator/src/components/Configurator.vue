@@ -145,6 +145,7 @@ export interface ConfiguratorDefinition {
     configuration: {
       handler: _.debounce(function (newData: ConfiguratorDefinition) {
         let networkProp;
+        let propsMissing = false;
         for (let index = 0; index < newData.widgets.length; index++) {
           const widget = newData.widgets[index];
           // Clear current widget
@@ -170,33 +171,52 @@ export interface ConfiguratorDefinition {
             element._vnode = undefined;
           }
 
-          // Update props
+          // Validate props
           for (const propKey in widget.props) {
             const prop = widget.props[propKey];
             if (propKey === "data-network") networkProp = prop;
-            let value = prop.value;
-            if (prop.type === WidgetPropType.STRING) {
-              value = value.toString().trim();
+            // Check required props
+            if (prop.required && !prop.value) {
+              propsMissing = true;
+              continue;
             }
-            if (value !== prop.defaultValue) {
-              element.setAttribute(propKey, value.toString());
-            } else {
-              element.removeAttribute(propKey);
+            // Check dependent props
+            if (prop.dependentProps) {
+              for (const dependentPropKey of prop.dependentProps) {
+                if (!widget.props[dependentPropKey].value) {
+                  propsMissing = true;
+                  continue;
+                }
+              }
             }
           }
-
-          // Update shared props
-          for (const propKey in newData.sharedProps) {
-            const prop = newData.sharedProps[propKey];
-            if (propKey === "data-network") networkProp = prop;
-            let value = prop.value;
-            if (prop.type === WidgetPropType.STRING) {
-              value = value.toString().trim();
+          // If no props missing, populate attributes
+          if (!propsMissing) {
+            for (const propKey in widget.props) {
+              const prop = widget.props[propKey];
+              let value = prop.value;
+              if (prop.type === WidgetPropType.STRING) {
+                value = value.toString().trim();
+              }
+              if (value !== prop.defaultValue) {
+                element.setAttribute(propKey, value.toString());
+              } else {
+                element.removeAttribute(propKey);
+              }
             }
-            if (value !== prop.defaultValue) {
-              element.setAttribute(propKey, value.toString());
-            } else {
-              element.removeAttribute(propKey);
+            // Update shared props
+            for (const propKey in newData.sharedProps) {
+              const prop = newData.sharedProps[propKey];
+              if (propKey === "data-network") networkProp = prop;
+              let value = prop.value;
+              if (prop.type === WidgetPropType.STRING) {
+                value = value.toString().trim();
+              }
+              if (value !== prop.defaultValue) {
+                element.setAttribute(propKey, value.toString());
+              } else {
+                element.removeAttribute(propKey);
+              }
             }
           }
 
@@ -213,7 +233,7 @@ export interface ConfiguratorDefinition {
           ? parseInt(networkProp.value.toString())
           : undefined;
 
-        // Trigger widget refresh
+        // Trigger widget refresh if no props missing
         window.dispatchEvent(new Event("m-refresh-widgets"));
       }, 500),
       deep: true,

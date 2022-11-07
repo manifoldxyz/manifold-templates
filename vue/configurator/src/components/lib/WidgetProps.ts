@@ -15,6 +15,8 @@ export interface WidgetPropDefinition {
   value: string | boolean;
   defaultValue: string | boolean;
   options?: WidgetPropOptions[];
+  required?: boolean;
+  dependentProps?: string[];
 }
 
 export interface WidgetDefinition {

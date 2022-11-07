@@ -50,6 +50,7 @@ export default class MarketplaceView extends Vue {
             type: WidgetPropType.STRING,
             value: "",
             defaultValue: "",
+            dependentProps: ["data-network"],
           },
         },
         widgets: [
@@ -87,12 +88,14 @@ export default class MarketplaceView extends Vue {
                   },
                 ],
                 defaultValue: "",
+                required: true,
               },
               "data-id": {
                 name: "Listing Id",
                 type: WidgetPropType.STRING,
                 value: "",
                 defaultValue: "",
+                required: true,
               },
             },
           },
