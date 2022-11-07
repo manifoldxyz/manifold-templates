@@ -64,6 +64,12 @@ export default class MarketplaceView extends Vue {
                 value: true,
                 defaultValue: false,
               },
+              "data-multi": {
+                name: "Wallet Connect",
+                type: WidgetPropType.BOOLEAN,
+                value: false,
+                defaultValue: false,
+              },
             },
           },
           {
@@ -97,34 +103,29 @@ export default class MarketplaceView extends Vue {
 }
 </script>
 <style>
-:root {
-  --manifold-color-cta-background--base: #fff !important;
-  --manifold-color-cta-background--disabled: hsla(
-    0,
-    0%,
-    100%,
-    0.0666666667
-  ) !important;
-  --manifold-color-cta-background--hover: hsla(0, 0%, 100%, 0.6) !important;
-  --manifold-color-cta-text--base: #000 !important;
-  --manifold-color-cta-text--disabled: #8a8a8a !important;
-  --manifold-color-theme--secondary: #1a1a1a !important;
-  --manifold-color-campaign--text: #fff !important;
-  --manifold-color-connect--background: rgba(0, 0, 0, 0.8) !important;
-  --manifold-color-connect--text: #fff !important;
-  --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8) !important;
-  --manifold-color-link-background--hover: hsla(0, 0%, 100%, 0.3) !important;
-  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05) !important;
-  --manifold-color-theme--primary: #2b2baa !important;
-  --manifold-color-text: hsla(0, 0%, 100%, 0.87) !important;
-  --manifold-color-text--primary: hsla(0, 0%, 92.2%, 0.87) !important;
-  --manifold-color-text--secondary: #c9c9c9 !important;
-  --manifold-color-text--disabled: hsla(0, 0%, 100%, 0.5) !important;
-  --manifold-color-text--muted: hsla(0, 0%, 100%, 0.6) !important;
-  --manifold-color-page--background: #121212 !important;
-  --manifold-color-card--background: #333 !important;
+:where(.manifold) {
+  font-family: "Raleway", sans-serif;
+  --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
+  --manifold-color-connect--text: #fff;
+  --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8);
 }
-:where(.m-layout-listing) {
+:where(.manifold.m-layout-listing) {
+  --manifold-color-cta-background--base: #fff;
+  --manifold-color-cta-background--disabled: hsla(0, 0%, 100%, 0.0666666667);
+  --manifold-color-cta-background--hover: hsla(0, 0%, 100%, 0.6);
+  --manifold-color-cta-text--base: #000;
+  --manifold-color-cta-text--disabled: #8a8a8a;
+  --manifold-color-theme--secondary: #1a1a1a;
+  --manifold-color-link-background--hover: hsla(0, 0%, 100%, 0.3);
+  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05);
+  --manifold-color-theme--primary: #2b2baa;
+  --manifold-color-text: hsla(0, 0%, 100%, 0.87);
+  --manifold-color-text--primary: hsla(0, 0%, 92.2%, 0.87);
+  --manifold-color-text--secondary: #c9c9c9;
+  --manifold-color-text--disabled: hsla(0, 0%, 100%, 0.5);
+  --manifold-color-text--muted: hsla(0, 0%, 100%, 0.6);
+  --manifold-color-page--background: #121212;
+  --manifold-color-card--background: #333;
   --manifold-color-layout--border: #6a6a6a !important;
   --manifold-color-listing-layout--button: #212121 !important;
   --manifold-color-listing-layout--button-rgb: 33, 33, 33 !important;
@@ -136,36 +137,20 @@ export default class MarketplaceView extends Vue {
   --manifold-color-listing-layout--button-s: 0% !important;
   --manifold-color-listing-layout--button-l: 13% !important;
 }
-
-:where(.m-rich-form) {
-  --manifold-color-bid-form-rich--background-input: hsla(
-    0,
-    0%,
-    100%,
-    0.05
-  ) !important;
-  --manifold-color-bid-form-rich--background-balance: rbga(
-    0,
-    0,
-    0,
-    0.25
-  ) !important;
+:where(.manifold.m-rich-form) {
+  --manifold-color-bid-form-rich--background-input: hsla(0, 0%, 100%, 0.05);
+  --manifold-color-bid-form-rich--background-balance: rbga(0, 0, 0, 0.25);
 }
 
-.m-complete-view *,
-.m-description-view *,
-.m-layout-listing * {
-  font-family: "Raleway", sans-serif;
+:where(.manifold.m-expandable-image-expanded, .manifold.m-expandable-image) {
+  --manifold-color-expandable-image-button: hsla(0, 0%, 100%, 0.25);
+  --manifold-color-expandable-image-button--hover: hsla(0, 0%, 100%, 0.5);
 }
+
 #m-connection-wizard-container {
   pointer-events: auto;
 }
 #m-connection-wizard.h1 {
-  color: black;
-}
-
-#walletconnect-wrapper * {
-  pointer-events: auto;
   color: black;
 }
 
@@ -255,16 +240,16 @@ div[data-widget="m-connect"] {
   overflow: visible;
 }
 
-.m-complete-view .m-expandable-image > button,
-.m-description-view .m-expandable-image > button,
-.m-layout-listing .m-expandable-image > button {
+.m-complete-view .manifold.m-expandable-image > button,
+.m-description-view .manifold.m-expandable-image > button,
+.m-layout-listing .manifold.m-expandable-image > button {
   right: 55px;
   bottom: -25px;
 }
 
-.m-complete-view .m-expandable-image .m-token-media > button,
-.m-description-view .m-expandable-image .m-token-media > button,
-.m-layout-listing .m-expandable-image .m-token-media > button {
+.m-complete-view .manifold.m-expandable-image .m-token-media > button,
+.m-description-view .manifold.m-expandable-image .m-token-media > button,
+.m-layout-listing .manifold.m-expandable-image .m-token-media > button {
   z-index: 101;
 }
 
