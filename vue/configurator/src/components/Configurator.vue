@@ -181,7 +181,7 @@ export interface ConfiguratorDefinition {
               continue;
             }
             // Check dependent props
-            if (prop.dependentProps) {
+            if (prop.value && prop.dependentProps) {
               for (const dependentPropKey of prop.dependentProps) {
                 if (!widget.props[dependentPropKey].value) {
                   propsMissing = true;
