@@ -1,11 +1,17 @@
 # Merch Bridge enabled for the Shopify Debut theme
 This is a modified version of the [Shopify Debut](https://themes.shopify.com/themes/debut/styles/default) theme which enables the Manifold Merch Bridge.
 
+### Product Page
+<img src="screenshots/product_page.png" width="800" />
+
+### Checkout Page
+<img src="screenshots/checkout_page.png" width="800" />
+
 ## Installation
 To use this theme, download merch_bridge.zip and follow these intructions.
 
-1. From your Shopify admin, go to Online Store > Themes.
-2. In the Theme Library section, click Add Theme > Upload Zip File
+1. From your Shopify admin, go to **Online Store > Themes**.
+2. In the Theme Library section, click **Add Theme > Upload Zip File**.
 3. Select the downloaded merch_bridge.zip and upload it
 
 <img src="screenshots/instructions.png" width="800" />
