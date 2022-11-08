@@ -24,23 +24,21 @@ export default function Home() {
         {/* -- Add Connect Widget -- */}
         <div dangerouslySetInnerHTML={{ 
           __html: 
-            "<div \
-              data-widget='m-connect' \
-              data-app-name='dgSig' \
-              data-app-name='{process.env.DATA_APP_NAME}' \
-              data-client-id='{process.env.DATA_CLIENT_ID}' \
-              data-network='{process.env.DATA_NETWORK}' \
-            ></div>"
+            `<div
+              data-widget='m-connect'
+              data-delay-auth='true'
+              data-network='${process.env.NEXT_APP_NETWORK}'
+            ></div>`
         }} />
 
         {/* ~~ Add Marketplace Widget component ~~ */}
         <div dangerouslySetInnerHTML={{ 
           __html: 
-            "<div \
-              data-widget='m-layout-complete-listing' \
-              data-id='444' \
-              data-network='1' \
-            ></div>"
+            `<div
+              data-widget='m-layout-complete-listing'
+              data-id='${process.env.NEXT_APP_MARKETPLACE_LISTING_ID}'
+              data-network='${process.env.NEXT_APP_NETWORK}'
+            ></div>`
         }} />
       </main>
     </div>

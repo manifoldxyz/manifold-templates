@@ -44,12 +44,12 @@ export default function Home() {
 
         <div dangerouslySetInnerHTML={{ 
           __html: 
-            "<div \
-                data-widget='m-connect' \
-                data-app-name='dgSig' \
-                data-client-id='c6368ddb0a2276fae6abe837bea60cbe6557fb9908e84d0fbcbd95b45f4f3cf6' \
-                data-network='1' \
-            ></div>"
+            `<div
+              data-widget="m-connect"
+              data-app-name='${process.env.NEXT_APP_MANIFOLD_APP_NAME}'
+              data-client-id='${process.env.NEXT_APP_MANIFOLD_CLIENT_ID}'
+              data-network='${process.env.NEXT_APP_NETWORK}'
+            ></div>`
         }} />
       
       {/* Display NFTs */}
