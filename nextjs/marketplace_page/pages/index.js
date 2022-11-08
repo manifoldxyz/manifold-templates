@@ -20,27 +20,28 @@ export default function Home() {
           Next.js Template
         </h1>
         <br />
+
         {/* -- Add Connect Widget -- */}
-        <div  
-          data-widget="m-connect"
-          data-app-name={process.env.DATA_APP_NAME}
-          data-client-id={process.env.DATA_CLIENT_ID}
-          data-network={process.env.DATA_NETWORK}
-          //// Optional Button Settings
-          // data-multi="true"
-          // data-fallback-provider={process.env.DATA_FALLBACK_PROVIDER}
-          // data-override-connect-text="Ligma" // Text on button
-        >  
-        </div>
-        <br />
-        <br />
+        <div dangerouslySetInnerHTML={{ 
+          __html: 
+            "<div \
+              data-widget='m-connect' \
+              data-app-name='dgSig' \
+              data-app-name='{process.env.DATA_APP_NAME}' \
+              data-client-id='{process.env.DATA_CLIENT_ID}' \
+              data-network='{process.env.DATA_NETWORK}' \
+            ></div>"
+        }} />
 
         {/* ~~ Add Marketplace Widget component ~~ */}
-        <div
-          data-widget="m-layout-complete-listing"
-          data-id="444"
-          data-network="1"
-        ></div>
+        <div dangerouslySetInnerHTML={{ 
+          __html: 
+            "<div \
+              data-widget='m-layout-complete-listing' \
+              data-id='444' \
+              data-network='1' \
+            ></div>"
+        }} />
       </main>
     </div>
   )
