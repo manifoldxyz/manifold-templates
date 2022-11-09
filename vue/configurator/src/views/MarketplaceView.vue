@@ -86,6 +86,14 @@ export default class MarketplaceView extends Vue {
                     value: "m-layout-complete-listing",
                     label: "Full Listing",
                   },
+                  {
+                    value: "m-catalog-card",
+                    label: "Catalog Card",
+                  },
+                  {
+                    value: "m-countdown-card",
+                    label: "Countdown Card",
+                  },
                 ],
                 defaultValue: "",
                 required: true,
@@ -109,6 +117,7 @@ export default class MarketplaceView extends Vue {
 :root() {
   --base-font: "Raleway", sans-serif;
 }
+
 :where(.manifold) {
   font-family: var(--base-font);
   background-color: var(--manifold-color-page--background);
@@ -176,7 +185,7 @@ div[data-widget="m-connect"] {
   pointer-events: none;
 }
 
-:where(.manifold.m-layout-listing) {
+.manifold.m-layout-listing {
   font-family: var(--base-font);
   --manifold-color-cta-background--base: #fff;
   --manifold-color-cta-background--disabled: hsla(0, 0%, 100%, 0.0666666667);
@@ -194,7 +203,7 @@ div[data-widget="m-connect"] {
   --manifold-color-page--background: #121212;
   --manifold-color-card--background: #333;
 }
-:where(.manifold.m-layout-listing .m-listing-info) {
+.manifold.m-layout-listing .m-listing-info {
   --manifold-color-layout--border: #6a6a6a;
   --manifold-color-listing-layout--button: #212121;
   --manifold-color-listing-layout--button-rgb: 33, 33, 33;
@@ -206,23 +215,19 @@ div[data-widget="m-connect"] {
   --manifold-color-listing-layout--button-s: 0%;
   --manifold-color-listing-layout--button-l: 13%;
 }
-:where(.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-bids) {
-  --manifold-color-bids--bidder: #333 !important;
-  --manifold-color-bids--background: hsla(0, 0%, 80%, 0.35) !important;
-  --manifold-color-bids--border: #6a6a6a !important;
-  --manifold-color-bids--expand-button: #9f9f9f !important;
-  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05) !important;
+.manifold.m-layout-listing .m-listing-info .m-aside .manifold.m-bids {
+  --manifold-color-bids--bidder: #333;
+  --manifold-color-bids--background: hsla(0, 0%, 80%, 0.35);
+  --manifold-color-bids--border: #6a6a6a;
+  --manifold-color-bids--expand-button: #9f9f9f;
+  --manifold-color-bids-background: hsla(0, 0%, 100%, 0.05);
 }
-:where(.manifold.m-layout-listing
-    .manifold.m-expandable-image-expanded
-    button, .manifold.m-expandable-image button) {
+.manifold.m-layout-listing .manifold.m-expandable-image-expanded button,
+.manifold.m-expandable-image button {
   --manifold-color-expandable-image-button: hsla(0, 0%, 100%, 0.25);
   --manifold-color-expandable-image-button--hover: hsla(0, 0%, 100%, 0.5);
 }
-:where(.manifold.m-confirm
-    .m-confirm-inner
-    .m-confirm-info
-    .manifold.m-rich-form) {
+.manifold.m-confirm .m-confirm-inner .m-confirm-info .manifold.m-rich-form {
   --manifold-color-bid-form-rich--background-input: hsla(0, 0%, 100%, 0.05);
   --manifold-color-bid-form-rich--background-balance: rbga(0, 0, 0, 0.25);
 }
