@@ -1,0 +1,26 @@
+.m-expandable-image, .m-expandable-image-expanded {
+  --manifold-color-theme--secondary: #e6e6e6 !important;
+}
+.m-expandable-image-expanded {
+  z-index: 900 !important; // higher than topNav
+}
+.image-list .image .image-meta {
+    .m-name, .m-description p {
+      color: unset;
+      display: inline;
+      font-size: unset;
+    }
+    .m-name {
+      line-height: unset;
+      font-weight: bold;
+    }
+    .m-description {
+      p {
+        line-height: 1.6em;
+      }
+
+      &::before {
+        content: unset;
+      }
+    }
+}

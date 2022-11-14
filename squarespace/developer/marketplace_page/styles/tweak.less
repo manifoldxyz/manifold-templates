@@ -1,0 +1,340 @@
+
+
+/* SUMMARY BLOCK STYLES
+---------------------------------------------------*/
+
+// tweak: { "category": "Summary Block", "title": "Summary Block Title Font", "type": "font", "target": ".summary-header-text, .summary-title", "showOnlyWhenPresent": ".summary-title, .summary-title-link", "label": "Summary Block Title Font" }
+.summary-heading-font {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+// tweak: { "category": "Summary Block", "title": "Summary Block Title Color", "type": "color", "target": ".summary-header-text, .summary-title", "showOnlyWhenPresent": ".summary-title, .summary-title-link", "label": "Summary Block Title Color" }
+@summaryHeadingColor: #666;
+
+
+
+/* AUTO-CATEGORIZED - DO NOT ADD NEW TWEAKS HERE
+---------------------------------------------------*/
+
+// tweak: { "type": "color", "title": "Site Background", "target": "body", "label": "Site Background" }
+@background: #fcfcfc;
+
+// tweak: { "type": "image", "title": "Site Background Image", "target": "body", "label": "Site Background Image" }
+.bg-image {
+  background-image: none;
+  background-position: top left;
+  background-size: auto;
+  background-attachment: scroll;
+  background-repeat: repeat;
+}
+
+// tweak: { "type": "color", "title": "Canvas Background", "target": "#canvas", "label": "Canvas Background" }
+@canvasBackground:rgba(255, 255, 255, 0);
+
+// tweak: { "type": "color", "title": "Site Title Color", "target": "#header, h1.logo", "label": "Site Title Color" }
+@siteTitleColor: #222;
+
+// tweak: { "type": "color", "title": "Site Title (Hover) Color", "target": "#header, h1.logo", "label": "Site Title (Hover) Color" }
+@siteTitleHoverColor: #444;
+
+// tweak: { "type": "color", "title": "Site Subtitle Color", "target": ".logo-subtitle", "label": "Site Subtitle Color" }
+@subtitleColor: #ddd;
+
+// tweak: { "type": "color", "title": "Navigation Color", "target": "#header, .main-nav:not(.mobileNav) > ul > li", "label": "Navigation Color" }
+@navColor: #999;
+
+// tweak: { "type": "color", "title": "Navigation (Hover) Color", "target": "#header, .main-nav:not(.mobileNav) > ul > li", "label": "Navigation (Hover) Color" }
+@navHoverColor: #111;
+
+// tweak: { "type": "color", "title": "Navigation (Active) Color", "target": "#header, .main-nav:not(.mobileNav) > ul > li", "label": "Navigation (Active) Color" }
+@navActiveColor: #111;
+
+// tweak: { "type": "color", "title": "Heading 1 Color", "target": ".active-project h1:not(.logo), .collection-type-blog h1:not(.logo), .collection-type-page h1:not(.logo)", "label": "Heading 1 Color" }
+@heading1Color: #222;
+
+// tweak: { "type": "color", "title": "Heading 2 Color", "target": ".active-project h2, .collection-type-blog h2, .collection-type-page h2", "label": "Heading 2 Color" }
+@heading2Color: #222;
+
+// tweak: { "type": "color", "title": "Heading 3 Color", "target": ".active-project h3, .collection-type-blog h3, .collection-type-page h3", "label": "Heading 3 Color" }
+@heading3Color: #222;
+
+// tweak: { "type": "color", "title": "Text Color", "target": ".hentry, #page, #footer, .active-project .project-meta", "label": "Text Color" }
+@bodyTextColor: #777;
+
+// tweak: { "type": "color", "title": "Body Link Color", "target": "body", "label": "Body Link Color" }
+@linkColor: #111;
+
+// tweak: { "type": "color", "title": "Body Link (Hover) Color", "target": "body", "label": "Body Link (Hover) Color" }
+@linkHoverColor: #444;
+
+// tweak: { "type": "color", "title": "Blog Meta Color", "target": ".meta", "category": "Blog Styles", "showOnlyWhenPresent": ".collection-type-blog", "label": "Blog Meta Color" }
+@metaDataColor: #333;
+
+// tweak: { "type": "color", "title": "Page Border Color", "target": "#page, .page-divider", "label": "Page Border Color" }
+@pageBorderColor: #ddd;
+
+// tweak: { "type": "color", "title": "Social Icon Color", "target": "#socialLinks", "showOnlyWhenPresent": "body:not(.tweak-template-social-icon-standard-color) #socialLinks", "label": "Social Icon Color" }
+@socialIconColor: #1f1f1f;
+
+
+// tweak: { "type": "font", "title": "Site Title", "target": "#header, h1.logo", "label": "Site Title" }
+.site-title-font {
+  font-family: Oswald, arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 46px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Site Subtitle", "target": "#header, .logo-subtitle", "label": "Site Subtitle" }
+.site-subtitle-font {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 2.0em;
+  font-size: 13px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Navigation", "target": "#header, .main-nav:not(.mobileNav) > ul > li", "label": "Navigation" }
+.nav-font {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.6em;
+  font-size: 13px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Heading 1", "target": ".active-project h1:not(.logo), .collection-type-blog h1:not(.logo), .collection-type-page h1:not(.logo)", "loadAllVariants": "true", "label": "Heading 1" }
+.heading-1-font {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 1.2em;
+  font-size: 22px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Heading 2", "target": ".active-project h2, .collection-type-blog h2, .collection-type-page h2", "loadAllVariants": "true", "label": "Heading 2" }
+.heading-2-font {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 1.2em;
+  font-size: 18px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Heading 3", "target": ".active-project h3, .collection-type-blog h3, .collection-type-page h3", "loadAllVariants": "true", "label": "Heading 3" }
+.heading-3-font {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 1.2em;
+  font-size: 13px;
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "font", "title": "Body Text", "target": "#page, #footer, .active-project .project-meta", "loadAllVariants": "true", "label": "Body Text" }
+.body-font {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.6em;
+  font-size: 12px;
+  text-transform: none;
+  text-decoration: none;
+}
+
+
+// tweak: { "type": "dropdown", "title": "Blog Sidebar Display", "options": [ "Auto", "Right", "Left", "Hidden" ], "target": ".collection-type-blog #sidebar", "category": "Blog Styles", "showOnlyWhenPresent": ".collection-type-blog", "label": "Blog Sidebar Display" }
+
+
+// tweak: { "type": "value", "title": "Site Width", "min": 600, "max": 1200, "step": 10, "target": "#canvas", "property": "width", "label": "Site Width" }
+@siteWidth: 900px;
+
+// tweak: { "type": "value", "title": "Blog Sidebar Width", "min": 100, "max": 600, "step": 5, "target": ".collection-type-blog #sidebar", "property": "width", "condition": { "Layout Style": [ "Left", "Right" ] }, "category": "Blog Styles", "showOnlyWhenPresent": ".collection-type-blog", "label": "Blog Sidebar Width" }
+@blogSidebarWidth: 200px;
+
+// tweak: { "type": "value", "title": "Canvas Padding", "min": 20, "max": 100, "step": 5, "target": "#canvas", "property": [ "padding-top", "padding-right", "padding-bottom", "padding-left" ], "js": "true", "label": "Canvas Padding" }
+@outerPadding: 50px;
+
+// tweak: { "type": "value", "title": "Top Padding", "min": 0, "max": 100, "step": 5, "target": "#canvas", "property": "margin-top", "js": "true", "label": "Top Padding" }
+@topPadding: 10px;
+
+// tweak: { "type": "value", "title": "Navigation Link Spacing", "min": 10, "max": 100, "target": ".main-nav:not(.mobileNav) > ul > li", "property": "margin-left", "label": "Navigation Link Spacing" }
+@navPadding: 30px;
+
+// tweak: { "type": "value", "title": "Header Padding", "min": 0, "max": 100, "target": "#header", "property": "margin-bottom", "label": "Header Padding" }
+@headerPadding: 50px;
+
+// tweak: { "type": "value", "title": "Page Padding", "min": 0, "max": 100, "target": "#page", "property": [ "margin-top", "margin-bottom" ], "js": "true", "label": "Page Padding" }
+@pagePadding: 50px;
+
+// tweak: { "type": "value", "title": "Footer Padding", "min": 0, "max": 100, "target": "#footer", "property": "margin-top", "label": "Footer Padding" }
+@footerPadding: 50px;
+
+// tweak: { "type": "value", "title": "Logo Size (Max)", "min": 0, "max": 300, "target": ".logo-image .logo", "property": "height", "label": "Logo Size (Max)" }
+@logoSize: 100px;
+
+// tweak: { "type": "value", "title": "Mobile Logo Size", "min": 0, "max": 300, "target": ".logo-image .logo", "property": "height", "label": "Mobile Logo Size" }
+@mobileLogoSize: 50px;
+
+
+// Index Styles
+
+// tweak: { "type": "font", "title": "Index Thumb Titles", "label": "Index Thumb Title", "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": ".collection-type-index:not(.hide-thumbnail-titles) #projectPages" }
+.thumb-title-font {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.6em;
+  font-size: 12px;
+  text-transform: none;
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 0px;
+}
+
+// tweak: { "type": "color", "title": "Index Thumb Title Color", "label": "Index Thumb Title Color", "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": ".collection-type-index:not(.hide-thumbnail-titles) #projectPages" }
+@indexThumbTitles: #999;
+
+// tweak: { "type": "dropdown", "title": "Index Thumb Title Position", "options": [ "Below", "Overlay" ], "default": "Below", "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": ".collection-type-index:not(.hide-thumbnail-titles) #projectPages", "label": "Index Thumb Title Position" }
+
+// tweak: { "type": "value", "title": "Index Sidebar Width", "label": "Index Item Detail Width", "min": 100, "max": 600, "step": 5, "target": ".active-project .project-meta", "property": "width", "category": "Index Styles", "showOnlyWhenPresent": ".active-project .project-meta" }
+@indexSidebarWidth: 300px;
+
+// tweak: { "type": "dropdown", "title": "Index Item Layout", "options": [ "Auto", "Left", "Right", "Center" ], "default": "Auto", "target": ".active-project .project-meta", "category": "Index Styles", "showOnlyWhenPresent": ".active-project .project-meta", "label": "Index Item Layout" }
+
+// tweak: { "type": "dropdown", "title": "Thumbnail Layout", "label": "Index Thumb Layout", "options": [ "Autocolumns", "Basic Grid" ], "default": "Basic Grid", "target": "#projectThumbs", "js": true, "category": "Index Styles", "showOnlyWhenPresent": "#projectPages" }
+
+// tweak: { "type": "color", "title": "Index Thumb Background Color", "label": "Index Thumb Background", "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages" }
+@indexThumbBackground: #eee;
+
+// tweak: { "type": "value", "title": "Thumbnails Per Row", "min": 1, "max": 6, "target": "#projectThumbs", "js": true, "category": "Index Styles", "showOnlyWhenPresent": ".thumbnail-layout-basic-grid #projectPages", "label": "Thumbnails Per Row" }
+@TPerRow: 4;
+
+// tweak: { "type": "value", "title": "Thumbnail Ratio", "target": "#projectThumbs", "min": 20, "max": 200, "property": "height", "category": "Index Styles", "showOnlyWhenPresent": ".thumbnail-layout-basic-grid #projectPages", "label": "Thumbnail Ratio" }
+@TRatio: 150;
+
+// tweak: { "type": "value", "title": "Thumbnail Max Width", "target": "#projectThumbs", "min": 150, "max": 400, "js": true, "property": "width", "category": "Index Styles", "showOnlyWhenPresent": ".thumbnail-layout-autocolumns #projectPages", "label": "Thumbnail Max Width" }
+@TMaxWidth: 300;
+
+// tweak: { "type": "value", "title": "Thumbnail Padding", "min": 0, "max": 8, "step": 0.1, "js": true, "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages", "label": "Thumbnail Padding" }
+@TGutter: 3.0%;
+
+// tweak: { "type": "value", "title": "Thumbnail Opacity", "min": 0, "max": 100, "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages", "label": "Thumbnail Opacity" }
+@thumbOpacity: 100;
+
+// tweak: { "type": "value", "title": "Thumbnail Hover Opacity", "min": 0, "max": 100, "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages", "label": "Thumbnail Hover Opacity" }
+@thumbHoverOpacity: 80;
+
+// tweak: { "type": "dropdown", "title": "Thumbnails on Open Page", "options": [ "Show All", "Hide Active", "Hide All" ], "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages", "label": "Thumbnails on Open Page" }
+
+// tweak: { "type": "checkbox", "title": "Hide Thumbnail Titles", "label": "Hide Index Thumb Titles", "target": "#projectThumbs", "js": true, "category": "Index Styles", "showOnlyWhenPresent": "#projectPages" }
+
+// tweak: { "type": "checkbox", "title": "Full Width Index", "label": "Full Width Index", "active": false, "target": "#projectThumbs", "category": "Index Styles", "showOnlyWhenPresent": "#projectPages" }
+
+
+
+// tweak: { "type": "value", "title": "Blog Post Spacing", "min": 0, "max": 200, "target": ".collection-type-blog .hentry", "property": "margin-bottom", "category": "Blog Styles", "showOnlyWhenPresent": ".collection-type-blog", "label": "Blog Post Spacing" }
+@postPadding: 80px;
+
+// tweak: { "type": "value", "title": "Social Icon Size", "min": 16, "max": 48, "target": "#socialLinks", "showOnlyWhenPresent": "#socialLinks", "label": "Social Icon Size" }
+@socialIconSize: 16px;
+
+// tweak: { "type": "dropdown", "title": "Layout Style", "options": [ "Right", "Center", "Left" ], "target": "#canvas, #page, #header", "label": "Layout Style" }
+
+// tweak: { "type": "dropdown", "title": "Page Borders", "options": [ "Dotted", "Thick", "Thin", "None" ], "target": "#page, .page-divider, #header", "label": "Page Borders" }
+
+// tweak: { "type": "checkbox", "title": "Underline Body Links", "active": "false", "target": "#page", "label": "Underline Body Links" }
+
+// tweak: { "type": "dropdown", "title": "Gallery Page Controls", "options": [ "Tiny Thumbnails", "Bullets", "Numbers", "Simple", "Hidden" ], "target": ".project-controls", "category": "Gallery Styles", "showOnlyWhenPresent": ".collection-type-gallery", "label": "Gallery Page Controls" }
+
+// tweak: { "type": "checkbox", "title": "Gallery Auto Play", "target": "#galleryWrapper", "js": "true", "category": "Gallery Styles", "showOnlyWhenPresent": ".collection-type-gallery", "label": "Gallery Auto Play" }
+
+// tweak: { "type": "value", "title": "Gallery Play Speed", "min": 1, "max": 5, "step": 0.1, "target": "#galleryWrapper", "js": "true", "category": "Gallery Styles", "showOnlyWhenPresent": ".collection-type-gallery", "label": "Gallery Play Speed" }
+@galleryPlaySpeed: 3.0;
+
+// tweak: { "type": "dropdown", "title": "Social Icon Style", "options": [ "Normal", "Round", "Square" ], "default": "Normal", "target": "#socialLinks", "showOnlyWhenPresent": "#socialLinks", "label": "Social Icon Style" }
+
+// tweak: { "title": "tweak-template-social-icon-standard-color", "label": "Standard Color", "type": "checkbox", "active": false, "showOnlyWhenPresent": "#socialLinks", "target": "#socialLinks" }
+
+// tweak: { "type": "checkbox", "title": "Hide Social Icons", "default": "false", "target": "#socialLinks", "showOnlyWhenPresent": "#socialLinks", "label": "Hide Social Icons" }
+
+
+
+/* Products */
+
+// tweak: { "type": "checkbox", "title": "Show Category Navigation", "active": "false", "target": "#header, #categoryNav", "showOnlyWhenPresent": ".collection-type-products", "category": "Products", "label": "Show Category Navigation" }
+
+// tweak: { "type": "font", "title": "Category Nav Font", "target": "#header, #categoryNav", "category": "Products", "showOnlyWhenPresent": ".collection-type-products.show-category-navigation", "label": "Category Nav Font" }
+.category-nav-font {
+  font-family: "futura-pt", Helvetica, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+// tweak: { "type": "color", "title": "Category Nav Color", "target": "#header, #categoryNav", "category": "Products", "showOnlyWhenPresent": ".collection-type-products.show-category-navigation", "label": "Category Nav Color" }
+@categoryNavColor: #999999;
+
+// tweak: { "type": "color", "title": "Category Nav Active Color", "target": "#header, #categoryNav", "category": "Products", "showOnlyWhenPresent": ".collection-type-products.show-category-navigation", "label": "Category Nav Active Color" }
+@categoryNavActiveColor: #111111;
+
+
+
+// --------------------------------------------
+// SVG Icon in Templates
+// For use in templates where social icons are
+// hard coded.
+// --------------------------------------------
+
+// Wrapper Class for SVG Icons
+@social-icons-wrapper: 'social-links';
+
+// Set Icon Custom Color Name from TWEAK
+@social-icons-color: @socialIconColor;
+
+// Set Class name from Standard Color Checkbox
+@social-icons-standard-color: 'tweak-template-social-icon-standard-color';
+
+// Set Icon Size Class Name from TWEAK
+@social-icons-size-custom: @socialIconSize;
+
+// Set Icon Style Class Names from TWEAK
+@social-icons-style-regular:            'social-icon-style-normal';
+@social-icons-style-circle--knockout:   'social-icon-style-round';
+@social-icons-style-rounded--knockout:  'social-icon-style-square';
+
+// These are not used in this template, but need to be here or the mixins
+// in svg-icon-templates.less freak out.
+@social-icons-style-circle--border:     'tweak-template-social-icon-style-circle-border';
+@social-icons-style-circle--solid:      'tweak-template-social-icon-style-circle-solid';
+@social-icons-style-square--border:     'tweak-template-social-icon-style-square-border';
+@social-icons-style-square--knockout:   'tweak-template-social-icon-style-square-knockout';
+@social-icons-style-square--solid:      'tweak-template-social-icon-style-square-solid';
+@social-icons-style-rounded--border:    'tweak-template-social-icon-style-rounded-border';
+@social-icons-style-rounded--solid:     'tweak-template-social-icon-style-rounded-solid';
+
+@import 'svg-icon-templates';

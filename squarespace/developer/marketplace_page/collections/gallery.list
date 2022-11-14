@@ -1,0 +1,46 @@
+<div id="galleryWrapper">
+
+  <div id="slideshowWrapper">
+
+    <div id="slideshow">
+      {.repeated section items}
+        <div class="slide" data-slide-id="{id}" data-slide-url="{urlId}">
+          {.equal? customContent.customType "manifoldGalleryListing"}
+            {.section customContent}
+              <div data-widget="m-listing-image-expandable" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+            {.end}
+          {.or}
+            {.image?}
+              <img {@|image-meta} data-load="false"/>
+              <noscript><img src="{assetUrl}?format=1500w"></noscript>
+            {.end}
+            {.video?}{@|video}{.end}
+          {.end}
+        </div>
+      {.end}
+    </div>
+  </div>
+
+  <div id="simpleControls">
+      <span class="control prev-slide">prev</span> / <span class="control next-slide">next</span>
+  </div>
+
+  <div id="numberControls" class="gallery-controls">
+    {.repeated section items}
+      <span class="number">{@index}</span>
+    {.end}
+  </div>
+
+  <div id="dotControls" class="gallery-controls">
+    {.repeated section items}
+      <span class="dot">&middot;</span>
+    {.end}
+  </div>
+
+  <div id="tinyThumbControls" class="gallery-controls">
+    {.repeated section items}
+      <span class="tiny-thumb"><img {@|image-meta} data-load="false" height="20"/></span>
+    {.end}
+  </div>
+
+</div>

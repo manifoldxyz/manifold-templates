@@ -1,0 +1,34 @@
+/** Connect widget styling **/
+#topNav nav li #m-connect-container {
+  display: inline-block;
+  height: @nav-font-font-size*2;
+  vertical-align: middle;
+  padding: (@site-title-font-font-size*1.2 - @nav-font-font-size*2)/2 0;
+
+  .m-connect {
+    display: inline-block;
+    height: @nav-font-font-size*2;
+
+    button {
+      display: inline-flex;
+      height: 100%;
+      color: @navColor;
+      font-size: @nav-font-font-size;
+      border: none;
+      background: transparent;
+      justify-content: center;
+      align-items: center;
+
+      span {
+        display: inline-block;
+        line-height: @nav-font-font-size*2;
+        &.m-connection-chain-id {
+          margin-right: 0.5rem;
+        }
+      }
+      &:hover {
+        color: @navHoverColor;
+      }
+    }
+  }
+}

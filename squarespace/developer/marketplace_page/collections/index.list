@@ -1,0 +1,81 @@
+<div id="projectPages" data-collection-id="{id}">
+  {.section collection}
+    {.repeated section collections}
+      <div class="project {typeLabel}-project" data-url="/{urlId}/" {.if passwordProtected}data-type-protected{.end}>
+      {.equal? typeName "gallery"}
+        <div class="project-meta">
+          {.section title}<h2 class="project-title">{@}</h2>{.end}
+          {.section description}<div class="project-description">{@}</div>{.end}
+        </div>
+        <div class="image-list">
+        {.repeated section items}
+          <div class="image">
+            {#  Manifold Gallery Listing custom handling  }
+            {.equal? customContent.customType "manifoldGalleryListing"}
+              {.section customContent}
+                <div data-widget="m-listing-image-expandable" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+              {.end}
+            {.or}
+              {.image?}
+                <img {@|image-meta} class="loading" data-load="false"/>
+                <noscript><img src="{assetUrl}?format=500w"></noscript>
+              {.end}
+              {.video?}{@|video load-false}{.end}
+            {.end}
+            <div class="image-meta">
+              {.equal? customContent.customType "manifoldGalleryListing"}
+                {.equal? customContent.useListingName true}
+                  {.section customContent}
+                    <div data-widget="m-listing-name" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+                  {.end}
+                {.or}
+                  {.section title}<span class="image-title"><strong>{@}</strong></span>{.end}
+                {.end}
+                {.equal? customContent.useListingDescription true}
+                  {.section customContent}
+                    <div data-widget="m-listing-description" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+                  {.end}
+                {.or}
+                  {.section body}<span class="image-desc">{@}</span>{.end}
+                {.end}
+              {.or}
+                {.section title}<span class="image-title"><strong>{@}</strong></span>{.end}
+                {.section body}<span class="image-desc">{@}</span>{.end}
+              {.end}
+            </div>
+          </div>
+        {.end}
+        </div>
+      {.or}
+        <!-- Will be fetched on-demand -->
+      {.end}
+      </div>
+    {.end}
+  {.end}
+
+  <div class="project-controls">
+    <div>
+      <div id="projectNav"><span class="prev-project">prev</span> / <span class="next-project">next</span></div>
+      <a href="#">Back to {collection.title}</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div id="projectThumbs" >
+  <div class="wrapper">
+    {.section collection}
+      {.repeated section collections}
+        <a class="project{.section tags}{.repeated section @} tag-{@}{.end}{.end}" href="/{urlId}/"{.if passwordProtected} data-type-protected{.end}>
+          <div>
+            <div class="project-image"><div class="intrinsic"><div class="content-fill">{.section mainImage}<img {@|image-meta} data-load="false"/><noscript><img src="{assetUrl}?format=500w"></noscript>{.end}</div></div><div class="project-item-count">{itemCount}</div></div>
+            <div class="project-title">{navigationTitle}</div>
+          </div>
+        </a>
+      {.end}
+    {.end}
+
+  </div>
+</div>

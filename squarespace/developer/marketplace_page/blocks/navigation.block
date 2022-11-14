@@ -1,0 +1,56 @@
+<div id="topNav" data-content-field="navigation">
+<nav class="main-nav">
+  <ul>
+  {.if items || userAccountsContext.showSignInLink}
+  {.repeated section items}
+
+      <li class="{.section collection}{typeLabel}-collection{.end}{.section active} active-link{.end}">
+
+        {.index?}
+          {.section collection}
+            <a href="{fullUrl}">{navigationTitle}</a>
+          {.end}
+        {.or folder?}
+          {# DO NOT REMOVE THIS EMPTY ONCLICK TAG! This is what allows iOS devices to recognize hover effects on click.}
+          <a onclick="">{collection.navigationTitle}</a>
+          <div class="subnav">
+            <ul>
+              {.repeated section items}
+                {.collection?}
+                  <li class="{collection.typeLabel}-collection{.section active} active-link{.end}">
+                    <a href="{collection.fullUrl}">{collection.navigationTitle}</a>
+                  </li>
+                {.end}
+                {.section externalLink}
+                  <li class="external-link">
+                    <a href="{url}"{.section newWindow} target="_blank"{.end}>{title}</a>
+                  </li>
+                {.end}
+              {.end}
+            </ul>
+          </div>
+
+        {.or}
+
+          {.section collection}
+            <a href="{fullUrl}">{navigationTitle}</a>
+          {.end}
+
+          {.section externalLink}
+            <a href="{url}"{.section newWindow} target="_blank"{.end}>{title}</a>
+          {.end}
+
+
+        {.end}
+
+      </li>
+
+  {.end}
+  {.end}
+  <li>
+    {# check the Connect Widget docs for more details: https://docs.manifold.xyz/v/manifold-for-developers/client-widgets/connect-widget }
+    <div id="m-connect-container" data-widget="m-connect" data-network="5" data-show-chain="true" ></div>
+  </li>
+  </ul>
+</nav>
+</div>

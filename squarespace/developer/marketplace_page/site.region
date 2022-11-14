@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {.if template.mobileStylesEnabled}
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {.end}
+  {squarespace-headers}
+  {#  connect widget  }
+  <script async src="//connect.manifoldxyz.dev/2.0.13/connect.umd.min.js"></script>
+  <link rel="stylesheet" href="//connect.manifoldxyz.dev/2.0.13/connect.css" />
+  {#  marketplace widget  }
+  <script async src="//marketplace.manifoldxyz.dev/latest/marketplace.umd.min.js"></script>
+  <link rel="stylesheet" href="//marketplace.manifoldxyz.dev/latest/marketplace.css" />
+</head>
+{.if template.mobileStylesEnabled}{.or}<!-- Mobile Styles Disabled -->{.end}
+<body class="{squarespace.page-classes}{.section website}{.section logoImageUrl} logo-image{.or} site-title{.end}{.end}<squarespace:navigation navigationId="mainNav">{.if items.0} has-primary-nav{.end}</squarespace:navigation>" id="{squarespace.page-id}">
+
+  <div id="canvas">
+
+      <squarespace:navigation navigationId="mainNav" template="mobile-navigation" />
+
+    <header id="header">
+      <div id="logo" data-content-field="site-title">
+        {.section website}
+        <h1 class="logo"><a href="/">{.if logoImageUrl}<img src="{logoImageUrl}?format=1000w" alt="{siteTitle}" />{.or}{siteTitle}{.end}</a></h1>
+        {.section siteTagLine}<div class="logo-subtitle">{@}</div>{.end}
+        {.end}
+      </div>
+      <script type="module">
+        Y.use('squarespace-ui-base', function(Y) {
+          Y.all("#header .logo, #header .logo-subtitle").each(function (text) {
+            text.plug(Y.Squarespace.TextShrink, {
+              parentEl: Y.one('#header'),
+              triggerWidth: 750
+            });
+          });
+        });
+
+        // Show spinner on page load if loading bookmarked url
+        if (window.location.hash && window.location.hash !== '#') {
+          document.querySelector('body').className += ' index-loading';
+        }
+      </script>
+      <squarespace:navigation navigationId="mainNav" template="navigation" />
+    </header>
+
+    <div class="page-divider"></div>
+
+    <div class="extra-wrapper page-header">
+      <squarespace:block-field id="page-header-{collection.id}" description="Page Header" columns="12" label="Header Content: {collection.title}" />
+    </div>
+
+    <section id="page" role="main" data-content-field="main-content">
+      <!-- CATEGORY NAV -->
+      {.section collection}{.equal? typeName "products"}{.section categories}
+      <div id="categoryNav">
+        <input type="checkbox" name="category-nav-toggle" id="categoryNavToggle" class="category-nav-toggle hidden" />
+        <label for="categoryNavToggle" class="category-nav-toggle-label" onclick></label>
+        <nav class="category-nav">
+          <ul class="category-nav-links">
+            <li class="filter"><a>Filter{.if categoryFilter}: {categoryFilter}{.end}</a></li>
+            <li{.if categoryFilter}{.or} class="active-link all"{.end}><a href="{fullUrl}">All</a></li>
+            {.repeated section @}
+            <li{.equal? categoryFilter @} class="active-link"{.end}><a href="{fullUrl}?category={@|url-encode}">{@}</a></li>
+            {.end}
+          </ul>
+        </nav>
+      </div>
+      {.end}{.end}{.end}
+      {squarespace.main-content}
+    </section>
+
+    <div class="extra-wrapper page-footer">
+      <squarespace:block-field id="page-footer-{collection.id}" description="Page Footer" columns="12" label="Footer Content: {collection.title}" />
+    </div>
+
+    <div class="page-divider"></div>
+
+    <footer id="footer">
+      <squarespace:block-field id="footerBlock" columns="1" label="Footer Content" />
+      {.section website}
+        {.if socialAccounts}
+        <div id="socialLinks" class="social-links sqs-svg-icon--list" data-content-field="connected-accounts">
+          {@|apply sqs-social-links}
+        </div>
+        {.end}
+      {.end}
+    </footer>
+
+  </div>
+
+  <div></div>
+
+  <squarespace:script src="site-bundle.js" combo="false"/>
+
+  {squarespace-footers}
+
+{.if template.mobileStylesEnabled}{.or}
+  <script type="module">
+    Y.use('node', function() {
+      Y.on('domready', function() {
+        var move;
+        Y.all('.subnav a').each(function(a) {
+          a.on('touchstart', function() {
+            move = false;
+          });
+          a.on('touchmove', function() {
+            move = true;
+          });
+          a.on('touchend', function() {
+            if (move === false) {
+              window.location = a.getAttribute('href');
+            }
+          });
+        });
+      });
+    });
+  </script>
+{.end}
+
+</body>
+
+</html>

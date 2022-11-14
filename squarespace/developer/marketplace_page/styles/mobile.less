@@ -1,0 +1,257 @@
+
+html.touch {
+  #galleryWrapper .sqs-gallery-design-stacked-slide {
+    left: 999em;
+    &.sqs-active-slide {
+      left: 0;
+    }
+  }
+  @media only screen and (min-device-width: 641px) {
+    #simpleControls { display: block !important; }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+
+  .gallery-controls { display: none !important; }
+  #simpleControls { display: none !important; }
+
+  .layout-style-right.site-title h1.logo { margin-right: 0; }
+  #logo { float: none !important; }
+  h1.logo { text-align: center !important; display: block !important; letter-spacing: 0 !important; margin: 0 !important; }
+  h1.logo.no-nav-items { margin-top: 25px !important;}
+  // .logo.landscape { height: auto; }
+  .logo-image .logo  { height: @mobileLogoSize; }
+  .logo-image .logo img { display: inline; }
+  .logo-subtitle { text-align: center; }
+
+  // collapse sqs layouts
+  @import 'sqs-grid-breaker';
+
+  #canvas { margin: 0 auto; padding: 20px; }
+
+  #slideshowWrapper { margin: 0 !important; }
+  #galleryWrapper { position: static; }
+  .gallery-controls { display: none !important; }
+  #slideshow img { width: 100%; }
+  #slideshow .slide { margin-bottom: 20px; position: static !important; opacity: 1 !important; height: auto !important; }
+  #slideshow .slide img { position: static !important; }
+
+  #projectThumbs {
+    > .wrapper { width: 100% + @TGutter; margin-left: -@TGutter; margin-top: -@TGutter; }
+    .project { float: left; margin-left: @avenueConvGutter; margin-top: @TGutter; width: (100% / 2) - @avenueConvGutter; cursor: pointer;
+      .project-image { opacity: 1; -webkit-transition: initial; }
+
+      .project-image { background: @indexThumbBackground; margin-bottom: @TGutter;
+        .intrinsic { padding-bottom: @TRatio * 1%; line-height: 0; text-align: center; position: relative; overflow: hidden; }
+        .content-fill { position: absolute; top: 0; left: 0; bottom: 0; right:0; }
+      }
+
+      .project-title { .thumb-title-font; color: @indexThumbTitles; }
+      .project-item-count { display: none; }
+
+    }
+    .project:nth-child(odd) { clear: left !important; }
+    (~".project:nth-child(@{TPerRow}n+1)") { clear: none; }
+  }
+
+  #header {
+    margin-bottom:30px;
+  }
+
+  .site-title, .logo-image {
+    #topNav nav li a { padding: (@site-title-font-font-size*1.2 - @nav-font-font-size*2)/2 0 0; }
+  }
+
+  .layout-style-left,
+  .layout-style-right,
+  .layout-style-center {
+    &.index-item-layout-auto,
+    &.index-item-layout-left,
+    &.index-item-layout-right,
+    &.index-item-layout-center {
+      #projectPages .project {
+        margin: 0;
+
+        .project-meta {
+          margin: 0 auto 20px;
+          width: auto !important;
+          float: none !important;
+        }
+      }
+    }
+  }
+
+  #projectPages.page-open + #projectThumbs { display: none; }
+
+  // blog
+
+  .article-list, .article-wrapper { margin: 0 !important; }
+    #sidebar { width: auto !important; position: static !important; margin-top: @pagePadding; }
+
+  .has-primary-nav #canvas {
+    padding-top:0;
+  }
+
+  #header #topNav { display: none; }
+  #mobileMenuLink {
+    margin: 0 0 25px;
+    display: block;
+    .nav-font;
+    padding:0 0 15px;
+    background-color: @canvasBackground;
+    text-align:center;
+    border-bottom: 1px solid @pageBorderColor;
+    a { cursor: pointer; display: block; margin: 0; font-size: 16px !important; color:@navColor; }
+  }
+
+  .page-borders-none #mobileMenuLink { border-bottom: 0px solid @pageBorderColor }
+  .page-borders-thick #mobileMenuLink { border-bottom: 4px solid @pageBorderColor }
+  .page-borders-dotted #mobileMenuLink { border-bottom: 1px dotted @pageBorderColor }
+
+  #header #mobileNav { position: static; top: auto; }
+
+  #mobileNav {
+    background: @canvasBackground; margin:0 0 15px;
+
+    .wrapper {
+      padding: 0 0 1em;
+      border-bottom: 1px solid @pageBorderColor;
+    }
+
+    nav + nav { margin: 0 0 1em; }
+
+    nav ul li,
+    .folder-toggle-label {
+      display: block;
+      text-align: center;
+      float: none !important;
+    }
+
+    // [TMP-5220] This was formerly just `fadeout(@navColor, 30%)`. This
+    // presents obvious issues, namely that setting @navColor to any color where
+    // alpha < 0.3 will result in a completely transparent nav on mobile. The
+    // solution here is multi-part: we want to keep the current implementation
+    // for most cases, and in cases where the mobile links are completely
+    // transparent, make them slightly visible in hopes that users will see them
+    // and realize their alpha is too low. This check is in place UNLESS users
+    // *explicitly* set their alpha to less than 0.05 (our lower limit in the
+    // other cases), in which case we just use that value.
+    .mixin-nav-color(@color) when (alpha(@color) >= 0.35) {
+      color: fadeout(@color, 30%);
+    }
+    .mixin-nav-color(@color) when (alpha(@color) < 0.35) and (alpha(@color) >= 0.05) {
+      color: fade(@color, 5%);
+    }
+    .mixin-nav-color(@color) when (alpha(@color) < 0.05) {
+      color: @color;
+    }
+
+    a,
+    .folder-toggle-label {
+      .nav-font;
+      .mixin-nav-color(@navColor);
+      font-size: 16px;
+      line-height: 2.5em;
+      display: block;
+      text-align: center;
+    }
+
+    .folder-toggle-label {
+      text-indent: 1em; // offset :after content
+    }
+
+    .subnav {
+      display: none;
+    }
+    .subnav a { line-height: 1.5em; }
+
+    .active-link a { color: @navColor; }
+
+    // li a:hover { color: @navColor; }
+    // li a:after { display: none !important; }
+
+    input.folder-toggle-box + .folder-toggle-label:after {
+      content: '+';
+      padding-left: .5em;
+    }
+    input.folder-toggle-box:checked + .folder-toggle-label:after {
+      content: '–';
+      padding-left: .45em;
+    }
+    input.folder-toggle-box:checked + .folder-toggle-label + .subnav {
+      display: block;
+      margin-bottom: .5em;
+    }
+
+  }
+
+  /* CATEGORY NAV MOBILE
+  ----------------------------------------------*/
+
+  .category-nav-toggle-label {
+    display: block;
+    visibility: visible;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
+    top: 0.5em;
+    right: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.8em;
+    text-align: right;
+    &:after {
+      font-size: 21px;
+      content: "+";
+      display: block;
+      text-align: right;
+    }
+  }
+
+  #categoryNav {
+    margin-bottom: 25px;
+    position: relative;
+    padding: 0 12px;
+    background-color: rgba(150, 150, 150, 0.1);
+    ul {
+      text-align: left;
+      font-size: 14px;
+      margin: 0px 10% 0 0;
+      padding: 0;
+      line-height: 1.8em;
+      li {
+        margin: 0;
+        display: none;
+        &.filter {
+          display: block;
+          visibility: visible;
+        }
+      }
+      li a {
+        display: block;
+        font-size: 14px;
+        padding: 0.5em 0;
+      }
+    }
+  }
+
+  #categoryNav #categoryNavToggle:checked {
+    + .category-nav-toggle-label {
+      z-index: 0;
+      &:after {
+        content: '–';
+      }
+    }
+    ~ .category-nav {
+      ul {
+        z-index: 2;
+        li:not(.filter) {
+          display: block;
+        }
+      }
+    }
+  }
+
+}
+

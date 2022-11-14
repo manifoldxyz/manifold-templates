@@ -1,0 +1,95 @@
+<div class="article-list hfeed">
+
+{.repeated section items}
+
+<article class="{@|item-classes}" id="article-{id}" data-item-id="{id}">
+
+  <!--SPECIAL CONTENT-->
+
+  {.section promotedBlock}
+    <div class="special-content">{@}</div>
+  {.end}
+
+
+  <!--POST HEADER-->
+
+  <header>
+    <h1 class="entry-title">
+      {.passthrough?}
+        <a href="{sourceUrl}">{title} <span>&rarr;</span></a>
+      {.or}
+        <a href="{fullUrl}" data-content-field="title">{title}</a>
+      {.end}
+    </h1>
+    <div class="meta">
+      <span class="date"><time class="published" datetime="{addedOn|date %F}">{addedOn|date %B %e, %Y}</time></span>
+    </div>
+  </header>
+
+  <!--POST BODY-->
+
+  {.excerpt?}
+    <div class="body entry-content">{excerpt} <a class="read-more" href="{fullUrl}">Read More</a></div>
+  {.or}
+    {.section body}<div class="body entry-content">{@}</div>{.end}
+    {.passthrough?}{.or}{.section sourceUrl}<div class="entry-source">Source: <a href="{sourceUrl}" target="_blank">{sourceUrl|truncate 42}</a></div>{.end}{.end}
+  {.end}
+
+
+  <!--POST FOOTER-->
+
+  <footer>
+    <div class="meta">
+
+      {postItemInjectCode}
+
+      {.if categories || tags}
+      <div class="first meta-row">
+        {.section categories}<span class="categories"><span class="categories-title">In</span> {.repeated section @}<a href="/{collection.urlId}/category/{@|url-encode}" rel="tag">{@}</a>{.alternates with}, {.end}</span>{.end}
+        {.section tags}<span class="tags"><span class="tags-title">Tags</span> {.repeated section @}<a href="/{collection.urlId}/tag/{@|url-encode}" rel="tag">{@}</a>{.alternates with}, {.end}</span>{.end}
+      </div>
+      {.end}
+
+      <div class="second meta-row">
+        {@|like-button}
+        {.comments?}
+          <span class="comments">
+            {.if websiteSettings.disqusShortname}
+              {@|comment-link}
+            {.or}
+              <a href="{fullUrl}#comments-{id}">
+                {.section publicCommentCount}
+                  {@} Comment{@|pluralize}
+                {.or}
+                  Comment
+                {.end}
+              </a>
+            {.end}
+          </span>
+        {.end}
+        {@|social-button-inline}
+      </div>
+
+    </div>
+  </footer>
+
+
+  </article>
+{.alternates with}
+  <div class="post-divider"></div>
+{.end}
+
+
+<!--PAGINATION-->
+
+{.section pagination}
+  <nav class="pagination clear">
+      {.section prevPage}<a class="newer-posts" href="{prevPageUrl}">&larr; Newer Posts</a>{.end}
+      {.section nextPage}<a class="older-posts" href="{nextPageUrl}">Older Posts &rarr;</a>{.end}
+  </nav>
+{.end}
+
+</div>
+
+<aside id="sidebar" data-content-field="Sidebar"><squarespace:block-field id="sidebarBlocks" label="Blog Sidebar" /></aside>
+

@@ -1,0 +1,56 @@
+{.if items || userAccountsContext.showSignInLink}
+  <div id="mobileNav" class="">
+    <div id="mobileNavWrapper" class="wrapper">
+      <nav class="main-nav mobileNav">
+        <ul>
+          {.repeated section items}
+
+            {.index?}
+              <li class="{.section collection}{typeLabel}-collection{.end}{.section active} active-link{.end}">
+                {.section collection}
+                  <a href="{fullUrl}">{navigationTitle}</a>
+                {.end}
+              </li>
+            {.or folder?}
+              <input type="checkbox" name="mobile-folder-toggle-{collection.id}" id="mobile-folder-toggle-{collection.id}" class="folder-toggle-box hidden" />
+              <label for="mobile-folder-toggle-{collection.id}" class="folder-toggle-label" >{collection.navigationTitle}</label>
+              <div class="subnav">
+                <ul>
+                {.repeated section items}
+                  <li class="{.section collection}{typeLabel}-collection{.end}{.section active} active-link{.end}{.if collection.folder} folder{.end}{.if folderActive} active-link active-folder{.end}{.section externalLink} external-link{.end}">
+                    {.section collection}
+                      <a href="{fullUrl}">{navigationTitle}</a>
+                    {.end}
+                    {.section externalLink}
+                      <a href="{url}"{.section newWindow} target="_blank"{.end}>{title}</a>
+                    {.end}
+                  </li>
+                {.end}
+                </ul>
+              </div>
+            {.or}
+              <li class="{.section collection}{typeLabel}-collection{.end}{.section active} active-link{.end}{.if collection.folder} folder{.end}{.if folderActive} active-link active-folder{.end}{.section externalLink} external-link{.end}">
+                {.section collection}
+                  <a href="{fullUrl}">{navigationTitle}</a>
+                {.end}
+                {.section externalLink}
+                  <a href="{url}"{.section newWindow} target="_blank"{.end}>{title}</a>
+                {.end}
+              </li>
+            {.end}
+
+          {.end}
+          {.if userAccountsContext.showSignInLink}
+            <li class="user-account-link">
+              <a href="#">
+                <span class="sign-in">Sign In</span>
+                <span class="my-account">My Account</span>
+              </a>
+            </li>
+          {.end}
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div id="mobileMenuLink"><a>Menu</a></div>
+{.end}
