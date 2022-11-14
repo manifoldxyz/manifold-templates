@@ -1,5 +1,11 @@
-# How to create a marketplace page in Wix
-![screenshot](./images/screenshot.png)
+# Marketplace Listing Page
+<img src="screenshot.png" width="300" />
+
+This is a simple example of a Marketplace Listing Page.
+See a deployed example on a Wix site [here](https://www.dganphoto.com/nft)
+
+## How does it work?
+In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) which will display a marketplace listing.
 
 ## Prerequisites
 1. Create a Site on Wix. Then upgrade it to a paid plan & connect a domain.
