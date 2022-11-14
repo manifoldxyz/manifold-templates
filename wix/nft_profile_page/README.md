@@ -11,7 +11,7 @@ Please make sure you set the `data-app-name`, `data-client-id` and `data-network
 In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget), which will allow a user to authenticate to your website.  Once authenticated, your app will have access to a [Data Client](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget/data-client), which allows you to retrieve information about the user's NFTs.
 
 ## Steps
-1. Go to the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element"
+1. Go to the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element" <br />
 ![Wix add custom element](./images/site-editor-embed-html-menu.png)
 2. A component with a grey inner box will appear on your page. Click the grey box and select "Code" and **copy and paste the following into the box** (make sure to replace the variables found in Configuration):
 ```
@@ -54,4 +54,5 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 </body>
 ```
 <br/>
+
 ![Wix component](./images/site-editor-embed-html-component.png)
