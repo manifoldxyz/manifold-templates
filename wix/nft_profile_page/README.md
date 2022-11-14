@@ -12,10 +12,8 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 
 ## Steps
 1. Go to the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element"
-![Wix add custom element](./images/site-editor-embed-html-component.png)
-2. A component with a grey inner box will appear on your page. Click the grey box and select "Code" and paste the following into the box (make sure to replace the variables found in Configuration):
-
-Code To Copy
+![Wix add custom element](./images/site-editor-embed-html-menu.png)
+2. A component with a grey inner box will appear on your page. Click the grey box and select "Code" and **copy and paste the following into the box** (make sure to replace the variables found in Configuration):
 ```
 <head>
     <script src="https://connect.manifoldxyz.dev/latest/connect.umd.min.js"></script>
@@ -55,3 +53,5 @@ Code To Copy
   <div id="nfts"></div>
 </body>
 ```
+<br/>
+![Wix component](./images/site-editor-embed-html-component.png)
