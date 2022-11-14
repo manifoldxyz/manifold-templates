@@ -2,7 +2,7 @@
 
 <img src="screenshot.png" width="300" />
 
-This is a simple example of an Marketplace Listing Page.
+This is a simple example of a Marketplace Listing Page.
 
 This was created using the standard create-react-app script.
 
