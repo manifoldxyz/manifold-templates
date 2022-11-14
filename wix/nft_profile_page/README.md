@@ -1,9 +1,9 @@
 # Wix NFT Profile Page
 
-<img src="screenshot.png" width="300" />
+<img src="./images/screenshot.png" width="300" />
 
 This is a simple example of an NFT Profile Page. It contains a way for someone to connect their wallet and view their NFTs.
-See a deployed example on a Wix site [here](https://www.dganphoto.com/about)
+See a deployed example on a Wix site [here](https://www.dganphoto.com/about).
 
 ## Configuration
 Please make sure you set the `data-app-name`, `data-client-id` and `data-network` in the index.html file.

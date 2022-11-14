@@ -1,8 +1,8 @@
 # Marketplace Listing Page
-<img src="screenshot.png" width="300" />
+<img src="./images/screenshot.png" width="300" />
 
 This is a simple example of a Marketplace Listing Page.
-See a deployed example on a Wix site [here](https://www.dganphoto.com/nft)
+See a deployed example on a Wix site [here](https://www.dganphoto.com/nft).
 
 ## How does it work?
 In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) which will display a marketplace listing.
