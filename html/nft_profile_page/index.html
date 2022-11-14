@@ -14,9 +14,7 @@
         const tokens = await client.getNFTsOfOwner();
         const h2 = document.createElement("h2");
         h2.innerHTML = "Your NFTs";
-        document.getElementById("nfts").appendChild(
-          document.createElement("h2")
-        )
+        document.getElementById("nfts").appendChild(h2)
         // Create a div element for each token you own
         for (let i = 0; i < tokens.length; i++) {
           const img = document.createElement("img");
@@ -38,7 +36,7 @@
         data-network="NETWORK"
         style="margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: row; justify-content: center;"
       >
-      <div id="nfts"></div>
     </div>
+    <div id="nfts"></div>
   </body>
 </html>
