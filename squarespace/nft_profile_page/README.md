@@ -1,6 +1,6 @@
 # Squarespace NFT Profile Page
 
-<img src="./images/screenshot.png" width="300" />
+<img src="./images/screenshot.png" width="500" />
 
 This is a simple example of an NFT Profile Page. It contains a way for someone to connect their wallet and view their NFTs.
 
