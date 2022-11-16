@@ -29,8 +29,8 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 3. Go into the editor for a page on your website. Click "Add Block" => "Code". A new component should appear.
 ![SQS add code block](./images/add-codeblock.png) <br />
 
-4. Click the new code component and click the Edit button. **Copy and paste the following into the box**: 
-make sure to replace the variables with your own values.
+4. Click the new code component and click the Edit button. 
+**Copy and paste the following into the box** (make sure to replace the variables with your own values): 
 ```
 <div
   data-widget="m-connect"
@@ -45,7 +45,9 @@ make sure to replace the variables with your own values.
 ![SQS connect widget](./images/connect-widget.png) <br />
 
 ### Add the Marketplace-Widget
-6. Add another code block (just as you did in step 3). Click the Edit button and **Copy and paste the following into the box**:
+6. Add another code block (just as you did in step 3). Click the Edit button and 
+**Copy and paste the following into the box** (make sure to replace the variables with your own values): 
+
 ```
 <div
   data-widget="m-layout-complete-listing"
