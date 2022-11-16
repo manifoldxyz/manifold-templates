@@ -12,7 +12,7 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 (quirk with Wix -- you need to have a paid plan to inject custom code into your site. They do have a 14 day free trial.)
 
 ## Steps
-### Adding the Connect-Widget
+### Install Widgets
 1. Go to the Wix Dashboard and click Settings => Custom Code
 ![Wix menua](./images/custom-code-menu.png)
 2. Click the Button **"+ Add Custom Code"** and paste the following into the code snippet box:
@@ -26,6 +26,8 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 ```
 - Give it the Name "Manifold Connect Widget" and make sure to Select Place Code in "Head". Then click "Apply".
 ![Wix custom code](./images/custom-code-head.png)
+
+### Add Connect-Widget
 3. Now you should have what you need to install the connect-widget. Go back to the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element"
 ![Wix add custom element](./images/site-editor-embed-code-menu.png)
 4. A component with a grey inner box will appear on your page. Click the grey box and select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
@@ -50,7 +52,7 @@ then click "Set" <br />
 6. Now on your site click "Save" and then "Publish" to make your changes live. Congratulations you should have the connect-widget installed on your site! And it should look like this. <br />
 ![connect-widget](./images/success.png)
 
-### Adding the Marketplace-Widget
+### Add Marketplace-Widget
 7. Start at the site editor for your website (editor.wix.com) then in the menu click "Add Elements" => "Embeded Code" => "Custom element" <br />
 ![Wix add custom element](./images/site-editor-embed-code-menu.png)
 8. A component with a grey inner box will appear on your page. Click the grey box and select "Choose Source" in the Element Settings menu. Select **"Server URL"** and paste this URL into the box:
