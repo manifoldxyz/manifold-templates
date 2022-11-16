@@ -2,7 +2,7 @@
 
 <img src="./images/screenshot.png" width="500" />
 
-This is a simple example of a Marketplace Listing Page.cococc
+This is a simple example of a Marketplace Listing Page
 
 ## How does it work?
 In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) which will display a marketplace listing.
@@ -27,7 +27,7 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 
 ### Add Connect-Widget
 3. Go into the editor for a page on your website. Click "Add Block" => "Code". A new component should appear.
-![SQS add code block](./images/add-custom-element.png) <br />
+![SQS add code block](./images/add-codeblock.png) <br />
 
 4. Click the new code component and click the Edit button. **Copy and paste the following into the box**: 
 make sure to replace the variables with your own values.
