@@ -1,7 +1,7 @@
 # Squarespace Marketplace Site
 
-![Squarespace gallery with custom type](assets/gallery-with-custom-type.png)
-<!-- <img src="./assets/gallery-with-custom-type.png" width="500" /> -->
+<!-- ![Squarespace gallery with custom type](images/gallery-with-custom-type.png) -->
+<img src="./images/screenshot.png" width="500" />
 
 This is an example of a Squarespace template with custom developer code to integrate Manifold Marketplace widgets.
 
@@ -76,7 +76,7 @@ The custom post type is included in the `acceptedTypes` array of [`gallery.conf`
     <div class="slide" data-slide-id="{id}" data-slide-url="{urlId}">
       {.equal? customContent.customType "manifoldGalleryListing"}
         {.section customContent}
-          <div data-widget="m-listing-image-expandable" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+          <div data-widget="m-layout-complete-listing" data-id="{@.listingId}" data-network="{@.network}"></div>
         {.end}
       {.or}
         {.image?}
