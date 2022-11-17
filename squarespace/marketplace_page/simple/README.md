@@ -57,4 +57,4 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 ```
 ![SQS add marketplace widget](./images/connect-widget-add.png) <br />
 
-5. Click Done/Save. Congratulations! You should see the marketplace widget appear on your page. And now you have both the Connect Widget and the Marketplace Widget on your page.
+7. Click Done/Save. Congratulations! You should see the marketplace widget appear on your page. And now you have both the Connect Widget and the Marketplace Widget on your page.
