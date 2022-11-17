@@ -1,2 +1,0 @@
-# Simple Squarespace Marketplace Site
-

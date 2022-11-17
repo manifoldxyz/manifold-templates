@@ -1,13 +1,15 @@
 # Squarespace Marketplace Site
 
-![Squarespace gallery with custom type](assets/gallery-with-custom-type.png)
-<!-- <img src="./assets/gallery-with-custom-type.png" width="500" /> -->
+<!-- ![Squarespace gallery with custom type](images/gallery-with-custom-type.png) -->
+<img src="./images/screenshot.png" width="500" />
 
 This is an example of a Squarespace template with custom developer code to integrate Manifold Marketplace widgets.
 
 ## How does it work?
 
 We fork a v7.0 Squarespace template ([Avenue](https://www.squarespace.com/templates/avenue-demo)), inject the [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and the [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) code site-wide, add a custom post type, and tell Squarespace's CMS how we want to display said custom post type.
+
+## Changes to SquareSpace Template
 
 ### Code injection
 
@@ -74,7 +76,7 @@ The custom post type is included in the `acceptedTypes` array of [`gallery.conf`
     <div class="slide" data-slide-id="{id}" data-slide-url="{urlId}">
       {.equal? customContent.customType "manifoldGalleryListing"}
         {.section customContent}
-          <div data-widget="m-listing-image-expandable" data-id="{@.listingId}" data-network="{@.network}" data-version="{@.version}"></div>
+          <div data-widget="m-layout-complete-listing" data-id="{@.listingId}" data-network="{@.network}"></div>
         {.end}
       {.or}
         {.image?}
@@ -95,3 +97,21 @@ For this template, `index.list` handles `gallery` collections differently, so we
 Marketplace widget styling is included in [`marketplace-widget.less`](./styles/marketplace-widget.less) (that file is also included in [`template.conf`](./template.conf)'s `stylesheets` array).
 
 [`site-overrides.less`](./styles/site-overrides.less) includes site overrides.
+
+## Steps
+1. Go to your site (we are using the Avenue Template) and click Settings => Advanced => Code Injection. Then activate Developer Mode. You should see a "Connectivity Details" section pop up.
+![SQS developer mode config](./images/repo-info.png) <br />
+2. Open a new terminal and `git clone <Git Repository link in Connectivity Details>`
+3. Now either copy and paste all the code in this repo into the cloned repo or make all the changes found in **Changes to SquareSpace Template** section above. 
+4. Then save/push your changes to the repo by doing 
+  - `git add -A`
+  - `git commit -m "your message"`
+  - `git push` 
+5. Now go back to your Squarespace site editor and add a new page. You should see a new **Gallery** option in the Collections section. Click it to add a new Gallery page.
+![SQS new gallery page](./images/gallery-page-sqs.png) <br />
+6. On the new component on the new page click "Add Images, Videos, or Listings" then click "Manifold Gallery Listing".
+![SQS gallery page add](./images/gallery-page-add-listing.png) <br />
+7. Click on the section "Manifold Gallery Listing" and fill out the fields with your information. (Network is `1` for Mainnet `5` for Goerli and set Marketplace Version to `2`).
+then make sure to click "Save & Publish".
+![SQS gallery page add](./images/gallery-page-listing-configure.png) <br />
+8. Congrats! You should now see your listing on your new gallery page.
