@@ -114,3 +114,4 @@ Marketplace widget styling is included in [`marketplace-widget.less`](./styles/m
 7. Click on the section "Manifold Gallery Listing" and fill out the fields with your information. (Network is `1` for Mainnet `5` for Goerli and set Marketplace Version to `2`).
 then make sure to click "Save & Publish".
 ![SQS gallery page add](./images/gallery-page-listing-configure.png) <br />
+8. Congrats! You should now see your listing on your new gallery page.
