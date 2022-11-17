@@ -111,5 +111,6 @@ Marketplace widget styling is included in [`marketplace-widget.less`](./styles/m
 ![SQS new gallery page](./images/gallery-page-sqs.png) <br />
 6. On the new component on the new page click "Add Images, Videos, or Listings" then click "Manifold Gallery Listing".
 ![SQS gallery page add](./images/gallery-page-add-listing.png) <br />
-7. Click on the section "Manifold Gallery Listing" and fill out the fields with your information. (Network is 1 for Mainnet and set Marketplace Version to 2).
+7. Click on the section "Manifold Gallery Listing" and fill out the fields with your information. (Network is `1` for Mainnet `5` for Goerli and set Marketplace Version to `2`).
 then make sure to click "Save & Publish".
+![SQS gallery page add](./images/gallery-page-listing-configure.png) <br />
