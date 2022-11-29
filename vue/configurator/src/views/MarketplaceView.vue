@@ -120,7 +120,6 @@ export default class MarketplaceView extends Vue {
 
 :where(.manifold) {
   font-family: var(--base-font);
-  background-color: var(--manifold-color-page--background);
   --manifold-color-page--background: #121212;
   --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
   --manifold-color-connect--text: #fff;
