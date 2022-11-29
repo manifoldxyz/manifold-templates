@@ -296,14 +296,18 @@ div[data-widget="m-connect"] {
   font-size: 18px;
   line-height: 1.5;
 }
-.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-links a {
+.manifold.m-layout-listing .m-listing-info .m-main .m-links .m-link-action {
   border: 1px solid var(--manifold-color-theme--secondary);
   background: none;
   text-transform: uppercase;
   font-size: 11px;
   margin-left: 0;
 }
-.manifold.m-layout-listing .m-listing-info .m-main .manifold.m-links a:hover {
+.manifold.m-layout-listing
+  .m-listing-info
+  .m-main
+  .m-links
+  .m-link-action:hover {
   background: var(--manifold-color-link-background--hover);
 }
 .manifold.m-layout-listing .m-listing-info .m-aside > button {
