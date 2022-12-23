@@ -4,8 +4,8 @@ interface WidgetLocation {
 }
 
 export const ConnectWidgetLocation: WidgetLocation = {
-  javascript: "https://connect.manifoldxyz.dev/2.0.15/connect.umd.js",
-  css: "https://connect.manifoldxyz.dev/2.0.15/connect.css",
+  javascript: "https://connect.manifoldxyz.dev/2.0.19/connect.umd.js",
+  css: "https://connect.manifoldxyz.dev/2.0.19/connect.css",
 };
 
 export const MarketplaceWidgetLocation: WidgetLocation = {
