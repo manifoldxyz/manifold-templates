@@ -87,11 +87,11 @@ export default class MarketplaceView extends Vue {
                     label: "Full Listing",
                   },
                   {
-                    value: "m-catalog-card",
+                    value: "m-card-catalog",
                     label: "Catalog Card",
                   },
                   {
-                    value: "m-countdown-card",
+                    value: "m-card-countdown",
                     label: "Countdown Card",
                   },
                 ],
