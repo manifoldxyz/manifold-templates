@@ -275,13 +275,17 @@ export default class Configurator extends Vue {
         continue;
       }
       let element = parentElement.firstElementChild;
-      // Set div output text
-      outputDiv.innerText =
-        element?.outerHTML
-          .replace(/id="[a-zA-Z0-9-]*" ?/, "")
-          .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
-          .replace(" >", ">")
-          .replaceAll("  ", " ") ?? "";
+      if (element) {
+        // clone the element to only get the tag HTML without the children
+        element = element.cloneNode(false) as HTMLElement;
+        // Set div output text
+        outputDiv.innerText =
+          element.outerHTML
+            .replace(/id="[a-zA-Z0-9-]*" ?/, "")
+            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
+            .replace(" >", ">")
+            .replaceAll("  ", " ") ?? "";
+      }
     }
   }
 }
