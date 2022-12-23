@@ -113,7 +113,7 @@
           :id="`widget-${widgetIndex}`"
           :data-widget="widget.dataWidget"
         ></div>
-        <div v-else :id="`widget-${widgetIndex}`"></div>
+        <!-- NOTE: don't load the other widgets since we're assuming mutation observer pattern -->
       </div>
     </el-main>
   </el-container>
@@ -151,24 +151,18 @@ export interface ConfiguratorDefinition {
           // Clear current widget
           const parentElement = document.getElementById(
             `widget-parent-${index}`
-          )!;
-          let element = parentElement.firstElementChild!;
-          if (element.id !== `widget-${index}`) {
-            // Widget element was fully replaced, so clear out the replacement divs and recreate the original
-            parentElement.innerHTML = "";
-            element = document.createElement("div");
-            element.setAttribute("id", `widget-${index}`);
-            if (widget.dataWidget) {
-              element.setAttribute("data-widget", widget.dataWidget);
-            }
-            parentElement.appendChild(element);
-          } else {
-            // Widget element still exists, reset it
-            element.innerHTML = "";
-            // Set v-node to undefined so it reloads
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            element._vnode = undefined;
+          );
+          if (!parentElement) {
+            continue;
+          }
+          const element =
+            parentElement.firstElementChild || document.createElement("div");
+          element.id = `widget-${index}`;
+          if (
+            widget.dataWidget &&
+            (element as HTMLElement).dataset?.widget !== widget.dataWidget
+          ) {
+            element.setAttribute("data-widget", widget.dataWidget);
           }
 
           // Validate props
@@ -199,7 +193,10 @@ export interface ConfiguratorDefinition {
                 value = value.toString().trim();
               }
               if (value !== prop.defaultValue) {
-                element.setAttribute(propKey, value.toString());
+                // only change if it's different
+                if (value !== element.getAttribute(propKey)) {
+                  element.setAttribute(propKey, value.toString());
+                }
               } else {
                 element.removeAttribute(propKey);
               }
@@ -213,10 +210,18 @@ export interface ConfiguratorDefinition {
                 value = value.toString().trim();
               }
               if (value !== prop.defaultValue) {
-                element.setAttribute(propKey, value.toString());
+                // only change if it's different
+                if (value !== element.getAttribute(propKey)) {
+                  element.setAttribute(propKey, value.toString());
+                }
               } else {
                 element.removeAttribute(propKey);
               }
+            }
+            // NOTE: using mutation observers; mount element only after data-widget is set so that attribute observer
+            // correctly picks up on the node
+            if (!parentElement.firstElementChild) {
+              parentElement.appendChild(element);
             }
           }
 
@@ -256,33 +261,31 @@ export default class Configurator extends Vue {
       document.head.append(link);
     }
     this.updateDivOutput();
-    let timeout = 5;
-    // Trigger widget refresh after 200ms (need to wait for components to render)
-    const mInterval = window.setInterval(() => {
-      timeout--;
-      if (
-        document.querySelectorAll(`div[id^='widget-']`).length ===
-          (this.configuration?.widgets.length ?? 0) * 2 ||
-        timeout === 0
-      ) {
-        clearInterval(mInterval as number);
-        if (timeout !== 0) {
-          window.dispatchEvent(new Event("m-refresh-widgets"));
-        }
-      }
-    }, 1000);
   }
+
+  /**
+   * updates the text of the output div
+   */
   updateDivOutput(): void {
-    for (let index = 0; index < this.configuration!.widgets.length; index++) {
-      const parentElement = document.getElementById(`widget-parent-${index}`)!;
-      let element = parentElement.firstElementChild!;
-      // Set div output text
-      document.getElementById(`div-output-${index}`)!.innerText =
-        element.outerHTML
-          .replace(/id="[a-zA-Z0-9-]*" ?/, "")
-          .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
-          .replace(" >", ">")
-          .replaceAll("  ", " ");
+    if (!this.configuration) return;
+    for (let index = 0; index < this.configuration.widgets.length; index++) {
+      const parentElement = document.getElementById(`widget-parent-${index}`);
+      const outputDiv = document.getElementById(`div-output-${index}`);
+      if (!parentElement || !outputDiv) {
+        continue;
+      }
+      let element = parentElement.firstElementChild;
+      if (element) {
+        // clone the element to only get the tag HTML without the children
+        element = element.cloneNode(false) as HTMLElement;
+        // Set div output text
+        outputDiv.innerText =
+          element.outerHTML
+            .replace(/id="[a-zA-Z0-9-]*" ?/, "")
+            .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
+            .replace(" >", ">")
+            .replaceAll("  ", " ") ?? "";
+      }
     }
   }
 }
