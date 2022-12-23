@@ -13,6 +13,16 @@ import {
   MarketplaceWidgetLocation,
 } from "@/config/widgetLocations";
 
+declare global {
+  interface WindowEventMap {
+    "m-marketplace_widget_injected": CustomEvent<{
+      contractAddress: string;
+      listingId: string;
+      key: string;
+    }>;
+  }
+}
+
 @Options({
   components: {
     Configurator,
@@ -105,11 +115,37 @@ export default class MarketplaceView extends Vue {
                 defaultValue: "",
                 required: true,
               },
+              "data-widget-key": {
+                name: "Widget Key",
+                type: WidgetPropType.STRING,
+                value: "",
+                defaultValue: "",
+                required: false,
+              },
             },
           },
         ],
       },
     };
+  }
+
+  mounted() {
+    window.addEventListener(
+      "m-marketplace_widget_injected",
+      this.onMarketplaceWidgetInjected
+    );
+  }
+
+  beforeUnmount(): void {
+    window.removeEventListener(
+      "m-marketplace_widget_injected",
+      this.onMarketplaceWidgetInjected
+    );
+  }
+
+  onMarketplaceWidgetInjected(event: CustomEvent) {
+    const { detail } = event;
+    console.log("Marketplace Widget Injected", detail);
   }
 }
 </script>
