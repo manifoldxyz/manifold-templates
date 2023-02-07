@@ -16,11 +16,9 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
+  :root {
     color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
+    color: var(--manifold-text--color--body);
+    background: var(--manifold-page--color--background);
   }
 }
