@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://connect.manifoldxyz.dev/latest/connect.umd.min.js"></script>
-    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/latest/connect.css">
-    <script src="https://marketplace.manifoldxyz.dev/latest/marketplace.umd.min.js"></script>
-    <link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/latest/marketplace.css">
+    <!-- replace the specific version with `latest` to get the most up-to-date version of the widgets. -->
+    <!-- WARNING: `latest` may cause breakage, so use with caution -->
+    <script src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.min.js"></script>
+    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css" />
+
+    <script src="https://identity.manifoldxyz.dev/2.1.0/walletIdentity.umd.min.js"></script>
+    <link rel="stylesheet" href="https://identity.manifoldxyz.dev/2.1.0/walletIdentity.css" />
+
+    <script src="https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.umd.min.js"></script>
+    <link rel="stylesheet" href="https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.css" />
+
+    <script src="https://marketplace.manifoldxyz.dev/3.2.1/marketplace.umd.min.js"></script>
+    <link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/3.2.1/marketplace.css" />
   </head>
   <body>
-    <div>
-      <div
-        data-widget="m-connect"
-        data-delay-auth="true"
-        data-network="NETWORK"
-        style="margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: row; justify-content: center;"
-      ></div>
-      <div
-        data-widget="m-layout-complete-listing"
-        data-id="YOUR_LISTING_ID"
-        data-network="NETWORK"
-      ></div>
-    </div>
+    <div
+      id="connect"
+      data-widget="m-connect"
+      data-delay-auth="true"
+      data-network="NETWORK"
+    ></div>
+    <div
+      data-widget="m-layout-complete-listing"
+      data-id="MARKETPLACE_LISTING_ID"
+      data-network="NETWORK"
+    ></div>
   </body>
+  <style>
+    #connect {
+      margin: 10px 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  </style>
 </html>

@@ -1,16 +1,19 @@
 # Marketplace Listing Page
 
-<img src="screenshot.png" width="300" />
+<img src="marketplace.png" width="300" />
 
 This is a simple example of a Marketplace Listing Page.
 
-This was created using the standard create-next-app script.
+This was created using the standard `create-next-app` script.
 
 ## Configuration
-Please make sure you set the NEXT_APP_NETWORK and NEXT_APP_MARKETPLACE_LISTING_ID in the .env or your own .env.local.
+Please make sure you create your own env file and set the `NEXT_APP_NETWORK` and `NEXT_APP_MARKETPLACE_LISTING_ID` values.\
+An example configuration file can be found at [`.env.example`](./.env.example).
 
 ## How does it work?
 In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/connect-widget) and a [Marketplace Widget](https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets) which will display a marketplace listing.
+
+The scripts and stylesheets are included in [`_document.js`](./pages/_document.js) as part of the `head` HTML tag.
 
 ## Available Scripts
 
