@@ -7,7 +7,7 @@ This is a simple example of a Marketplace Listing Page.
 This was created using the standard `create-next-app` script.
 
 ## Configuration
-Please make sure you create your own env file and set `NEXT_APP_NETWORK` and `NEXT_APP_MARKETPLACE_LISTING_ID` values.\
+Please make sure you create your own env file and set the `NEXT_APP_NETWORK` and `NEXT_APP_MARKETPLACE_LISTING_ID` values.\
 An example configuration file can be found at [`.env.example`](./.env.example).
 
 ## How does it work?
