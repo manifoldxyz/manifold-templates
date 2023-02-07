@@ -318,5 +318,7 @@ export default class Configurator extends Vue {
   display: block;
   padding: 10px;
   text-align: left;
+  word-wrap: break-word;
+  overflow: auto;
 }
 </style>
