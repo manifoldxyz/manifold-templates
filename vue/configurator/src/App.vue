@@ -2,7 +2,8 @@
   <nav>
     <router-link to="/connect">Connect Widget</router-link> |
     <router-link to="/marketplace">Marketplace Widget</router-link> |
-    <router-link to="/identity">Wallet Identity Widget</router-link>
+    <router-link to="/identity">Wallet Identity Widget</router-link> |
+    <router-link to="/restricted-token">Restricted Token Widget</router-link>
   </nav>
   <router-view />
 </template>

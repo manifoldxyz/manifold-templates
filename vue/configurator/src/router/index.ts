@@ -28,6 +28,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "identity" */ "../views/IdentityView.vue"),
   },
+  {
+    path: "/restricted-token",
+    name: "Restricted Token Widget",
+    component: () =>
+      import(
+        /* webpackChunkName: "restricted" */ "../views/RestrictedTokenView.vue"
+      ),
+  },
 ];
 
 const router = createRouter({
