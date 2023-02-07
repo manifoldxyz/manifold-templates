@@ -5,6 +5,8 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* -- Stylesheets for connect and marketplace widgets -- */}
+        {/* replace the specific version with `latest` to get the most up-to-date version of the widgets. */}
+        {/* WARNING: `latest` may cause breakage, so use with caution */}
         <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css"></link>
         <link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/3.2.1/marketplace.css" />
         <script src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.js" async></script>
