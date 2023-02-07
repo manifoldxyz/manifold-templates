@@ -8,10 +8,7 @@ import Configurator, {
   ConfiguratorDefinition,
 } from "@/components/Configurator.vue";
 import { WidgetPropType } from "@/components/lib/WidgetProps";
-import {
-  ConnectWidgetLocation,
-  MarketplaceWidgetLocation,
-} from "@/config/widgetLocations";
+import { Widgets } from "@/config/widgetLocations";
 
 declare global {
   interface WindowEventMap {
@@ -65,7 +62,7 @@ export default class MarketplaceView extends Vue {
         },
         widgets: [
           {
-            ...ConnectWidgetLocation,
+            ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
             props: {
@@ -84,7 +81,7 @@ export default class MarketplaceView extends Vue {
             },
           },
           {
-            ...MarketplaceWidgetLocation,
+            ...Widgets.marketplace,
             name: "Marketplace Widget",
             props: {
               "data-widget": {

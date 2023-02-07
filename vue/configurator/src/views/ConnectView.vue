@@ -8,7 +8,7 @@ import Configurator, {
   ConfiguratorDefinition,
 } from "@/components/Configurator.vue";
 import { WidgetPropType } from "@/components/lib/WidgetProps";
-import { ConnectWidgetLocation } from "@/config/widgetLocations";
+import { Widgets } from "@/config/widgetLocations";
 
 @Options({
   components: {
@@ -23,7 +23,7 @@ export default class ConnectView extends Vue {
       configuration: {
         widgets: [
           {
-            ...ConnectWidgetLocation,
+            ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
             props: {

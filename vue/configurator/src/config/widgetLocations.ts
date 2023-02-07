@@ -3,12 +3,26 @@ interface WidgetLocation {
   css: string;
 }
 
-export const ConnectWidgetLocation: WidgetLocation = {
-  javascript: "https://connect.manifoldxyz.dev/2.0.19/connect.umd.js",
-  css: "https://connect.manifoldxyz.dev/2.0.19/connect.css",
-};
+interface WidgetMap {
+  [name: string]: WidgetLocation;
+}
 
-export const MarketplaceWidgetLocation: WidgetLocation = {
-  javascript: "https://marketplace.manifoldxyz.dev/latest/marketplace.umd.js",
-  css: "https://marketplace.manifoldxyz.dev/latest/marketplace.css",
+export const Widgets: WidgetMap = {
+  connect: {
+    javascript: "https://connect.manifoldxyz.dev/2.2.1/connect.umd.js",
+    css: "https://connect.manifoldxyz.dev/2.2.1/connect.css",
+  },
+  marketplace: {
+    javascript: "https://marketplace.manifoldxyz.dev/3.2.1/marketplace.umd.js",
+    css: "https://marketplace.manifoldxyz.dev/3.2.1/marketplace.css",
+  },
+  identity: {
+    javascript: "https://identity.manifoldxyz.dev/2.1.0/walletIdentity.umd.js",
+    css: "https://identity.manifoldxyz.dev/2.1.0/walletIdentity.css",
+  },
+  restrictedToken: {
+    javascript:
+      "https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.umd.js",
+    css: "https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.css",
+  },
 };
