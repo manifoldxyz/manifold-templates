@@ -38,7 +38,7 @@ export default function Home() {
             Manifold
           </a>
           <span> </span>
-          Next.js Template
+          NFT Profile Page
         </h1>
         <br />
 
@@ -48,7 +48,6 @@ export default function Home() {
               data-widget="m-connect"
               data-app-name='${process.env.NEXT_APP_MANIFOLD_APP_NAME}'
               data-client-id='${process.env.NEXT_APP_MANIFOLD_CLIENT_ID}'
-              data-network='${process.env.NEXT_APP_NETWORK}'
             ></div>`
         }} />
       

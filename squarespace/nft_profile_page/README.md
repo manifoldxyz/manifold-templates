@@ -16,8 +16,8 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 2. A component box will appear on your page. Click it and press the edit button. **Copy and paste the following into the box** (make sure to replace the variables found in Configuration):
 ```
 <head>
-    <script src="https://connect.manifoldxyz.dev/latest/connect.umd.min.js"></script>
-    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/latest/connect.css">
+    <script src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.min.js"></script>
+    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css">
   </head>
 <body>
   <script>
@@ -46,7 +46,6 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
       data-widget="m-connect"
       data-app-name="YOUR-APP-NAME"
       data-client-id="YOUR-CLIENT-ID"
-      data-network="NETWORK"
       style="margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: row; justify-content: center;"
     >
   </div>

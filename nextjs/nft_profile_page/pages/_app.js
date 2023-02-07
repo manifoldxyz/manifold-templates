@@ -21,10 +21,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       {/* -- Stylesheets for connect and marketplace widgets -- */}
-      <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.0.13/connect.css"></link>
-      <link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/latest/marketplace.css" />
-      <script src="https://connect.manifoldxyz.dev/latest/connect.umd.js" async></script>
-      <script src="https://marketplace.manifoldxyz.dev/latest/marketplace.umd.js" async></script>
+      <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css"></link>
+      <script src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.js" async></script>
       <Component {...pageProps} />
     </div>
   )

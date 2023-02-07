@@ -17,8 +17,8 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 2. A component with a grey inner box will appear on your page. Click the grey box and select "Code" and **copy and paste the following into the box** (make sure to replace the variables found in Configuration):
 ```
 <head>
-    <script src="https://connect.manifoldxyz.dev/latest/connect.umd.min.js"></script>
-    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/latest/connect.css">
+    <script src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.min.js"></script>
+    <link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css">
   </head>
 <body>
   <script>
@@ -47,7 +47,6 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
       data-widget="m-connect"
       data-app-name="YOUR-APP-NAME"
       data-client-id="YOUR-CLINET-ID"
-      data-network="NETWORK"
       style="margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: row; justify-content: center;"
     >
   </div>

@@ -5,7 +5,6 @@
       data-widget="m-connect"
       :data-app-name="appName"
       :data-client-id="clientId"
-      :data-network="network"
     >
     </div>
     <h2 v-if="authenticated">Your NFTs</h2>
