@@ -17,11 +17,11 @@ In this example, we are adding a [Connect Widget](https://docs.manifold.xyz/v/ma
 2. Copy and paste the following into the **Header** code snippet box:
 ```
 <!-- connect widget -->
-<script async src="https://connect.manifoldxyz.dev/2.0.13/connect.umd.min.js"></script>
-<link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.0.13/connect.css" />
+<script async src="https://connect.manifoldxyz.dev/2.2.1/connect.umd.min.js"></script>
+<link rel="stylesheet" href="https://connect.manifoldxyz.dev/2.2.1/connect.css" />
 <!-- marketplace widget -->
-<script async src="https://marketplace.manifoldxyz.dev/latest/marketplace.umd.min.js"></script>
-<link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/latest/marketplace.css" />
+<script async src="https://marketplace.manifoldxyz.dev/3.2.1/marketplace.umd.min.js"></script>
+<link rel="stylesheet" href="https://marketplace.manifoldxyz.dev/3.2.1/marketplace.css" />
 ```
 ![SQS code injection](./images/code-injection.png) <br />
 
