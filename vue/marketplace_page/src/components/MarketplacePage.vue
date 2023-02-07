@@ -5,9 +5,9 @@
       data-widget="m-connect"
       data-delay-auth="true"
       :data-network="network"
-    >
-    </div>
+    />
     <div
+      id="marketplace-listing"
       data-widget="m-layout-complete-listing"
       :data-id="listingId"
       :data-network="network"
@@ -29,7 +29,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #manifold-connect {
   margin-top: 10px;
@@ -37,5 +36,9 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+#marketplace-listing {
+  grid-template-rows: 40vh auto;
 }
 </style>
