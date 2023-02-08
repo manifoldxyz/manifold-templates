@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
 
@@ -39,7 +39,7 @@ function App() {
       <div id="nfts">
         {nfts.map((nft) => {
           return (
-            <img key={`${nft.tokenId}-${nft.contractAddress}`} src={nft.image} height={200} width={200}></img>
+            <img key={`${nft.tokenId}-${nft.contractAddress}`} src={nft.image} height={200} width={200} alt={`${nft.contractAddress}-${nft.tokenId}`}></img>
           )
         })}
       </div>
