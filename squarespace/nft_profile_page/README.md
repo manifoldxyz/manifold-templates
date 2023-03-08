@@ -4,6 +4,14 @@
 
 This is a simple example of an NFT Profile Page. It contains a way for someone to connect their wallet and view their NFTs.
 
+
+## Video Guide
+https://www.loom.com/share/42b38c54ccc64b00ac8098fd425acc4b
+
+1) https://developer.manifoldxyz.dev/apps -- create an app in dev portal
+2) https://docs.manifold.xyz/v/manifold-for-developers/guides/squarespace/simple-squarespace-site -- to get the code to "install"/inject the connect widget
+3) https://github.com/manifoldxyz/manifold-templates/tree/main/squarespace/nft_profile_page -- to get the code to configure the connect widget
+
 ## Configuration
 Please make sure you set the `data-app-name`, `data-client-id` and `data-network` in the index.html file.
 
