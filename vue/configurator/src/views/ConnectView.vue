@@ -163,3 +163,70 @@ export default class ConnectView extends Vue {
   }
 }
 </script>
+
+<style>
+:root() {
+  --base-font: "Raleway", sans-serif;
+}
+
+:where(.manifold) {
+  font-family: var(--base-font);
+  --manifold-color-page--background: #121212;
+  --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
+  --manifold-color-connect--text: #fff;
+}
+
+#m-connection-wizard-container {
+  pointer-events: auto;
+}
+#m-connection-wizard.h1 {
+  color: black;
+}
+#m-connection {
+  pointer-events: auto;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: auto;
+  width: 180px;
+  border: 2px solid var(--manifold-color-connect--background);
+  border-radius: 30px;
+  background-color: transparent;
+  @media screen and (max-width: 520px) {
+    top: 25px;
+    right: 25px;
+    height: auto;
+    width: 130px;
+  }
+}
+
+#m-connection button {
+  display: block !important;
+  width: 100% !important;
+  height: 60px !important;
+  text-transform: uppercase !important;
+  font-size: 11px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  transition: color 0.3s ease, border 0.3s ease, background 0.3s ease !important;
+}
+#m-connection button:hover {
+  background: var(--manifold-color-connect--hover) !important;
+  color: var(--manifold-text--color--primary) !important;
+}
+#m-connection div {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+div[data-widget="m-connect"] {
+  width: 100%;
+  height: 270px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+</style>

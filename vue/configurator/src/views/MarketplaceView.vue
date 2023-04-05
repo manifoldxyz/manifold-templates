@@ -92,7 +92,7 @@ export default class MarketplaceView extends Vue {
                     label: "Light",
                   },
                   {
-                    value: "os-pref",
+                    value: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)")).matches ? "manifold-scheme-dark" : "manifold-scheme-light",
                     label: "OS Preference",
                   },
                 ],
@@ -165,6 +165,15 @@ export default class MarketplaceView extends Vue {
     const { detail } = event;
     console.log("Marketplace Widget Injected", detail);
   }
+
+  getSystemPreference(): String {
+    if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+      return "manifold-scheme-dark";
+    }
+    else{
+      return "manifold-scheme-light";
+    }
+  }
 }
 </script>
 <style>
@@ -177,7 +186,6 @@ export default class MarketplaceView extends Vue {
   --manifold-color-page--background: #121212;
   --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
   --manifold-color-connect--text: #fff;
-  --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8);
 }
 
 #m-connection-wizard-container {
@@ -216,7 +224,7 @@ export default class MarketplaceView extends Vue {
 }
 #m-connection button:hover {
   background: var(--manifold-color-connect--hover) !important;
-  color: black !important;
+  color: var(--manifold-text--color--primary) !important;
 }
 #m-connection div {
   display: block !important;

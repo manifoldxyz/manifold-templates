@@ -313,6 +313,7 @@ export default class Configurator extends Vue {
   --manifold-border--color: hsl(0deg, 0%, 42%);
   --manifold-page--color--background: hsl(0deg, 0%, 7%);
   --manifold-element--color--background: hsl(0deg, 0%, 20%);
+  --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8);
 }
 .manifold-scheme-light {
   --manifold-theme--color--primary: hsl(0deg, 0%, 0%);
@@ -329,6 +330,7 @@ export default class Configurator extends Vue {
   --manifold-border--color: hsl(0deg, 0%, 90%);
   --manifold-page--color--background: hsl(0deg, 0%, 100%);
   --manifold-element--color--background: hsl(0deg, 0%, 100%);
+  --manifold-color-connect--hover: hsla(0deg, 0%, 10%);
 }
 
 .el-container h1 {
