@@ -23,7 +23,7 @@ import { Vue, Options } from "vue-class-component";
   name: "PageColorScheme",
 })
 export default class PageColorScheme extends Vue {
-  theme = "os-pref";
+  theme = "";
   options: string[] = [
     "os-pref",
     "manifold-scheme-dark",
@@ -31,7 +31,7 @@ export default class PageColorScheme extends Vue {
   ];
 
   changeTheme(): void {
-    document.documentElement.className = this.theme;
+    document.body.className = this.theme;
   }
 
   data() {
@@ -44,9 +44,9 @@ export default class PageColorScheme extends Vue {
 </script>
 
 <style>
-/* :root {
+:root {
   background-color: white !important;
-} */
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -78,11 +78,11 @@ nav a.router-link-exact-active {
 }
 
 /* Define the styles for each theme */
-:root.os-pref {
+/* .os-pref {
   background-color: #f8f8f8;
   color: #333;
-}
-:root.manifold-scheme-dark {
+} */
+.manifold-scheme-dark {
   --manifold-theme--color--primary: hsl(0deg, 0%, 100%);
   --manifold-theme--color--secondary: hsl(0deg, 0%, 10%);
   --manifold-theme--color--success: hsl(120deg, 50%, 32%);
@@ -99,7 +99,7 @@ nav a.router-link-exact-active {
   --manifold-element--color--background: hsl(0deg, 0%, 20%);
   background-color: var(--manifold-page--color--background);
 }
-:root.manifold-scheme-light {
+.manifold-scheme-light {
   --manifold-theme--color--primary: hsl(0deg, 0%, 0%);
   --manifold-theme--color--secondary: hsl(0deg, 0%, 95%);
   --manifold-theme--color--success: hsl(120deg, 57%, 53%);

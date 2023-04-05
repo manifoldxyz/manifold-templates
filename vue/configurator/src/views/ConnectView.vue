@@ -134,6 +134,26 @@ export default class ConnectView extends Vue {
                 value: "",
                 defaultValue: "",
               },
+              "data-widget-theme": {
+                name: "Widget Color",
+                type: WidgetPropType.ENUMERATION,
+                value: "",
+                options: [
+                  {
+                    value: "manifold-scheme-dark",
+                    label: "Dark",
+                  },
+                  {
+                    value: "manifold-scheme-light",
+                    label: "Light",
+                  },
+                  {
+                    value: "os-pref",
+                    label: "OS Preference",
+                  },
+                ],
+                defaultValue: "",
+              },
             },
           },
         ],
