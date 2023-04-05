@@ -33,6 +33,35 @@ export default class IdentityView extends Vue {
                 value: "", // can test with 0xf11f75c3b4548138c8894df6f32517c82fa7e362
                 required: true,
               },
+              "data-widget-theme": {
+                name: "Widget Color",
+                type: WidgetPropType.ENUMERATION,
+                value: "",
+                options: [
+                  {
+                    value: "manifold-scheme-dark",
+                    label: "Dark",
+                  },
+                  {
+                    value: "manifold-scheme-light",
+                    label: "Light",
+                  },
+                  // prefers-color-scheme: queries media based on the light/dark mode in browser
+                  // Tested using Microsoft Edge and Chrome
+                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
+                  {
+                    value: (
+                      window.matchMedia &&
+                      window.matchMedia("(prefers-color-scheme: dark)")
+                    ).matches
+                      ? "manifold-scheme-dark"
+                      : "manifold-scheme-light",
+                    label: "OS Preference",
+                  },
+                ],
+                defaultValue: "",
+                required: false,
+              },
             },
           },
         ],

@@ -298,6 +298,8 @@ export default class Configurator extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* Schemed Utility class definitons for light/dark
+https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
 .manifold-scheme-dark {
   --manifold-theme--color--primary: hsl(0deg, 0%, 100%);
   --manifold-theme--color--secondary: hsl(0deg, 0%, 10%);

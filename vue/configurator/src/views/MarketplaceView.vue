@@ -91,8 +91,16 @@ export default class MarketplaceView extends Vue {
                     value: "manifold-scheme-light",
                     label: "Light",
                   },
+                  // prefers-color-scheme: queries media based on the light/dark mode in browser
+                  // Tested using Microsoft Edge and Chrome
+                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
                   {
-                    value: (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)")).matches ? "manifold-scheme-dark" : "manifold-scheme-light",
+                    value: (
+                      window.matchMedia &&
+                      window.matchMedia("(prefers-color-scheme: dark)")
+                    ).matches
+                      ? "manifold-scheme-dark"
+                      : "manifold-scheme-light",
                     label: "OS Preference",
                   },
                 ],
@@ -166,11 +174,13 @@ export default class MarketplaceView extends Vue {
     console.log("Marketplace Widget Injected", detail);
   }
 
-  getSystemPreference(): String {
-    if(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches){
+  getSystemPreference(): string {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
       return "manifold-scheme-dark";
-    }
-    else{
+    } else {
       return "manifold-scheme-light";
     }
   }

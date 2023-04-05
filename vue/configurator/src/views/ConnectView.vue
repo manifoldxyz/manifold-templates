@@ -147,8 +147,16 @@ export default class ConnectView extends Vue {
                     value: "manifold-scheme-light",
                     label: "Light",
                   },
+                  // prefers-color-scheme: queries media based on the light/dark mode in browser
+                  // Tested using Microsoft Edge and Chrome
+                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
                   {
-                    value: "os-pref",
+                    value: (
+                      window.matchMedia &&
+                      window.matchMedia("(prefers-color-scheme: dark)")
+                    ).matches
+                      ? "manifold-scheme-dark"
+                      : "manifold-scheme-light",
                     label: "OS Preference",
                   },
                 ],
