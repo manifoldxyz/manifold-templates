@@ -153,6 +153,7 @@ export default class ConnectView extends Vue {
                   },
                 ],
                 defaultValue: "",
+                required: false,
               },
             },
           },

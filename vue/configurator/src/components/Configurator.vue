@@ -112,7 +112,11 @@
           v-if="widget.dataWidget"
           :id="`widget-${widgetIndex}`"
           :data-widget="widget.dataWidget"
-          :class="widget.props[`data-widget-theme`].value"
+          :class="
+            widget.props[`data-widget-theme`]
+              ? widget.props[`data-widget-theme`].value
+              : ''
+          "
         ></div>
         <!-- NOTE: don't load the other widgets since we're assuming mutation observer pattern -->
       </div>

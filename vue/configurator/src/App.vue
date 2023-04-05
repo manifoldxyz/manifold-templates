@@ -82,7 +82,7 @@ nav a.router-link-exact-active {
   background-color: #f8f8f8;
   color: #333;
 } */
-.manifold-scheme-dark {
+/* .manifold-scheme-dark {
   --manifold-theme--color--primary: hsl(0deg, 0%, 100%);
   --manifold-theme--color--secondary: hsl(0deg, 0%, 10%);
   --manifold-theme--color--success: hsl(120deg, 50%, 32%);
@@ -115,5 +115,5 @@ nav a.router-link-exact-active {
   --manifold-page--color--background: hsl(0deg, 0%, 100%);
   --manifold-element--color--background: hsl(0deg, 0%, 100%);
   background-color: var(--manifold-page--color--background);
-}
+} */
 </style>
