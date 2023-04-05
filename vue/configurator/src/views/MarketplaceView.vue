@@ -7,6 +7,7 @@ import { Options, Vue } from "vue-class-component";
 import Configurator, {
   ConfiguratorDefinition,
 } from "@/components/Configurator.vue";
+import PageColorScheme from "@/App.vue";
 import { WidgetPropType } from "@/components/lib/WidgetProps";
 import { Widgets } from "@/config/widgetLocations";
 
@@ -23,10 +24,12 @@ declare global {
 @Options({
   components: {
     Configurator,
+    PageColorScheme,
   },
 })
 export default class MarketplaceView extends Vue {
   configuration?: ConfiguratorDefinition;
+  theme?: PageColorScheme;
 
   data() {
     return {
