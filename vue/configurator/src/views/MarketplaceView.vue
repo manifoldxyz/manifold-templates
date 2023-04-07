@@ -35,7 +35,7 @@ export default class MarketplaceView extends Vue {
           "data-network": {
             name: "Network",
             type: WidgetPropType.ENUMERATION,
-            value: "1",
+            value: "5",
             options: [
               {
                 value: "1",
@@ -87,7 +87,7 @@ export default class MarketplaceView extends Vue {
               "data-widget": {
                 name: "Widget Type",
                 type: WidgetPropType.ENUMERATION,
-                value: "",
+                value: "m-layout-complete-listing",
                 options: [
                   {
                     value: "m-layout-complete-listing",
@@ -108,7 +108,7 @@ export default class MarketplaceView extends Vue {
               "data-id": {
                 name: "Listing Id",
                 type: WidgetPropType.STRING,
-                value: "",
+                value: "367",
                 defaultValue: "",
                 required: true,
               },
@@ -117,6 +117,45 @@ export default class MarketplaceView extends Vue {
                 type: WidgetPropType.STRING,
                 value: "",
                 defaultValue: "",
+                required: false,
+              },
+              "data-media-background": {
+                name: "Background Media",
+                type: WidgetPropType.INTERFACE,
+                value: {
+                  angle: {
+                    type: WidgetPropType.STRING,
+                    value: "",
+                  },
+                  colors: {
+                    type: WidgetPropType.STRING,
+                    // Testing with hard coded values
+                    value: ["red", "blue"],
+                  },
+                  image: {
+                    type: WidgetPropType.STRING,
+                    value: "",
+                  },
+                  type: {
+                    type: WidgetPropType.ENUMERATION,
+                    value: "",
+                    options: [
+                      {
+                        value: "linear",
+                        label: "Linear",
+                      },
+                      {
+                        value: "conic",
+                        label: "Conic",
+                      },
+                      {
+                        value: "radial",
+                        label: "Radial",
+                      },
+                    ],
+                  },
+                },
+                defaultValue: {},
                 required: false,
               },
             },

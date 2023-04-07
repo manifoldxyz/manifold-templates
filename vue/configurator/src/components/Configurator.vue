@@ -68,6 +68,47 @@
               v-model="prop.value"
               size="large"
             />
+            <!-- data-media-background has a type of JSON string -->
+            <el-row
+              v-else-if="prop.type === WidgetPropType.INTERFACE"
+              style="
+                align-items: center;
+                border-color: lightgrey;
+                border-style: solid;
+                border-width: thin;
+                border-radius: 5px;
+                height: 150px;
+                width: 250px;
+              "
+            >
+              <el-row v-for="(config, key) in prop.value" :key="key">
+                <el-input
+                  v-if="config.type === WidgetPropType.STRING"
+                  v-model="config.value"
+                  class="w-50 m-2"
+                  :placeholder="key"
+                />
+                <el-select
+                  v-else-if="config.type === WidgetPropType.ENUMERATION"
+                  v-model="config.value"
+                  class="m-2"
+                  placeholder="None"
+                  size="small"
+                >
+                  <el-option
+                    v-for="item in config.options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+                <el-checkbox
+                  v-else-if="config.type === WidgetPropType.BOOLEAN"
+                  v-model="config.value"
+                  size="large"
+                />
+              </el-row>
+            </el-row>
           </el-col>
         </el-row>
       </div>
@@ -191,6 +232,17 @@ export interface ConfiguratorDefinition {
               let value = prop.value;
               if (prop.type === WidgetPropType.STRING) {
                 value = value.toString().trim();
+              }
+              if (prop.type === WidgetPropType.INTERFACE) {
+                const mediabackground = Object.fromEntries(
+                  Object.entries(value).map(([k, v]) => [k, v.value])
+                );
+                // let mediabackground = {};
+                // Object.keys(value).forEach((config) => {
+                //   mediabackground.config =
+                // })
+                // value = JSON.stringify(value);
+                value = JSON.stringify(mediabackground);
               }
               if (value !== prop.defaultValue) {
                 // only change if it's different
