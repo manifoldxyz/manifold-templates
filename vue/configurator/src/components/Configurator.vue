@@ -83,13 +83,13 @@
             >
               <el-row v-for="(config, key) in prop.value" :key="key">
                 <el-input
-                  v-if="config.type === WidgetPropType.STRING"
+                  v-if="config?.type === WidgetPropType.STRING"
                   v-model="config.value"
                   class="w-50 m-2"
                   :placeholder="key"
                 />
                 <el-select
-                  v-else-if="config.type === WidgetPropType.ENUMERATION"
+                  v-else-if="config?.type === WidgetPropType.ENUMERATION"
                   v-model="config.value"
                   class="m-2"
                   placeholder="None"
@@ -103,7 +103,7 @@
                   />
                 </el-select>
                 <el-checkbox
-                  v-else-if="config.type === WidgetPropType.BOOLEAN"
+                  v-else-if="config?.type === WidgetPropType.BOOLEAN"
                   v-model="config.value"
                   size="large"
                 />
@@ -330,6 +330,10 @@ export default class Configurator extends Vue {
       if (element) {
         // clone the element to only get the tag HTML without the children
         element = element.cloneNode(false) as HTMLElement;
+        let dataMediaBackground = element.getAttribute(`data-media-background`);
+        // if (dataMediaBackground) {
+        //   outputDiv.innerText = dataMediaBackground.replace(/"/g, '&quot');
+        // }
         // Set div output text
         outputDiv.innerText =
           element.outerHTML
@@ -337,6 +341,11 @@ export default class Configurator extends Vue {
             .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
             .replace(" >", ">")
             .replaceAll("  ", " ") ?? "";
+        // Replace all instances of HTML entity &quot; with `"`
+        // When a JSON object is JSON.stringify(), HTML text will encode double quotes to avoid misinterpretation
+        // Converting this back to double quotes solves user issue's with directly copy pasting the div element
+        // https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+        outputDiv.innerText = outputDiv.innerText.replaceAll("&quot;", '"');
       }
     }
   }
