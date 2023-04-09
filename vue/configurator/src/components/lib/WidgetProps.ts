@@ -9,16 +9,16 @@ export enum WidgetPropType {
 export interface MediaBackgroundConfig {
   /** angle in degrees representing from which direction the gradient (linear/conic) flows */
   // Number
-  angle?: WidgetPropType;
+  angle?: WidgetPropDefinition;
   /** string array of colors for the media background */
   // string[]
-  colors?: WidgetPropType;
+  colors?: WidgetPropDefinition;
   /** URI to the background image. takes precedence over the background color/gradient */
   // string
-  image?: WidgetPropType;
+  image?: WidgetPropDefinition;
   /** if two or more color values are provided, specifies the type of background */
   // enumeration of "linear" | "conic" | "radial"
-  type?: WidgetPropType;
+  type?: WidgetPropDefinition;
 }
 
 interface WidgetPropOptions {
@@ -29,7 +29,7 @@ interface WidgetPropOptions {
 export interface WidgetPropDefinition {
   name: string;
   type: WidgetPropType;
-  value: string | boolean | number | MediaBackgroundConfig;
+  value: string | boolean | MediaBackgroundConfig;
   defaultValue: string | boolean;
   options?: WidgetPropOptions[];
   required?: boolean;

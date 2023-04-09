@@ -124,19 +124,26 @@ export default class MarketplaceView extends Vue {
                 type: WidgetPropType.INTERFACE,
                 value: {
                   angle: {
+                    name: "angle",
                     type: WidgetPropType.STRING,
                     value: "",
+                    defaultValue: "",
                   },
                   colors: {
-                    type: WidgetPropType.STRING,
+                    name: "colors",
+                    type: WidgetPropType.ARRAY,
                     // Testing with hard coded values
-                    value: ["red", "blue"],
+                    value: "",
+                    defaultValue: [],
                   },
                   image: {
+                    name: "image",
                     type: WidgetPropType.STRING,
                     value: "",
+                    defaultValue: "",
                   },
                   type: {
+                    name: "type",
                     type: WidgetPropType.ENUMERATION,
                     value: "",
                     options: [

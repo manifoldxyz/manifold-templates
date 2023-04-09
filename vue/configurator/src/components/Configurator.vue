@@ -82,14 +82,38 @@
               "
             >
               <el-row v-for="(config, key) in prop.value" :key="key">
+                <!-- config needs to be confirmed as an object for it to have properties like 'type' since
+                    it can be a string or boolean as defined in WidgetProps.ts -->
+                <!-- Placeholder uses "key" instead of config.name because config can be string | boolean | WidgetPropDefiniton -->
                 <el-input
-                  v-if="config?.type === WidgetPropType.STRING"
+                  v-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.STRING
+                  "
                   v-model="config.value"
                   class="w-50 m-2"
                   :placeholder="key"
                 />
+                <div
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.ARRAY
+                  "
+                >
+                  <label id="multipleInputs">
+                    Enter one or more options seperated by a comma
+                  </label>
+                  <el-input
+                    v-model="config.value"
+                    class="w-50 m-2"
+                    :placeholder="key"
+                  />
+                </div>
                 <el-select
-                  v-else-if="config?.type === WidgetPropType.ENUMERATION"
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.ENUMERATION
+                  "
                   v-model="config.value"
                   class="m-2"
                   placeholder="None"
@@ -103,7 +127,10 @@
                   />
                 </el-select>
                 <el-checkbox
-                  v-else-if="config?.type === WidgetPropType.BOOLEAN"
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.BOOLEAN
+                  "
                   v-model="config.value"
                   size="large"
                 />
@@ -168,6 +195,7 @@ import {
   WidgetPropDefinition,
 } from "./lib/WidgetProps";
 import _ from "lodash";
+import { placeholder } from "@babel/types";
 
 interface ConfiguratorData {
   WidgetPropType: any;
@@ -233,16 +261,25 @@ export interface ConfiguratorDefinition {
               if (prop.type === WidgetPropType.STRING) {
                 value = value.toString().trim();
               }
+              // If prop is an JSON object, extact the value to use to populate the attribute.
+              // Convert the object to a JSON string object as defined
+              // https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets/widgets/data-attributes#data-media-background
               if (prop.type === WidgetPropType.INTERFACE) {
-                const mediabackground = Object.fromEntries(
-                  Object.entries(value).map(([k, v]) => [k, v.value])
+                const propObjectValue = Object.fromEntries(
+                  Object.entries(value).map(([k, v]) => {
+                    if (v.type === WidgetPropType.ARRAY) {
+                      // Splitting colors given into an array of colors. If user ends string with a "," the empty element is removed
+                      return [
+                        k,
+                        v.value.endsWith(",")
+                          ? v.value.slice(0, -1).split(",")
+                          : v.value.split(","),
+                      ];
+                    }
+                    return [k, v.value];
+                  })
                 );
-                // let mediabackground = {};
-                // Object.keys(value).forEach((config) => {
-                //   mediabackground.config =
-                // })
-                // value = JSON.stringify(value);
-                value = JSON.stringify(mediabackground);
+                value = JSON.stringify(propObjectValue);
               }
               if (value !== prop.defaultValue) {
                 // only change if it's different
@@ -330,10 +367,6 @@ export default class Configurator extends Vue {
       if (element) {
         // clone the element to only get the tag HTML without the children
         element = element.cloneNode(false) as HTMLElement;
-        let dataMediaBackground = element.getAttribute(`data-media-background`);
-        // if (dataMediaBackground) {
-        //   outputDiv.innerText = dataMediaBackground.replace(/"/g, '&quot');
-        // }
         // Set div output text
         outputDiv.innerText =
           element.outerHTML
@@ -381,5 +414,9 @@ export default class Configurator extends Vue {
   text-align: left;
   word-wrap: break-word;
   overflow: auto;
+}
+label[id="multipleInputs"] {
+  font-size: 11px;
+  margin-bottom: 20px;
 }
 </style>
