@@ -195,7 +195,6 @@ import {
   WidgetPropDefinition,
 } from "./lib/WidgetProps";
 import _ from "lodash";
-import { placeholder } from "@babel/types";
 
 interface ConfiguratorData {
   WidgetPropType: any;
