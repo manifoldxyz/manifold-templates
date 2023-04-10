@@ -269,7 +269,7 @@ export interface ConfiguratorDefinition {
                       // Make sure to not split by commas that are contained in RGB(A)/HSL(A) CSS values.
                       return [
                         k,
-                        v.value.includes("rgb(") || v.value.includes("hsl(")
+                        v.value.includes("rgb") || v.value.includes("hsl")
                           ? v.value.split(/,(?![^()]*\))/)
                           : v.value.endsWith(",")
                           ? v.value.slice(0, -1).split(",")
