@@ -266,9 +266,12 @@ export interface ConfiguratorDefinition {
                   Object.entries(value).map(([k, v]) => {
                     if (v.type === WidgetPropType.ARRAY) {
                       // Splitting colors given into an array of colors. If user ends string with a "," the empty element is removed
+                      // Make sure to not split by commas that are contained in RGB(A)/HSL(A) CSS values.
                       return [
                         k,
-                        v.value.endsWith(",")
+                        v.value.includes("rgb(") || v.value.includes("hsl(")
+                          ? v.value.split(/,(?![^()]*\))/)
+                          : v.value.endsWith(",")
                           ? v.value.slice(0, -1).split(",")
                           : v.value.split(","),
                       ];
