@@ -100,9 +100,7 @@
                     config?.type === WidgetPropType.ARRAY
                   "
                 >
-                  <label id="multipleInputs">
-                    Enter one or more options seperated by a comma
-                  </label>
+                  <label id="multipleInputs"> colors example: red, blue </label>
                   <el-input
                     v-model="config.value"
                     class="w-50 m-2"
@@ -415,7 +413,8 @@ export default class Configurator extends Vue {
   overflow: auto;
 }
 label[id="multipleInputs"] {
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 20px;
+  color: rgba(97, 91, 91, 0.521);
 }
 </style>
