@@ -35,7 +35,7 @@ export default class MarketplaceView extends Vue {
           "data-network": {
             name: "Network",
             type: WidgetPropType.ENUMERATION,
-            value: "5",
+            value: "1",
             options: [
               {
                 value: "1",
@@ -87,7 +87,7 @@ export default class MarketplaceView extends Vue {
               "data-widget": {
                 name: "Widget Type",
                 type: WidgetPropType.ENUMERATION,
-                value: "m-layout-complete-listing",
+                value: "",
                 options: [
                   {
                     value: "m-layout-complete-listing",
@@ -108,7 +108,7 @@ export default class MarketplaceView extends Vue {
               "data-id": {
                 name: "Listing Id",
                 type: WidgetPropType.STRING,
-                value: "367",
+                value: "",
                 defaultValue: "",
                 required: true,
               },
