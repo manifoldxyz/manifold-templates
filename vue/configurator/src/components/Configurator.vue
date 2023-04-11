@@ -326,36 +326,4 @@ export default class Configurator extends Vue {
   word-wrap: break-word;
   overflow: auto;
 }
-.manifold-scheme-light {
-  --manifold-theme--color--primary: hsl(0deg, 0%, 0%);
-  --manifold-theme--color--secondary: hsl(0deg, 0%, 95%);
-  --manifold-theme--color--success: hsl(120deg, 57%, 53%);
-  --manifold-theme--color--error: hsl(0deg, 57%, 53%);
-  --manifold-theme--color--warning: hsl(33deg, 65%, 51%);
-  --manifold-theme--color--info: hsl(234deg, 82%, 71%);
-  --manifold-text--color--primary: hsl(0deg, 0%, 100%);
-  --manifold-text--color--secondary: hsl(0deg, 0%, 30%);
-  --manifold-text--color--muted: hsla(0deg, 0%, 0%, 0.66);
-  --manifold-text--color--disabled: hsla(0deg, 0%, 0%, 0.55);
-  --manifold-text--color--body: hsla(0deg, 0%, 0%, 0.87);
-  --manifold-border--color: hsl(0deg, 0%, 90%);
-  --manifold-page--color--background: hsl(0deg, 0%, 100%);
-  --manifold-element--color--background: hsl(0deg, 0%, 100%);
-}
-.manifold-scheme-dark {
-  --manifold-theme--color--primary: hsl(0deg, 0%, 100%);
-  --manifold-theme--color--secondary: hsl(0deg, 0%, 10%);
-  --manifold-theme--color--success: hsl(120deg, 50%, 32%);
-  --manifold-theme--color--error: hsl(0deg, 50%, 32%);
-  --manifold-theme--color--warning: hsl(33deg, 52%, 41%);
-  --manifold-theme--color--info: hsl(234deg, 36%, 54%);
-  --manifold-text--color--primary: hsl(0deg, 0%, 0%);
-  --manifold-text--color--secondary: hsl(0deg, 0%, 79%);
-  --manifold-text--color--muted: hsla(0deg, 0%, 100%, 0.6);
-  --manifold-text--color--disabled: hsla(0deg, 0%, 100%, 0.48);
-  --manifold-text--color--body: hsla(0deg, 0%, 100%, 0.87);
-  --manifold-border--color: hsl(0deg, 0%, 42%);
-  --manifold-page--color--background: hsl(0deg, 0%, 7%);
-  --manifold-element--color--background: hsl(0deg, 0%, 20%);
-}
 </style>
