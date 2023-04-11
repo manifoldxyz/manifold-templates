@@ -82,6 +82,8 @@ export default class MarketplaceView extends Vue {
                 name: "Widget Color",
                 type: WidgetPropType.ENUMERATION,
                 value: "",
+                /* Schemed Utility class definitons for light/dark
+                https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
                 options: [
                   {
                     value: "manifold-scheme-dark",
@@ -196,6 +198,7 @@ export default class MarketplaceView extends Vue {
   --manifold-color-page--background: #121212;
   --manifold-color-connect--background: rgba(0, 0, 0, 0.8);
   --manifold-color-connect--text: #fff;
+  --manifold-color-connect--hover: hsla(0, 0%, 100%, 0.8);
 }
 
 #m-connection-wizard-container {
@@ -233,8 +236,8 @@ export default class MarketplaceView extends Vue {
   transition: color 0.3s ease, border 0.3s ease, background 0.3s ease !important;
 }
 #m-connection button:hover {
-  background: var(--manifold-color-connect--hover) !important;
-  color: var(--manifold-text--color--primary) !important;
+  background: var(--manifold-theme--color--primary) !important;
+  color: var(--manifold-theme--color--secondary) !important;
 }
 #m-connection div {
   display: block !important;

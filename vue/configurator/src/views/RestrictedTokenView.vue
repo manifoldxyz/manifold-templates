@@ -33,6 +33,8 @@ export default class IdentityView extends Vue {
                 value: "", // can test with 0xf11f75c3b4548138c8894df6f32517c82fa7e362
                 required: true,
               },
+              /* Schemed Utility class definitons for light/dark
+              https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
               "data-widget-theme": {
                 name: "Widget Color",
                 type: WidgetPropType.ENUMERATION,
