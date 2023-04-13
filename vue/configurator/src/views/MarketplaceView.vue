@@ -175,17 +175,6 @@ export default class MarketplaceView extends Vue {
     const { detail } = event;
     console.log("Marketplace Widget Injected", detail);
   }
-
-  getSystemPreference(): string {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      return "manifold-scheme-dark";
-    } else {
-      return "manifold-scheme-light";
-    }
-  }
 }
 </script>
 <style>

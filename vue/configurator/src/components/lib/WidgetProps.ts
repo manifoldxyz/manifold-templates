@@ -23,6 +23,7 @@ export interface WidgetDefinition {
   name: string;
   props: { [key: string]: WidgetPropDefinition };
   dataWidget?: string;
+  widgetTheme?: { [key: string]: string | string[] };
   javascript: string;
   css: string;
 }

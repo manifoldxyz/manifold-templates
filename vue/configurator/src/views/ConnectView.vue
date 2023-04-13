@@ -26,6 +26,9 @@ export default class ConnectView extends Vue {
             ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
+            widgetTheme: {
+              value: ""
+            },
             props: {
               "data-app-name": {
                 name: "App Name",

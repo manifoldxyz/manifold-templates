@@ -40,6 +40,19 @@
         :key="widgetIndex"
       >
         <h1>{{ widget.name }} Options</h1>
+        <el-select
+              v-model="widget.widgetTheme"
+              class="m-2"
+              placeholder="None"
+              size="small"
+            >
+              <el-option
+                v-for="item in prop.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+        </el-select>
         <el-row v-for="(prop, key) in widget.props" :key="key">
           <el-col :span="6">{{ prop.name }}</el-col>
           <el-col :span="12">
