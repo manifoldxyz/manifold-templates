@@ -132,7 +132,6 @@ export default class MarketplaceView extends Vue {
                   colors: {
                     name: "colors",
                     type: WidgetPropType.ARRAY,
-                    // Testing with hard coded values
                     value: "",
                     defaultValue: [],
                   },

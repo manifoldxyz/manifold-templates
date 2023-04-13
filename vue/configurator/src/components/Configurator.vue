@@ -71,15 +71,7 @@
             <!-- data-media-background has a type of JSON string -->
             <el-row
               v-else-if="prop.type === WidgetPropType.INTERFACE"
-              style="
-                align-items: center;
-                border-color: lightgrey;
-                border-style: solid;
-                border-width: thin;
-                border-radius: 5px;
-                height: 150px;
-                width: 250px;
-              "
+              class="prop-groupings"
             >
               <el-row v-for="(config, key) in prop.value" :key="key">
                 <!-- config needs to be confirmed as an object for it to have properties like 'type' since
@@ -100,7 +92,7 @@
                     config?.type === WidgetPropType.ARRAY
                   "
                 >
-                  <label id="multipleInputs"> colors example: red, blue </label>
+                  <label> colors example: red, blue </label>
                   <el-input
                     v-model="config.value"
                     class="w-50 m-2"
@@ -386,7 +378,15 @@ export default class Configurator extends Vue {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-
+.prop-groupings {
+  align-items: center;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  height: 150px;
+  width: 250px;
+}
 .code-blocks {
   text-align: left;
 }
@@ -397,7 +397,6 @@ export default class Configurator extends Vue {
 .code-blocks h2 {
   margin-top: 5px;
 }
-
 .widget-configuration {
   text-align: left;
 }
@@ -410,7 +409,7 @@ export default class Configurator extends Vue {
   word-wrap: break-word;
   overflow: auto;
 }
-label[id="multipleInputs"] {
+label {
   font-size: 12px;
   margin-bottom: 20px;
   color: rgba(97, 91, 91, 0.521);
