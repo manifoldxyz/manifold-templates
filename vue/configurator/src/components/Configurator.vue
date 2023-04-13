@@ -374,11 +374,6 @@ export default class Configurator extends Vue {
             .replaceAll(/data-v-[a-z0-9]*="" ?/g, "")
             .replace(" >", ">")
             .replaceAll("  ", " ") ?? "";
-        // Replace all instances of HTML entity &quot; with `"`
-        // When a JSON object is JSON.stringify(), HTML text will encode double quotes to avoid misinterpretation
-        // Converting this back to double quotes solves user issue's with directly copy pasting the div element
-        // https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
-        outputDiv.innerText = outputDiv.innerText.replaceAll("&quot;", '"');
       }
     }
   }

@@ -30,7 +30,7 @@ export interface WidgetPropDefinition {
   name: string;
   type: WidgetPropType;
   value: string | boolean | MediaBackgroundConfig;
-  defaultValue: string | boolean;
+  defaultValue: string | boolean | MediaBackgroundConfig;
   options?: WidgetPropOptions[];
   required?: boolean;
   dependentProps?: string[];
