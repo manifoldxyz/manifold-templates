@@ -65,6 +65,25 @@ export default class MarketplaceView extends Vue {
             ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-delay-auth": {
                 name: "Delay Authentication",
@@ -78,42 +97,30 @@ export default class MarketplaceView extends Vue {
                 value: false,
                 defaultValue: false,
               },
-              "data-widget-theme": {
-                name: "Widget Color",
-                type: WidgetPropType.ENUMERATION,
-                value: "",
-                /* Schemed Utility class definitons for light/dark
-                https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
-                options: [
-                  {
-                    value: "manifold-scheme-dark",
-                    label: "Dark",
-                  },
-                  {
-                    value: "manifold-scheme-light",
-                    label: "Light",
-                  },
-                  // prefers-color-scheme: queries media based on the light/dark mode in browser
-                  // Tested using Microsoft Edge and Chrome
-                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-                  {
-                    value: (
-                      window.matchMedia &&
-                      window.matchMedia("(prefers-color-scheme: dark)")
-                    ).matches
-                      ? "manifold-scheme-dark"
-                      : "manifold-scheme-light",
-                    label: "OS Preference",
-                  },
-                ],
-                defaultValue: "",
-                required: false,
-              },
             },
           },
           {
             ...Widgets.marketplace,
             name: "Marketplace Widget",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-widget": {
                 name: "Widget Type",

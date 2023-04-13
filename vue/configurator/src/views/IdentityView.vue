@@ -26,43 +26,31 @@ export default class IdentityView extends Vue {
             ...Widgets.identity,
             name: "Wallet Identity Widget",
             dataWidget: "m-wallet-identity",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-wallet": {
                 name: "Wallet address -- required",
                 type: WidgetPropType.STRING,
                 value: "",
                 required: true,
-              },
-              /* Schemed Utility class definitons for light/dark
-              https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
-              "data-widget-theme": {
-                name: "Widget Color",
-                type: WidgetPropType.ENUMERATION,
-                value: "",
-                options: [
-                  {
-                    value: "manifold-scheme-dark",
-                    label: "Dark",
-                  },
-                  {
-                    value: "manifold-scheme-light",
-                    label: "Light",
-                  },
-                  // prefers-color-scheme: queries media based on the light/dark mode in browser
-                  // Tested using Microsoft Edge and Chrome
-                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-                  {
-                    value: (
-                      window.matchMedia &&
-                      window.matchMedia("(prefers-color-scheme: dark)")
-                    ).matches
-                      ? "manifold-scheme-dark"
-                      : "manifold-scheme-light",
-                    label: "OS Preference",
-                  },
-                ],
-                defaultValue: "",
-                required: false,
               },
             },
           },

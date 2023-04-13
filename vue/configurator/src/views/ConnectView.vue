@@ -26,8 +26,24 @@ export default class ConnectView extends Vue {
             ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
             widgetTheme: {
-              value: ""
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
             },
             props: {
               "data-app-name": {
@@ -136,37 +152,6 @@ export default class ConnectView extends Vue {
                 type: WidgetPropType.STRING,
                 value: "",
                 defaultValue: "",
-              },
-              /* Schemed Utility class definitons for light/dark
-              https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
-              "data-widget-theme": {
-                name: "Widget Color",
-                type: WidgetPropType.ENUMERATION,
-                value: "",
-                options: [
-                  {
-                    value: "manifold-scheme-dark",
-                    label: "Dark",
-                  },
-                  {
-                    value: "manifold-scheme-light",
-                    label: "Light",
-                  },
-                  // prefers-color-scheme: queries media based on the light/dark mode in browser
-                  // Tested using Microsoft Edge and Chrome
-                  // https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia
-                  {
-                    value: (
-                      window.matchMedia &&
-                      window.matchMedia("(prefers-color-scheme: dark)")
-                    ).matches
-                      ? "manifold-scheme-dark"
-                      : "manifold-scheme-light",
-                    label: "OS Preference",
-                  },
-                ],
-                defaultValue: "",
-                required: false,
               },
             },
           },
