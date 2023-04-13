@@ -9,6 +9,11 @@ interface WidgetPropOptions {
   label: string;
 }
 
+interface WidgetThemeDefinition {
+  value: string;
+  options: WidgetPropOptions[];
+}
+
 export interface WidgetPropDefinition {
   name: string;
   type: WidgetPropType;
@@ -23,6 +28,7 @@ export interface WidgetDefinition {
   name: string;
   props: { [key: string]: WidgetPropDefinition };
   dataWidget?: string;
+  widgetTheme?: WidgetThemeDefinition;
   javascript: string;
   css: string;
 }

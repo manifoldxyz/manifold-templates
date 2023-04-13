@@ -40,6 +40,25 @@
         :key="widgetIndex"
       >
         <h1>{{ widget.name }} Options</h1>
+        <el-row>
+          <el-col :span="6">Widget Theme</el-col>
+          <el-col :span="12">
+            <el-select
+              v-if="widget.widgetTheme"
+              v-model="widget.widgetTheme.value"
+              class="m-2"
+              placeholder="None"
+              size="small"
+            >
+              <el-option
+                v-for="item in widget.widgetTheme.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-col>
+        </el-row>
         <el-row v-for="(prop, key) in widget.props" :key="key">
           <el-col :span="6">{{ prop.name }}</el-col>
           <el-col :span="12">
@@ -112,6 +131,7 @@
           v-if="widget.dataWidget"
           :id="`widget-${widgetIndex}`"
           :data-widget="widget.dataWidget"
+          :class="widget.widgetTheme ? widget.widgetTheme.value : ''"
         ></div>
         <!-- NOTE: don't load the other widgets since we're assuming mutation observer pattern -->
       </div>

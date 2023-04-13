@@ -26,6 +26,25 @@ export default class ConnectView extends Vue {
             ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-app-name": {
                 name: "App Name",

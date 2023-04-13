@@ -65,6 +65,25 @@ export default class MarketplaceView extends Vue {
             ...Widgets.connect,
             name: "Connect Widget",
             dataWidget: "m-connect",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-delay-auth": {
                 name: "Delay Authentication",
@@ -83,6 +102,25 @@ export default class MarketplaceView extends Vue {
           {
             ...Widgets.marketplace,
             name: "Marketplace Widget",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-widget": {
                 name: "Widget Type",
@@ -172,7 +210,7 @@ export default class MarketplaceView extends Vue {
   right: 40px;
   height: auto;
   width: 180px;
-  border: 2px solid var(--manifold-color-connect--text);
+  border: 2px solid var(--manifold-color-connect--background);
   border-radius: 30px;
   background-color: transparent;
   @media screen and (max-width: 520px) {
@@ -182,24 +220,20 @@ export default class MarketplaceView extends Vue {
     width: 130px;
   }
 }
-#m-connection .m-connection-wallet span {
-  color: var(--manifold-color-connect--text) !important;
-}
+
 #m-connection button {
   display: block !important;
   width: 100% !important;
   height: 60px !important;
-  color: var(--manifold-color-connect--text) !important;
   text-transform: uppercase !important;
   font-size: 11px !important;
   border-radius: 0 !important;
   border: none !important;
-  background: var(--manifold-color-connect--background) !important;
   transition: color 0.3s ease, border 0.3s ease, background 0.3s ease !important;
 }
 #m-connection button:hover {
-  background: var(--manifold-color-connect--hover) !important;
-  color: black !important;
+  background: var(--manifold-theme--color--primary) !important;
+  color: var(--manifold-theme--color--secondary) !important;
 }
 #m-connection div {
   display: block !important;
