@@ -9,12 +9,12 @@ interface WidgetMap {
 
 export const Widgets: WidgetMap = {
   connect: {
-    javascript: "https://connect.manifoldxyz.dev/2.2.1/connect.umd.js",
-    css: "https://connect.manifoldxyz.dev/2.2.1/connect.css",
+    javascript: "https://connect.manifoldxyz.dev/2.2.4/connect.umd.js",
+    css: "https://connect.manifoldxyz.dev/2.2.4/connect.css",
   },
   marketplace: {
-    javascript: "https://marketplace.manifoldxyz.dev/3.2.1/marketplace.umd.js",
-    css: "https://marketplace.manifoldxyz.dev/3.2.1/marketplace.css",
+    javascript: "https://marketplace.manifoldxyz.dev/3.3.7/marketplace.umd.js",
+    css: "https://marketplace.manifoldxyz.dev/3.3.7/marketplace.css",
   },
   identity: {
     javascript: "https://identity.manifoldxyz.dev/2.1.0/walletIdentity.umd.js",
