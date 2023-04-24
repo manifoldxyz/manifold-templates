@@ -24,10 +24,10 @@ export default function Home() {
         <br />
 
         {/* -- Add Connect Widget -- */}
-        <Connect network={process.env.NEXT_APP_NETWORK} />
+        <Connect network={1} />
 
         {/* ~~ Add Claim Widget component ~~ */}
-        <Listing id={process.env.NEXT_APP_CLAIM_ID} network={process.env.NEXT_APP_NETWORK} />
+        <Listing id={1040586992} network={1} />
       </main>
     </div>
   )
