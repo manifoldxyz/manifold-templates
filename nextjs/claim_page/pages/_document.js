@@ -16,8 +16,8 @@ export default function Document() {
         <script src="https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.umd.min.js"></script>
         <link rel="stylesheet" href="https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.css" />
 
-        <link rel="stylesheet" href="https://claims.manifoldxyz.dev/1.3.9/claimComplete.css" />
-        <script src="https://claims.manifoldxyz.dev/1.3.9/claimComplete.umd.min.js" async></script>
+        <link rel="stylesheet" href="https://claims.manifoldxyz.dev/1.5.3/claimComplete.css" />
+        <script src="https://claims.manifoldxyz.dev/1.5.3/claimComplete.umd.js" async></script>
       </Head>
       <body>
         <Main />

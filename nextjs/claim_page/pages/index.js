@@ -23,9 +23,6 @@ export default function Home() {
         </h1>
         <br />
 
-        {/* -- Add Connect Widget -- */}
-        <Connect network={1} />
-
         {/* ~~ Add Claim Widget component ~~ */}
         <Listing id={1040586992} network={1} />
       </main>
