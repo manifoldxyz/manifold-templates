@@ -13,8 +13,8 @@ export const Widgets: WidgetMap = {
     css: "https://connect.manifoldxyz.dev/2.2.4/connect.css",
   },
   marketplace: {
-    javascript: "https://marketplace.manifoldxyz.dev/3.3.7/marketplace.umd.js",
-    css: "https://marketplace.manifoldxyz.dev/3.3.7/marketplace.css",
+    javascript: "https://marketplace.manifoldxyz.dev/3.4.2/marketplace.umd.js",
+    css: "https://marketplace.manifoldxyz.dev/3.4.2/marketplace.css",
   },
   identity: {
     javascript: "https://identity.manifoldxyz.dev/2.1.0/walletIdentity.umd.js",
