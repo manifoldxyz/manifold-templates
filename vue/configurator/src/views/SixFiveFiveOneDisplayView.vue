@@ -83,7 +83,13 @@ export default class SixFiveFiveOneDisplayView extends Vue {
                 defaultValue: "",
               },
               "data-transferrable": {
-                name: "Transferrable",
+                name: "Transfers",
+                type: WidgetPropType.BOOLEAN,
+                value: false,
+                defaultValue: false,
+              },
+              "data-only-owner-can-call-to-action": {
+                name: "Only Owner Can CTA",
                 type: WidgetPropType.BOOLEAN,
                 value: false,
                 defaultValue: false,
@@ -91,14 +97,8 @@ export default class SixFiveFiveOneDisplayView extends Vue {
               "data-call-to-action-text": {
                 name: "Call To Action Text",
                 type: WidgetPropType.STRING,
-                value: "Dress Up",
+                value: "Dress",
                 defaultValue: "",
-              },
-              "data-only-owner-can-call-to-action": {
-                name: "Only Owner Can CTA",
-                type: WidgetPropType.BOOLEAN,
-                value: false,
-                defaultValue: false,
               },
               "data-layout": {
                 name: "Layout",
