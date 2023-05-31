@@ -25,4 +25,9 @@ export const Widgets: WidgetMap = {
       "https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.umd.js",
     css: "https://restrictedtoken.manifoldxyz.dev/0.1.0/restrictedToken.css",
   },
+  sixFiveFiveOneDisplay: {
+    javascript:
+      "https://d5aktt2n34dmg.cloudfront.net/0.0.1/6551-display-widget.umd.js",
+    css: "https://d5aktt2n34dmg.cloudfront.net/0.0.1/6551-display-widget.css",
+  },
 };

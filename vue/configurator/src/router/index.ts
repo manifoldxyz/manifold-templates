@@ -36,6 +36,14 @@ const routes: Array<RouteRecordRaw> = [
         /* webpackChunkName: "restricted" */ "../views/RestrictedTokenView.vue"
       ),
   },
+  {
+    path: "/6551-display",
+    name: "6551 Display Widget",
+    component: () =>
+      import(
+        /* webpackChunkName: "restricted" */ "../views/SixFiveFiveOneDisplayView.vue"
+      ),
+  },
 ];
 
 const router = createRouter({
