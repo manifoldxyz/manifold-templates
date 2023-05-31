@@ -23,6 +23,6 @@ export interface WidgetDefinition {
   name: string;
   props: { [key: string]: WidgetPropDefinition };
   dataWidget?: string;
-  javascript: string;
-  css: string;
+  javascript: string[];
+  css: string[];
 }

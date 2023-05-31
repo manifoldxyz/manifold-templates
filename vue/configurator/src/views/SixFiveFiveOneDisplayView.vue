@@ -85,8 +85,20 @@ export default class SixFiveFiveOneDisplayView extends Vue {
               "data-transferrable": {
                 name: "Transferrable",
                 type: WidgetPropType.BOOLEAN,
-                value: true,
-                defaultValue: true,
+                value: false,
+                defaultValue: false,
+              },
+              "data-call-to-action-text": {
+                name: "Call To Action Text",
+                type: WidgetPropType.STRING,
+                value: "Dress Up",
+                defaultValue: "",
+              },
+              "data-only-owner-can-call-to-action": {
+                name: "Only Owner Can CTA",
+                type: WidgetPropType.BOOLEAN,
+                value: false,
+                defaultValue: false,
               },
               "data-layout": {
                 name: "Layout",
