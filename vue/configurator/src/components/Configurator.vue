@@ -79,17 +79,21 @@
             v-for="(widget, widgetIndex) in configuration?.widgets"
             :key="widgetIndex"
           >
-            {{`
-            <script src="${widget.javascript}"></script>
-            ` }}
+            <template v-for="js in widget.javascript">
+              {{`
+              <script src="${js}"></script>
+              ` }}
+            </template>
           </div>
           <div
             v-for="(widget, widgetIndex) in configuration?.widgets"
             :key="widgetIndex"
           >
-            {{`
-            <link ref="stylesheet" href="${widget.css}" />
-            ` }}
+            <template v-for="css in widget.css">
+              {{`
+              <link ref="stylesheet" href="${css}" />
+              ` }}
+            </template>
           </div>
         </div>
         <h2>Body</h2>
@@ -252,13 +256,21 @@ export default class Configurator extends Vue {
   mounted(): void {
     // Add script an link
     for (const widget of this.configuration!.widgets) {
-      const script = document.createElement("script");
-      script.setAttribute("src", widget.javascript);
-      document.head.appendChild(script);
-      const link = document.createElement("link");
-      link.setAttribute("rel", "stylesheet");
-      link.setAttribute("href", widget.css);
-      document.head.append(link);
+      // for each string in widget.javascript array
+      for (let i = 0; i < widget.javascript.length; i++) {
+        const js = widget.javascript[i];
+        const script = document.createElement("script");
+        script.setAttribute("src", js);
+        document.head.appendChild(script);
+      }
+
+      for (let i = 0; i < widget.css.length; i++) {
+        const css = widget.css[i];
+        const link = document.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("href", css);
+        document.head.append(link);
+      }
     }
     this.updateDivOutput();
   }
