@@ -157,6 +157,51 @@ export default class MarketplaceView extends Vue {
                 defaultValue: "",
                 required: false,
               },
+              "data-media-background": {
+                name: "Background Media",
+                type: WidgetPropType.INTERFACE,
+                value: {
+                  angle: {
+                    name: "angle",
+                    type: WidgetPropType.STRING,
+                    value: "",
+                    defaultValue: "",
+                  },
+                  colors: {
+                    name: "colors",
+                    type: WidgetPropType.ARRAY,
+                    value: "",
+                    defaultValue: [],
+                  },
+                  image: {
+                    name: "image",
+                    type: WidgetPropType.STRING,
+                    value: "",
+                    defaultValue: "",
+                  },
+                  type: {
+                    name: "type",
+                    type: WidgetPropType.ENUMERATION,
+                    value: "",
+                    options: [
+                      {
+                        value: "linear",
+                        label: "Linear",
+                      },
+                      {
+                        value: "conic",
+                        label: "Conic",
+                      },
+                      {
+                        value: "radial",
+                        label: "Radial",
+                      },
+                    ],
+                  },
+                },
+                defaultValue: {},
+                required: false,
+              },
             },
           },
         ],

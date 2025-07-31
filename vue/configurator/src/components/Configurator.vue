@@ -87,6 +87,64 @@
               v-model="prop.value"
               size="large"
             />
+            <!-- data-media-background has a type of JSON string -->
+            <el-row
+              v-else-if="prop.type === WidgetPropType.INTERFACE"
+              class="prop-groupings"
+            >
+              <el-row v-for="(config, key) in prop.value" :key="key">
+                <!-- config needs to be confirmed as an object for it to have properties like 'type' since
+                    it can be a string or boolean as defined in WidgetProps.ts -->
+                <!-- Placeholder uses "key" instead of config.name because config can be string | boolean | WidgetPropDefiniton -->
+                <el-input
+                  v-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.STRING
+                  "
+                  v-model="config.value"
+                  class="w-50 m-2"
+                  :placeholder="key"
+                />
+                <div
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.ARRAY
+                  "
+                >
+                  <label> colors example: red, blue </label>
+                  <el-input
+                    v-model="config.value"
+                    class="w-50 m-2"
+                    :placeholder="key"
+                  />
+                </div>
+                <el-select
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.ENUMERATION
+                  "
+                  v-model="config.value"
+                  class="m-2"
+                  placeholder="None"
+                  size="small"
+                >
+                  <el-option
+                    v-for="item in config.options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+                <el-checkbox
+                  v-else-if="
+                    typeof config === 'object' &&
+                    config?.type === WidgetPropType.BOOLEAN
+                  "
+                  v-model="config.value"
+                  size="large"
+                />
+              </el-row>
+            </el-row>
           </el-col>
         </el-row>
       </div>
@@ -216,6 +274,29 @@ export interface ConfiguratorDefinition {
               if (prop.type === WidgetPropType.STRING) {
                 value = value.toString().trim();
               }
+              // If prop is an JSON object, extact the value to use to populate the attribute.
+              // Convert the object to a JSON string object as defined
+              // https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/marketplace-widgets/widgets/data-attributes#data-media-background
+              if (prop.type === WidgetPropType.INTERFACE) {
+                const propObjectValue = Object.fromEntries(
+                  Object.entries(value).map(([k, v]) => {
+                    if (v.type === WidgetPropType.ARRAY) {
+                      // Splitting colors given into an array of colors. If user ends string with a "," the empty element is removed
+                      // Make sure to not split by commas that are contained in RGB(A)/HSL(A) CSS values.
+                      return [
+                        k,
+                        v.value.includes("rgb") || v.value.includes("hsl")
+                          ? v.value.split(/,(?![^()]*\))/)
+                          : v.value.endsWith(",")
+                          ? v.value.slice(0, -1).split(",")
+                          : v.value.split(","),
+                      ];
+                    }
+                    return [k, v.value];
+                  })
+                );
+                value = JSON.stringify(propObjectValue);
+              }
               if (value !== prop.defaultValue) {
                 // only change if it's different
                 if (value !== element.getAttribute(propKey)) {
@@ -329,7 +410,15 @@ export default class Configurator extends Vue {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-
+.prop-groupings {
+  align-items: center;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  height: 150px;
+  width: 250px;
+}
 .code-blocks {
   text-align: left;
 }
@@ -340,7 +429,6 @@ export default class Configurator extends Vue {
 .code-blocks h2 {
   margin-top: 5px;
 }
-
 .widget-configuration {
   text-align: left;
 }
@@ -352,5 +440,10 @@ export default class Configurator extends Vue {
   text-align: left;
   word-wrap: break-word;
   overflow: auto;
+}
+label {
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: rgba(97, 91, 91, 0.521);
 }
 </style>
