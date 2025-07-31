@@ -4,6 +4,7 @@
     <router-link to="/marketplace">Marketplace Widget</router-link> |
     <router-link to="/identity">Wallet Identity Widget</router-link> |
     <router-link to="/restricted-token">Restricted Token Widget</router-link>
+    <router-link to="/6551-display">6551 Display Widget</router-link>
   </nav>
   <router-view />
 </template>
