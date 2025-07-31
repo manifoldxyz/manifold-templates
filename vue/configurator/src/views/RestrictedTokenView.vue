@@ -26,6 +26,25 @@ export default class IdentityView extends Vue {
             ...Widgets.restrictedToken,
             name: "Restricted Token Widget",
             dataWidget: "m-restricted-token",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-address": {
                 name: "Contract address -- required",

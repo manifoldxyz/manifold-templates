@@ -26,6 +26,25 @@ export default class IdentityView extends Vue {
             ...Widgets.identity,
             name: "Wallet Identity Widget",
             dataWidget: "m-wallet-identity",
+            /* Schemed Utility class definitons for light/dark
+            https://docs.manifold.xyz/v/manifold-for-developers/resources/widgets/manifold-css-variables/scheme-utility-classes */
+            widgetTheme: {
+              value: "",
+              options: [
+                {
+                  value: "manifold-scheme-dark",
+                  label: "Dark",
+                },
+                {
+                  value: "manifold-scheme-light",
+                  label: "Light",
+                },
+                {
+                  value: "",
+                  label: "OS Preference",
+                },
+              ],
+            },
             props: {
               "data-wallet": {
                 name: "Wallet address -- required",
